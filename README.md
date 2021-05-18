@@ -6,7 +6,7 @@ Welcome to my repository of useful resources to help ease your learning. A colle
 ## Topics
 * [Edutainment](/Assets/Edutainment.md)
 * [Tools for the job](/Assets/ToolsAndGuides.md)
-* [Linux](/Assets/Linux.md)
+* [Linux Guide](/Assets/LinuxGuide.md)
 
 ## How to Contribute
 Feel free to message or email me directly!
