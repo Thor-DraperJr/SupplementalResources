@@ -40,22 +40,29 @@ $allowMyIP = New-AzNetworkSecurityRuleConfig -Name "Allow-my-IP" -Description "A
 $nsg1 = New-AzNetworkSecurityGroup -Name $nsgName -ResourceGroupName $rg -Location $location -SecurityRules $allowMyIP
 
 # Create Subnets
-$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name bastionSubnet -AddressPrefix "10.0.0.0/24" -NetworkSecurityGroup $nsg1
-$backendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24" -NetworkSecurityGroup $nsg1
-$bastionSubnet = New-AzVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix "10.0.2.0/24" -NetworkSecurityGroup $nsg1
+$bastionSubnet = New-AzVirtualNetworkSubnetConfig -Name bastionSubnet -AddressPrefix "10.0.0.0/24" -NetworkSecurityGroup $nsg1
+$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24" -NetworkSecurityGroup $nsg1
+$backendSubnet = New-AzVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix "10.0.2.0/24" -NetworkSecurityGroup $nsg1
 
 # Create a public IP address (VM1, VM2 and VM3)
 $vm1pip = New-AzPublicIpAddress -Name vm1-pip -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
 
 # Create vNet
-New-AzVirtualNetwork -Name $vNetName -ResourceGroupName $rg -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet,$bastionSubnet
+New-AzVirtualNetwork -Name $vNetName -ResourceGroupName $rg -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $bastionSubnet,$frontendSubnet,$backendSubnet
 
 $IPConfig1 = New-AzNetworkInterfaceIpConfig -Name "IPConfig-1" -Subnet $backendSubnet -PublicIpAddress $vm1pip -Primary
+
+####### TESTLINE ###### New-AzNetworkInterfaceIpConfig -Name "ipconfig1" -PrivateIpAddress "dynamic"
+
 
 # Create NIC
 $vm1nic1 = New-AzNetworkInterface -Name "NetworkInterface1" -ResourceGroupName $rg -Location $location -Subnet $backendSubnet -IpConfiguration $IpConfig1 -NetworkSecurityGroup $nsg1
 
-### Create three virtual machines ###
+####### TESTLINE ###### New-AzNetworkInterface -Name "name" -Location $location -NetworkSecurityGroup $nsg1 -IpConfiguration "ipconfig1"
+
+
+
+### Create an Ubuntu Server and Windows Server virtual machines ###
 
 # VM1 LINUX
 
