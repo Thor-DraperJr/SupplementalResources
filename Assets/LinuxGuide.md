@@ -25,6 +25,7 @@
 * mtr - combines the functionality of the traceroute and ping programs in a single network diagnostic tool.
 * curl - transfer a URL
 * wget - The non-interactive network downloader.
+* nc — arbitrary TCP and UDP connections and listens
 
 
 ## vim - Vi IMproved, a programmer's text editor
