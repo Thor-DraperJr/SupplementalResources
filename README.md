@@ -6,8 +6,11 @@ Welcome to my repository of useful resources to help ease your learning. A colle
 ## Topics
 * [Azure And PowerShell](/Assets/AzureAndPowershell.md)
 * [Edutainment](/Assets/Edutainment.md)
+* [Git](/Assets/Git/readme.md)
+* [Homework Tips](/Assets/HomeworkTips.md)
 * [Installs And Tutorials](/Assets/InstallsAndTutorials.md)
 * [Linux Guide](/Assets/LinuxGuide.md)
+* [Vagrant](/Assets/Vagrant/readme.md)
 
 ## How to Contribute
 Feel free to message or email me directly!
