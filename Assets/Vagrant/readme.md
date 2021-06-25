@@ -29,10 +29,38 @@ sudo bash vagrant-linux.sh --create
 
 
 ## Common issues:
-## Virutalizaion not turned on in the BIOS
+### Virutalizaion not turned on in the BIOS
 ![images/2-VT-xError.png](images/2-VT-xError.png)
 #### If you see this error ####
 This means that you don't have virutlaiztion turned on in the BIOS. Take a look at this [documentation](https://helpdeskgeek.com/how-to/enable-virtualization-in-the-bios/)
 
 
-### No such directory
+### 404
+There is a way to pin the version number, we believe the 1.2.0 version should work fine so if this has become a blocker, modify the Vagrantfile like so:
+
+```sh
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagrant.configure("2") do |config|
+  config.vm.box = "cybersecurity/UbuntuVM"
+  config.vm.box_version = "1.2.0"
+  config.vm.provider "virtualbox" do |vb|
+    # Display the VirtualBox GUI when booting the machine
+    # Uncomment ONE the lines below to control how much RAM Vagrant gives the VM
+    # We recommend starting with 4096 (4Gb), and moving down if necessary
+    # vb.memory = "1024" # 1Gb
+    # vb.memory = "2048" # 2Gb
+    # vb.memory = "4096" # 4Gb
+    vb.gui = true
+  end
+end
+```
+**Note that what you are doing is adding this line:**
+`config.vm.box_version = "1.2.0"`
+
+It's also important to note that by pinning this version, you will not be able to get updates until you remove that line from the Vagrantfile.
+
+### S mode
+To uninstall 
+
+To turn off Windows 10 S Mode, click the Start button then go to Settings > Update & Security > Activation. Select Go to the Store and click Get under the Switch out of S Mode panel.
