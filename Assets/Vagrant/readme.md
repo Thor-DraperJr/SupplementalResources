@@ -64,3 +64,9 @@ It's also important to note that by pinning this version, you will not be able t
 To uninstall 
 
 To turn off Windows 10 S Mode, click the Start button then go to Settings > Update & Security > Activation. Select Go to the Store and click Get under the Switch out of S Mode panel.
+
+### Two versions of Vagrant installed
+`C:/HashiCorp/Vagrant/embedded/gems/2.2.16/gems/ed25519-1.2.4/lib/ed25519.rb:13: warning: already initialized constant Ed25519::KEY_SIZE`
+
+### Install on the wrong drive
+`Failed to load R0 module D:\/VMMR0.r0: The path is not clean of leading double slashes: 'D:\/VMMR0.r0' (VERR_SUPLIB_PATH_NOT_CLEAN).`
