@@ -36,14 +36,14 @@ This means that you don't have virutlaiztion turned on in the BIOS. Take a look 
 
 
 ### 404
-There is a way to pin the version number, we believe the 1.2.0 version should work fine so if this has become a blocker, modify the Vagrantfile like so:
+There is a way to pin the version number, we believe the 1.2.5 version should work fine so if this has become a blocker, modify the Vagrantfile like so:
 
 ```sh
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 Vagrant.configure("2") do |config|
   config.vm.box = "cybersecurity/UbuntuVM"
-  config.vm.box_version = "1.2.0"
+  config.vm.box_version = "1.2.5"
   config.vm.provider "virtualbox" do |vb|
     # Display the VirtualBox GUI when booting the machine
     # Uncomment ONE the lines below to control how much RAM Vagrant gives the VM
@@ -56,7 +56,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 **Note that what you are doing is adding this line:**
-`config.vm.box_version = "1.2.0"`
+`config.vm.box_version = "1.2.5"`
 
 It's also important to note that by pinning this version, you will not be able to get updates until you remove that line from the Vagrantfile.
 
@@ -68,5 +68,9 @@ To turn off Windows 10 S Mode, click the Start button then go to Settings > Upda
 ### Two versions of Vagrant installed
 `C:/HashiCorp/Vagrant/embedded/gems/2.2.16/gems/ed25519-1.2.4/lib/ed25519.rb:13: warning: already initialized constant Ed25519::KEY_SIZE`
 
+Check in your programs to be sure that there is only a single install of Vagrant.
+
 ### Install on the wrong drive
 `Failed to load R0 module D:\/VMMR0.r0: The path is not clean of leading double slashes: 'D:\/VMMR0.r0' (VERR_SUPLIB_PATH_NOT_CLEAN).`
+
+Make sure that the install is on the C:\ on your machine.
