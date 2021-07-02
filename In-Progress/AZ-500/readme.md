@@ -65,6 +65,8 @@ __**Helpful Links**__
     - Create a custom DNS server in the Azure Virtual Network.
     - Configure the virtual network to use the custom DNS server instead of the default Azure Recursive Resolver.
     - Configure forwarding between the custom DNS server and your on-premises DNS server.
+##### Helpful Links
+https://docs.microsoft.com/en-us/azure/hdinsight/connect-on-premises-network
 #### configure Network Security Groups (NSGs) and Application Security Groups (ASGs)
 #### create and configure Azure Firewall
 #### implement Azure Firewall Manager
