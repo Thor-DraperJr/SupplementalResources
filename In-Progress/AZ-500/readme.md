@@ -106,10 +106,14 @@
 An Azure Active Directory (Azure AD) service principal is the local representation of an application object in a single tenant or directory.‎It functions as the identity of the application instance. Service principals define who can access the application, and what resources the application can access. A service principal is created in each tenant where the application is used and references the globally unique application object. The tenant secures the service principal’s sign in and access to resources.
 
 [Securing service principals](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/service-accounts-principal)
+
 ---
+
 __**Definition List**__
+
 [Application Object](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals#application-object)
 : An Azure AD application is defined by its one and only application object, which resides in the Azure AD tenant where the application was registered (known as the application's "home" tenant). An application object is used as a template or blueprint to create one or more service principal objects. A service principal is created in every tenant where the application is used. Similar to a class in object-oriented programming, the application object has some static properties that are applied to all the created service principals (or application instances).
+
 [Service principal object](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)
 : To access resources that are secured by an Azure AD tenant, the entity that requires access must be represented by a security principal. This requirement is true for both users (user principal) and applications (service principal). The security principal defines the access policy and permissions for the user/application in the Azure AD tenant. This enables core features such as authentication of the user/application during sign-in, and authorization during resource access. There are three types of service principal: Application, Managed identity, Legacy 
 
