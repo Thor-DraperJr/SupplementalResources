@@ -1,89 +1,122 @@
 # AZ-500 Study Sessions
+## Table of Contents
+1. Manage Azure Active Directory identities (30-35%)
+    1. Manage Azure Active Directory identities
+        1. configure security for service principals
+        2. manage Azure AD directory groups
+        3. manage Azure AD users
+        4. manage administrative units
+        5. configure password writeback
+        6. configure authentication methods including password hash and Pass Through Authentication (PTA), OAuth, and passwordless
+        7. transfer Azure subscriptions between Azure AD tenants
+    2. Configure secure access by using Azure AD
+        1. monitor privileged access for Azure AD Privileged Identity Management (PIM)
+        2. configure Access Reviews
+        3. configure PIM
+        4. implement Conditional Access policies including Multi-Factor Authentication (MFA)
+        5. configure Azure AD identity protection
+    3. Manage application access
+        1. create App Registration
+        2. configure App Registration permissions scopes
+        3. manage App Registration permission consent
+        4. manage API access to Azure subscriptions and resources
+    4. Manage access control
+        1. configure subscription and resource permissions
+        2. configure resource group permissions
+        3. configure custom RBAC roles
+        4. identify the appropriate role
+            1. apply principle of least privilege
+        5. interpret permissions
+            1. check access
+2. Implement platform protection (15-20%)
+    1. Implement advanced network security
+        1. secure the connectivity of virtual networks (VPN authentication, Express Route encryption)
+        2. configure Network Security Groups (NSGs) and Application Security Groups (ASGs)
+        3. create and configure Azure Firewall
+        4. implement Azure Firewall Manager
+        5. configure Azure Front Door service as an Application Gateway
+        6. configure a Web Application Firewall (WAF) on Azure Application Gateway
+        7. configure Azure Bastion
+        8. configure a firewall on a storage account, Azure SQL, KeyVault, or App Service
+        9. implement Service Endpoints
+        10. implement DDoS protection
+    2. Configure advanced security for compute
+        1. configure endpoint protection
+        2. configure and monitor system updates for VMs
+        3. configure authentication for Azure Container Registry
+            1. implement vulnerability management
+            2. configure isolation for AKS
+            3. configure security for container registry
+        4. implement Azure Disk Encryption
+        5. configure authentication and security for Azure App Service
+            1. configure SSL/TLS certs
+            2. configure authentication for Azure Kubernetes Service
+            3. configure automatic updates
+3. Manage security operations (25-30%)
+    1. Monitor security by using Azure Monitor
+        1. create and customize alerts
+        2. monitor security logs by using Azure Monitor
+        3. configure diagnostic logging and log retention
+    2. Monitor security by using Azure Security Center
+        1. evaluate vulnerability scans from Azure Security Center
+        2. configure Just in Time VM access by using Azure Security Center
+        3. configure centralized policy management by using Azure Security Center
+        4. configure compliance policies and evaluate for compliance by using Azure Security Center
+        5. configure workflow automation by using Azure Security Center
+    3. Monitor security by using Azure Sentinel
+        1. create and customize alerts
+        2. configure data sources to Azure Sentinel
+        3. evaluate results from Azure Sentinel
+        4. configure a playbook by using Azure Sentinel
+    4. Configure security policies
+        1. configure security settings by using Azure Policy
+        2. configure security settings by using Azure Blueprint
+4. Secure data and applications (20-25%)
+    1. Configure security for storage
+        1. configure access control for storage accounts
+        2. configure key management for storage accounts
+        3. configure Azure AD authentication for Azure Storage
+        4. configure Azure AD Domain Services authentication for Azure Files
+        5. create and manage Shared Access Signatures (SAS)
+            1. create a shared access policy for a blob or blob container
+        6. configure Storage Service Encryption
+        7. configure Azure Defender for Storage
+    2. Configure security for databases
+        1. enable database authentication
+        2. enable database auditing
+        3. configure Azure Defender for SQL
+            1. configure Azure SQL Database Advanced Threat Protection
+        4. implement database encryption
+            1. implement Azure SQL Database Always Encrypted
+    3. Configure and manage Key Vault
+        1. manage access to Key Vault
+        2. manage permissions to secrets, certificates, and keys
+            1. configure RBAC usage in Azure Key Vault
+        3. manage certificates
+        4. manage secrets
+        5. configure key rotation
+        6. backup and restore of Key Vault items
+        7. configure Azure Defender for Key Vault
 
-## Manage identity and access (30-35%)
+## 1. Manage identity and access (30-35%)
 
-### Manage Azure Active Directory identities
+### 1.1 Manage Azure Active Directory identities
 
-#### configure security for service principles
+#### 1.1.1 configure security for service principles
 An Azure Active Directory (Azure AD) service principal is the local representation of an application object in a single tenant or directory.‎It functions as the identity of the application instance. Service principals define who can access the application, and what resources the application can access. A service principal is created in each tenant where the application is used and references the globally unique application object. The tenant secures the service principal’s sign in and access to resources.
 
 [Securing service principals](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/service-accounts-principal)
-
 ---
-When you register an Azure AD application in the Azure portal, two objects are created in your Azure AD tenant:
+__**Definition List**__
+[Application Object](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals#application-object)
+: An Azure AD application is defined by its one and only application object, which resides in the Azure AD tenant where the application was registered (known as the application's "home" tenant). An application object is used as a template or blueprint to create one or more service principal objects. A service principal is created in every tenant where the application is used. Similar to a class in object-oriented programming, the application object has some static properties that are applied to all the created service principals (or application instances).
+[Service principal object](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)
+: To access resources that are secured by an Azure AD tenant, the entity that requires access must be represented by a security principal. This requirement is true for both users (user principal) and applications (service principal). The security principal defines the access policy and permissions for the user/application in the Azure AD tenant. This enables core features such as authentication of the user/application during sign-in, and authorization during resource access. There are three types of service principal: Application, Managed identity, Legacy 
 
-* An application object
-* A service principal object
-What is an Application object? -
-
-An Azure AD application is defined by its one and only application object, which resides in the Azure AD tenant where the application was registered, known as the application's "home" tenant. The Microsoft Graph Application entity defines the schema for an application object's properties.
-
-What is a Service principal object? -
-
-To access resources that are secured by an Azure AD tenant, the entity that requires access must be represented by a security principal. This is true for both users (user principal) and applications (service principal).
-
-The security principal defines the access policy and permissions for the user/application in the Azure AD tenant. This enables core features such as authentication of the user/application during sign-in, and authorization during resource access.
-
-When an application is given permission to access resources in a tenant (upon registration or consent), a service principal object is created. The Microsoft Graph ServicePrincipal entity defines the schema for a service principal object's properties.
-
-What is the Application and service principal relationship? -
-
-Consider the application object as the global representation of your application for use across all tenants, and the service principal as the local representation for use in a specific tenant.
-
-The application object serves as the template from which common and default properties are derived for use in creating corresponding service principal objects. An application object therefore has a 1:1 relationship with the software application, and a 1:many relationships with its corresponding service principal object(s).
-
-A service principal must be created in each tenant where the application is used, enabling it to establish an identity for sign-in and/or access to resources being secured by the tenant.
-
-A single-tenant application has only one service principal (in its home tenant), created and consented for use during application registration. A multi-tenant Web application/API also has a service principal created in each tenant where a user from that tenant has consented to its use.
-
-NOTE: Any changes you make to your application object, are also reflected in its service principal object in the application's home tenant only (the tenant where it was registered).
-
-For multi-tenant applications, changes to the application object are not reflected in any consumer tenants' service principal objects, until the access is removed through the Application Access Panel and granted again.
-
-Native applications are registered as multi-tenant by default.
-
-Create a new AD service principal using DisplayName and password credential
-Connect to your Azure account
-Connect-AzAccount
-
-Imports the PSADPasswordCredential object
-Import-Module Az.Resources
-
-The following creates a new application with the name ITPService1 and
-a password of ITPStrong!23. It creates the service principal based on the
-created application. The start date and end date are added to the password
-credential.
-$credentials = New-Object -TypeName Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential -Property @{StartDate=Get-Date; EndDate=Get-Date -Year 2024; Password='ITPStrong!23'}
-
-$sp = New-AzAdServicePrincipal -DisplayName ITPService1 -PasswordCredential $credentials
-
-Create a new AD service principal using DisplayName and plain key credential
-The following example creates a new application with the name
-ITPServicePrincipalName and a certificate $cert. It creates the service
-principal based on the application created. The end date is added to key
-credential.
-$cert = 'public certificate as Base64 encoded string'
-
-$sp = New-AzADServicePrincipal -DisplayName ITPServicePrincipalName -CertValue $cert -EndDate '2021-01-01'
-
-============================================
-
-Manage service principal roles -
-This example adds the Reader role and removes the Contributor one:
-New-AzRoleAssignment -ApplicationId <service principal application ID> -RoleDefinitionName "Reader"
-
-Remove-AzRoleAssignment -ApplicationId <service principal application ID> -RoleDefinitionName "Contributor"
-The changes can be verified by listing the assigned roles:
-Get-AzRoleAssignment -ServicePrincipalName ServicePrincipalName
-#### manage Azure AD directory groups
+#### 1.1.2 manage Azure AD directory groups
 Azure Active Directory (Azure AD) lets you use groups to manage access to your cloud-based apps, on-premises apps, and your resources. Your resources can be part of the Azure AD organization, such as permissions to manage objects through roles in Azure AD, or external to the organization, such as for Software as a Service (SaaS) apps, Azure services, SharePoint sites, and on-premises resources.
 
- Note
-
-In the Azure portal, you can see some groups whose membership and group details you can't manage in the portal:
-
-Groups synced from on-premises Active Directory can be managed only in on-premises Active Directory.
-Other group types such as distribution lists and mail-enabled security groups are managed only in Exchange admin center or Microsoft 365 admin center. You must sign in to Exchange admin center or Microsoft 365 admin center to manage these groups.
+> Note: In the Azure portal, you can see some groups whose membership and group details you can't manage in the portal: Groups synced from on-premises Active Directory can be managed only in on-premises Active Directory. Other group types such as distribution lists and mail-enabled security groups are managed only in Exchange admin center or Microsoft 365 admin center. You must sign in to Exchange admin center or Microsoft 365 admin center to manage these groups.
 
 [Manage app and resource access using Azure Active Directory groups](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-manage-groups)
 
@@ -118,7 +151,8 @@ Navigate to AAD > Manage > Groups
         * hosts the results where you can download in a csv
         * does not contain memberships
         * useful for auditing what groups exists / automation
-#### manage Azure AD users
+
+#### 1.1.3 manage Azure AD users
 Add new users or delete existing users from your Azure Active Directory (Azure AD) organization. To add or delete users you must be a User administrator or Global administrator.
 
 [Add or delete users using Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-users-azure-active-directory)
@@ -126,7 +160,8 @@ Add new users or delete existing users from your Azure Active Directory (Azure A
 ---
 - Roles and administrators
     - how you give and assign users roles and delegated rights
-##### User v Guest User
+
+__**User v Guest User**__
 - User = Known as members [Internal accounts]
     - Either AAD or Windows Server AD
 - Guest Users = outside of the organization (contractors, end-users)
@@ -134,7 +169,8 @@ Add new users or delete existing users from your Azure Active Directory (Azure A
     - Can be created or invited
         - creating a new user in the org will allow you to create and apply a domain (say you need it for multiple business units to give access to named directories). you can reset passwords
         - inviting a user creates the account as the invite is sent
-#### manage administrative units
+
+#### 1.1.4 manage administrative units
 It can be useful to restrict administrative scope by using administrative units in organizations that are made up of independent divisions of any kind. Consider the example of a large university that's made up of many autonomous schools (School of Business, School of Engineering, and so on). Each school has a team of IT admins who control access, manage users, and set policies for their school.
 
 __**A central administrator could:**__
@@ -144,7 +180,8 @@ __**A central administrator could:**__
 * Add the business school IT team to the role, along with its scope.
 
 [Administrative units in Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/roles/administrative-units)
-#### configure password writeback
+
+#### 1.1.5 configure password writeback
 Password writeback can be used to synchronize password changes in Azure AD back to your on-premises AD DS environment. Azure AD Connect provides a secure mechanism to send these password changes back to an existing on-premises directory from Azure AD.
 
 [Tutorial: Enable Azure Active Directory self-service password reset writeback to an on-premises environment](https://docs.microsoft.com/en-us/azure/active-directory/authentication/tutorial-enable-sspr-writeback)
@@ -152,12 +189,14 @@ Password writeback can be used to synchronize password changes in Azure AD back 
 Azure Active Directory (Azure AD) self-service password reset (SSPR) lets users reset their passwords in the cloud, but most companies also have an on-premises Active Directory Domain Services (AD DS) environment where their users exist. Password writeback is a feature enabled with Azure AD Connect that allows password changes in the cloud to be written back to an existing on-premises directory in real time. In this configuration, as users change or reset their passwords using SSPR in the cloud, the updated passwords also written back to the on-premises AD DS environment
 
 [How does self-service password reset writeback work in Azure Active Directory?](https://docs.microsoft.com/en-us/azure/active-directory/authentication/concept-sspr-writeback)
-#### configure authentication methods including password hash and Pass Through Authentication(PTA), OAuth, and passwordless
+
+#### 1.1.6 configure authentication methods including password hash and Pass Through Authentication(PTA), OAuth, and passwordless
 Azure Active Directory (Azure AD) Pass-through Authentication allows your users to sign in to both on-premises and cloud-based applications using the same passwords. This feature provides your users a better experience - one less password to remember, and reduces IT helpdesk costs because your users are less likely to forget how to sign in. When users sign in using Azure AD, this feature validates users' passwords directly against your on-premises Active Directory.
 
 [User sign-in with Azure Active Directory Pass-through Authentication](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-pta)
 
 [Choose the right authentication method for your Azure Active Directory hybrid identity solution](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/choose-ad-authn)
+
 ---
 __**Password hash synchronization**__ 
 Requires the least effort regarding deployment, maintenance, and infrastructure. This level of effort typically applies to organizations that only need their users to sign in to Office 365, SaaS apps, and other Azure AD-based resources. When turned on, password hash synchronization is part of the Azure AD Connect sync process and runs every two minutes.
@@ -179,20 +218,20 @@ Pass-through Authentication requires unconstrained network access to domain cont
 
 * Pass-through = No integrated federation, no 
 
-#### transfer Azure subscriptions between Azure AD tenants
+#### 1.1.7 transfer Azure subscriptions between Azure AD tenants
 When you transfer a subscription to a different Azure AD directory, some resources are not transferred to the target directory. For example, all role assignments and custom roles in Azure role-based access control (Azure RBAC) are permanently deleted from the source directory and are not be transferred to the target directory.
 
 [Transfer an Azure subscription to a different Azure AD directory](https://docs.microsoft.com/en-us/azure/role-based-access-control/transfer-subscription#:~:text=To%20transfer%20the%20subscription%20to%20a%20different%20directory%2C,as%20the%20user%20that%20accepted%20the%20transfer%20request.)
 
-### Configure secure access by using Azure AD
+### 1.2 Configure secure access by using Azure AD
 
-#### monitor privileged access for Azure AD Privleged Identity Management (PIM)
+#### 1.2.1 monitor privileged access for Azure AD Privleged Identity Management (PIM)
 In Privileged Identity Management (PIM), you can now assign eligibility for membership or ownership of privileged access groups. Starting with this preview, you can assign Azure Active Directory (Azure AD) built-in roles to cloud groups and use PIM to manage group member and owner eligibility and activation.
 
-> Important
-> To assign a privileged access group to a role for administrative access to Exchange, Security and Compliance center, or SharePoint, use the Azure AD portal Roles and Administrators experience and not in the Privileged Access Groups experience to make the user or group eligible for activation into the group.
+> Important: To assign a privileged access group to a role for administrative access to Exchange, Security and Compliance center, or SharePoint, use the Azure AD portal Roles and Administrators experience and not in the Privileged Access Groups experience to make the user or group eligible for activation into the group.
 
 [What is Azure AD Privileged Identity Management?](https://docs.microsoft.com/en-us/azure/active-directory/privileged-identity-management/pim-configure)
+
 ---
 Search Azure AD Priveleged Identity Managment (launches the blade)
 
@@ -255,17 +294,18 @@ Privileged Identity Management sends emails to end users when the following even
 * When a user's role is expired
 * When a user's role is extended
 * When a user's role activation request is completed
-#### configure Access Reviews
+
+#### 1.2.2 configure Access Reviews
 To reduce the risk associated with stale role assignments, you should regularly review access. You can use Azure AD Privileged Identity Management (PIM) to create access reviews for privileged Azure AD roles. You can also configure recurring access reviews that occur automatically.
 
 [Create an access review of Azure AD roles in Privileged Identity Management](https://docs.microsoft.com/en-us/azure/active-directory/privileged-identity-management/pim-how-to-start-security-review)
 
 The need for access to privileged Azure resource roles by employees changes over time. To reduce the risk associated with stale role assignments, you should regularly review access. You can use Azure Active Directory (Azure AD) Privileged Identity Management (PIM) to create access reviews for privileged access to Azure resource roles. You can also configure recurring access reviews that occur automatically.
 
-> Note
-> Currently, you can scope an access review to service principals with access to Azure AD and Azure resource roles (Preview) with an Azure Active Directory Premium P2 edition active in your tenant. The licensing model for service principals will be finalized for general availability of this feature and additional licenses may be required.
+> Note: Currently, you can scope an access review to service principals with access to Azure AD and Azure resource roles (Preview) with an Azure Active Directory Premium P2 edition active in your tenant. The licensing model for service principals will be finalized for general availability of this feature and additional licenses may be required.
 
 [Create an access review of Azure resource roles in Privileged Identity Management](https://docs.microsoft.com/en-us/azure/active-directory/privileged-identity-management/pim-resource-roles-start-access-review)
+
 ---
 __**Sychronization Rules Editor**__
 Use the Synchronization Rules Editor and write attribute-based filtering rule. Minimum administrative effort.
@@ -292,14 +332,15 @@ Navigate to Azure AD > Identity Governance
                 * Everyone (does not include Guests)
 
 Reviews are hosted at myaccess.microsoft.com
-#### activate and configure PIM
+
+#### 1.2.3 configure PIM
 To use Privileged Identity Management, your directory must have one of the following paid or trial licenses. 
 * Azure AD Premium P2
 * Enterprise Mobility + Security (EMS) E5
 * Microsoft 365 Education A5
 * Microsoft 365 Enterprise E5
 
-##### How PIM works
+__**How PIM works**__
 1. Start using Privileged Identity Management so that users are eligible for privileged roles.
 2. When an eligible user needs to use their privileged role, they activate the role using Privileged Identity Management.
 3. The user can be required in settings to:
@@ -310,8 +351,10 @@ To use Privileged Identity Management, your directory must have one of the follo
 5. Administrators can view a history of all Privileged Identity Management activities in the audit log. They can also further secure their Azure AD organizations and meet compliance using Privileged Identity Management features such as access reviews and alerts.
 
 [Deploy Azure AD Privileged Identity Management (PIM)](https://docs.microsoft.com/en-us/azure/active-directory/privileged-identity-management/pim-deployment-plan)
-#### implement Conditional Access policies including Multi-Factor Authentication
-##### Create a Conditional Access policy
+
+#### 1.2.4 implement Conditional Access policies including Multi-Factor Authentication (MFA)
+
+__**Create a Conditional Access policy**__
 The following steps will help create a Conditional Access policy to require All users to perform multi-factor authentication.
 1. Sign in to the Azure portal as a global administrator, security administrator, or Conditional Access administrator.
 2. Browse to Azure Active Directory > Security > Conditional Access.
@@ -329,6 +372,7 @@ The following steps will help create a Conditional Access policy to require All 
 10. Select Create to create to enable your policy.
 
 [Conditional Access: Require MFA for all users](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/howto-conditional-access-policy-all-users-mfa)
+
 ---
 * Conditional access
     * signals - users, endpoint type OS 
@@ -359,7 +403,8 @@ __**Exclude users**__
 When organizations both include and exclude a user or group the user or group is excluded from the policy, as an exclude action overrides an include in policy.
 __**Helpful Links**__
 * https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-conditional-access-users-groups#exclude-users
-#### configure Azure AD identity protection
+
+#### 1.2.5 configure Azure AD identity protection
 Azure Active Directory Identity Protection includes three default policies that administrators can choose to enable. These policies include limited customization but are applicable to most organizations. All of the policies allow for excluding users such as your emergency access or break-glass administrator accounts.
 * Azure AD MFA registration policy
     * Identity Protection can help organizations roll out Azure AD Multi-Factor Authentication (MFA) using a Conditional Access policy requiring registration at sign-in.
@@ -369,6 +414,7 @@ Azure Active Directory Identity Protection includes three default policies that 
     * Administrators can also choose to create a custom Conditional Access policy including sign-in risk as an assignment condition. 
 
 [Identity Protection policies](https://docs.microsoft.com/en-us/azure/active-directory/identity-protection/concept-identity-protection-policies)
+
 ---
 In Azure AD - Premium P2 > Security > Identity Protection
 
@@ -393,9 +439,10 @@ In Azure AD - Premium P2 > Security > Identity Protection
     * add additional users
 
 *Global Admin isn't the only account that has access to this tab. Global reader, security reader and others are able to view Identity Protection(good fit for cso)*
-### Manage application access
 
-#### create App Registration
+### 1.3 Manage application access
+
+#### 1.3.1 create App Registration
 Registering your application establishes a trust relationship between your app and the Microsoft identity platform. The trust is unidirectional: your app trusts the Microsoft identity platform, and not the other way around.
 
 [Quickstart: Register an application with the Microsoft identity platform](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app#:~:text=Create%20App%20Registration%20Azure%201%20Sign%20in%20to,Users%20of%20your%20app%20might%20see...%20See%20More.)
@@ -415,11 +462,13 @@ App registration (AAD Premium P2, Global Admin):
 3. Register
 
 * ISV: independent software vendor
-#### configure App Registration permission scopes
+
+#### 1.3.2 configure App Registration permission scopes
 By specifying a web API's scopes in your client app's registration, the client app can obtain an access token containing those scopes from the Microsoft identity platform. Within its code, the web API can then provide permission-based access to its resources based on the scopes found in the access token.
 
 [Quickstart: Configure a client application to access a web API](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-configure-app-access-web-apis)
-##### Terms
+---
+__**Terms**__
 * scoping
 * delegated permisstions = app interacts with a signed in user and binds proper constraints
 * OAuth 2.0 = permissions are called scope
@@ -435,7 +484,8 @@ Options: Microsoft APIs,
 Supported legacy apps are on the bottom
 
 Types of permissions: Delegated permissions (The application assumes the persona of the user to behave on behalf of the user) / Application permissions (no signed in users needed)
-#### manage App Registration permission consent
+
+#### 1.3.3 manage App Registration permission consent
 Applications that integrate with the Microsoft identity platform follow an authorization model that gives users and administrators control over how data can be accessed. The implementation of the authorization model has been updated on the Microsoft identity platform. It changes how an app must interact with the Microsoft identity platform.
 
 [Permissions and consent in the Microsoft identity platform](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent)
@@ -445,23 +495,25 @@ proves right person to right level of access.
 Grants consent on behalf of the users in the AADD
 
 **Tip:** https://myapps.microsoft.com
-#### manage API access to Azure subscriptions and resources
+
+#### 1.3.4 manage API access to Azure subscriptions and resources
 When you publish APIs through API Management, it's easy and common to secure access to those APIs by using subscription keys. Developers who need to consume the published APIs must include a valid subscription key in HTTP requests when they make calls to those APIs. Otherwise, the calls are rejected immediately by the API Management gateway. They aren't forwarded to the back-end services.
 
 To get a subscription key for accessing APIs, a subscription is required. A subscription is essentially a named container for a pair of subscription keys. Developers who need to consume the published APIs can get subscriptions. And they don't need approval from API publishers. API publishers can also create subscriptions directly for API consumers.
 
-> Tip
-> API Management also supports other mechanisms for securing access to APIs, including the following examples:
+> Tip: API Management also supports other mechanisms for securing access to APIs, including the following examples:
 > * OAuth2.0
 > * Client certificates
 > * Restrict caller IPs
-##### Scope of subscriptions
+
+__**Scope of subscriptions**__
 Subscriptions can be associated with various scopes: product, all APIs, or an individual API.
 
 [Subscriptions in Azure API Management](https://docs.microsoft.com/en-us/azure/api-management/api-management-subscriptions)
-### Manage access control
 
-#### configure subscription and resource permissions
+### 1.4 Manage access control
+
+#### 1.4.1 configure subscription and resource permissions
 To manage access to Azure resources, you must have the appropriate administrator role. Azure has an authorization system called Azure role-based access control (Azure RBAC) with several built-in roles you can choose from. You can assign these roles at different scopes, such as management group, subscription, or resource group. By default, the person who creates a new Azure subscription can assign other users administrative access to a subscription.
 
 This article describes how add or change the administrator role for a user using Azure RBAC at the subscription scope.
@@ -472,28 +524,30 @@ Microsoft recommends that you manage access to resources using Azure RBAC. Howev
 
 *unsure*
 
-#### configure resource group permissions
+#### 1.4.2 configure resource group permissions
 A resource group is a container that holds related resources for an Azure solution. The resource group can include all the resources for the solution, or only those resources that you want to manage as a group. You decide how you want to allocate resources to resource groups based on what makes the most sense for your organization. Generally, add resources that share the same lifecycle to the same resource group so you can easily deploy, update, and delete them as a group.
 
 The resource group stores metadata about the resources. Therefore, when you specify a location for the resource group, you are specifying where that metadata is stored. For compliance reasons, you may need to ensure that your data is stored in a particular region.
 
 [Manage Azure Resource Manager resource groups by using the Azure portal](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal)
-#### configure custom RBAC roles
+
+#### 1.4.3 configure custom RBAC roles
 If the Azure built-in roles don't meet the specific needs of your organization, you can create your own custom roles. Just like built-in roles, you can assign custom roles to users, groups, and service principals at management group (in preview only), subscription, and resource group scopes.
 
 Custom roles can be shared between subscriptions that trust the same Azure AD directory. There is a limit of 5,000 custom roles per directory. (For Azure Germany and Azure China 21Vianet, the limit is 2,000 custom roles.) Custom roles can be created using the Azure portal, Azure PowerShell, Azure CLI, or the REST API.
 
 [Azure custom roles](https://docs.microsoft.com/en-us/azure/role-based-access-control/custom-roles)
-#### identify the appropriate role
+
+#### 1.4.4 identify the appropriate role
 Azure role-based access control (Azure RBAC) is the authorization system you use to manage access to Azure resources. To grant access, you assign roles to users, groups, service principals, or managed identities at a particular scope.
 
-##### 1. Determine who needs access
+__**1. Determine who needs access**__
 You first need to determine who needs access. You can assign a role to a user, group, service principal, or managed identity. This is also called a security principal.
 * **User** - An individual who has a profile in Azure Active Directory. You can also assign roles to users in other tenants. For information about users in other organizations, see Azure Active Directory B2B.
 * **Group** - A set of users created in Azure Active Directory. When you assign a role to a group, all users within that group have that role.
 * **Service principal** - A security identity used by applications or services to access specific Azure resources. You can think of it as a user identity (username and password or certificate) for an application.
 * **Managed identity** - An identity in Azure Active Directory that is automatically managed by Azure. You typically use managed identities when developing cloud applications to manage the credentials for authenticating to Azure services.
-##### 2. Select the appropriate role
+__**2. Select the appropriate role**__
 Permissions are grouped together into a role definition. It's typically just called a role. You can select from a list of several built-in roles. If the built-in roles don't meet the specific needs of your organization, you can create your own custom roles.
 
 The following lists four fundamental built-in roles. The first three apply to all resource types.
@@ -501,7 +555,7 @@ The following lists four fundamental built-in roles. The first three apply to al
 * Contributor - Can create and manage all types of Azure resources but can't grant access to others.
 * Reader - Can view existing Azure resources.
 * User Access Administrator - Lets you manage user access to Azure resources.
-##### 3. Identify the needed scope
+__**3. Identify the needed scope**__
 Scope is the set of resources that the access applies to. In Azure, you can specify a scope at four levels: management group, subscription, resource group, and resource. Scopes are structured in a parent-child relationship. Each level of hierarchy makes the scope more specific. You can assign roles at any of these levels of scope. The level you select determines how widely the role is applied. Lower levels inherit role permissions from higher levels.
 
 When you assign a role at a parent scope, those permissions are inherited to the child scopes. For example:
@@ -509,7 +563,7 @@ When you assign a role at a parent scope, those permissions are inherited to the
 * If you assign the **Reader role** to a user at the management group scope, that user can read everything in all subscriptions in the management group.
 * If you assign the **Billing Reader role** to a group at the subscription scope, the members of that group can read billing data for every resource group and resource in the subscription.
 * If you assign the **Contributor role** to an application at the resource group scope, it can manage resources of all types in that resource group, but not other resource groups in the subscription.
-##### 4. Check your prerequisites
+__**4. Check your prerequisites
 To assign roles, you must be signed in with a user that is assigned a role that has role assignments write permission, such as Owner or User Access Administrator at the scope you are trying to assign the role. Similarly, to remove a role assignment, you must have the role assignments delete permission.
 
 Microsoft.Authorization/roleAssignments/write
@@ -518,7 +572,7 @@ If your user account doesn't have permission to assign a role within your subscr
 
 [Steps to assign an Azure role](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-steps)
 
-##### apply principle of least privilege
+##### 1.4.4.1 apply principle of least privilege
 Only grant the access users need
 Using Azure RBAC, you can segregate duties within your team and grant only the amount of access to users that they need to perform their jobs. Instead of giving everybody unrestricted permissions in your Azure subscription or resources, you can allow only certain actions at a particular scope.
 
@@ -526,29 +580,35 @@ When planning your access control strategy, it's a best practice to grant users 
 
 [Best practices for Azure RBAC](https://docs.microsoft.com/en-us/azure/role-based-access-control/best-practices)
 
-#### interpret permissions
+#### 1.4.5 interpret permissions
 
 [Azure Policy Regulatory Compliance controls for Azure RBAC](https://docs.microsoft.com/en-us/azure/role-based-access-control/security-controls-policy)
 
-##### check access
+##### 1.4.5.1 check access
 Sometimes you need to check what access a user has to a set of Azure resources. You check their access by listing their assignments. A quick way to check the access for a single user is to use the Check access feature on the Access control (IAM) page.
-##### Step 1: Open the Azure resources
+
+__**Step 1: Open the Azure resources**__
+
 To check the access for a user, you first need to open the Azure resources you want to check access for. Azure resources are organized into levels that are typically called the scope. In Azure, you can specify a scope at four levels from broad to narrow: management group, subscription, resource group, and resource.
-##### Step 2: Check access for user
+
+__**Step 2: Check access for user**__
+
 You can see the access for the selected security principal at this scope and inherited to this scope. Assignments at child scopes are not listed. You see the following assignments:
 * Role assignments added with Azure RBAC.
 * Deny assignments added using Azure Blueprints or Azure managed apps.
 * Classic Service Administrator or Co-Administrator assignments for classic deployments.
-##### Step 3: Check your access
+
+__**Step 3: Check your access**__
+
 An assignments pane appears that lists your access at this scope and inherited to this scope. Assignments at child scopes are not listed.
 
 [Quickstart: Check access for a user to Azure resources](https://docs.microsoft.com/en-us/azure/role-based-access-control/check-access)
 
-## Implement platform protection (15-20%)
+## 2 Implement platform protection (15-20%)
 
-### Implement advanced network security
+### 2.1 Implement advanced network security
 
-#### secure the connectivity of virtual networks (VPN authentication, Express Route encryption)
+#### 2.1.1 secure the connectivity of virtual networks (VPN authentication, Express Route encryption)
 **NOTE:** connect HDInsight to your on-premises network by using Azure Virtual Networks and a VPN gateway.
 - To allow HDInsight and resources in the joined network to communicate by name, you must perform the following actions:
     - Create Azure Virtual Network.
@@ -563,9 +623,11 @@ VPN Gateway design: https://docs.microsoft.com/en-us/azure/vpn-gateway/design
 About cryptographic requirements and Azure VPN gateways: https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-compliance-crypto
 
 About Point-to-Site VPN: https://docs.microsoft.com/en-us/azure/vpn-gateway/point-to-site-about
-##### Helpful Links
+
+__**Helpful Links**__
 https://docs.microsoft.com/en-us/azure/hdinsight/connect-on-premises-network
-#### configure Network Security Groups (NSGs) and Application Security Groups (ASGs)
+
+#### 2.1.2 configure Network Security Groups (NSGs) and Application Security Groups (ASGs)
 * Network Security Groups (NSG) - uses security rules [similar to access control lists], manages stateful traffic/stateful filtering
     * managed rules for connections to the vnet
     * NSGs manage:
@@ -588,7 +650,8 @@ https://docs.microsoft.com/en-us/azure/hdinsight/connect-on-premises-network
     * AllowVnetInBound
     * AllowAllowLoadBalancer
     * DenyAllInBound
-#### create and configure Azure Firewall
+
+#### 2.1.3 create and configure Azure Firewall
 * Firewall solution (Firewall as a Service)
 * Scalable solution
 
@@ -605,7 +668,7 @@ You can centrally create, enforce, and log application and network connectivity 
 * Threat intelligence - off, alert only, alert and deny
 
 * Rules - NAT Rule collection | Network rule collection | Application rule collection
-#### implement Azure Firewall Manager
+#### 2.1.4 implement Azure Firewall Manager
 The *resource firewall* allows us to restrict access to an Azure service that supports the resource firewall feature. Azure storage accounts are one area where that is supported, as are Azure SQL Server and databases as well as Azure SQL Data Warehouse. In fact for Azure SQL, you can actually configure firewall rules at both the server level and the database level. You can use PowerShell, Azure CLI and the Azure Portal.
 
 The *Azure storage firewall* provides access control for the public endpoint of your storage account. You can also use the firewall to block all access through the public endpoint when using private endpoints. Your storage firewall configuration also enables select trusted Azure platform services to access the storage account securely.
@@ -613,7 +676,8 @@ The *Azure storage firewall* provides access control for the public endpoint of 
 An application that accesses a storage account when network rules are in effect still requires proper authorization for the request. Authorization is supported with Azure Active Directory (Azure AD) credentials for blobs and queues, with a valid account access key, or with a SAS token.
 
 * Object bound instances - specify vnet, subnet, address range, endpoint status, rg. You specify stateful connections in and out.
-#### configure Azure Front Door service as an Application Gateway
+
+#### 2.1.5 configure Azure Front Door service as an Application Gateway
 Azure Front Door Service enables you to define, manage, and monitor the global routing for your web traffic by optimizing for best performance and instant global failover for high availability.
 
 Front Door works at **Layer 7** or HTTP/HTTPS layer and uses anycast protocol with split TCP and Microsoft's global network for improving global connectivity. So, per your routing method selection in the configuration, you can ensure that Front Door is routing your client requests to the fastest and most available application backend.
@@ -621,7 +685,9 @@ Front Door works at **Layer 7** or HTTP/HTTPS layer and uses anycast protocol wi
 An application backend is any Internet-facing service hosted inside or outside of Azure.
 
 * HA for web apps
-##### Features of Front Door
+
+__**Features of Front Door**__
+
 * accelerate application performance
 * increase application availibility with smart health probes
 * url-based routing
@@ -634,7 +700,8 @@ An application backend is any Internet-facing service hosted inside or outside o
 * url rewrite
 * protocol support
 
-##### Setting up front door
+__**Setting up front door**__
+
 * <hostname>.azurefd.net
 
 * Setting up a frontend
@@ -642,7 +709,8 @@ An application backend is any Internet-facing service hosted inside or outside o
 * Setting up the backend pools
     * backed unique web app names **azurewebsites.net**
 * A routing rule maps your frontend host to the backend pool. The rule forwards a request for contoso-frontend.azurefd.net to myBackendPool.
-#### configure a Web Application Firewall (WAF) on Azure Application Gateway
+
+#### 2.1.6 configure a Web Application Firewall (WAF) on Azure Application Gateway
 Web Application Firewall (WAF) provides centralized protection of your web applications from common exploits and vulnerabilities.
 
 A WAF solution can react to a security threat faster by centrally patching a known vulnerability, instead of securing each individual web application.
@@ -662,7 +730,8 @@ If you want a single policy to apply to all sites, you can just associate the po
 You can make as many policies as you want. Once you create a policy, it must be associated to an Application Gateway to go into effect, but it can be associated with any combination of Application Gateways and listeners.
 
 If your Application Gateway has a policy applied, and then you apply a different policy to a listener on that Application Gateway, the listener's policy will take effect, but just for the listener(s) that they are assigned to. The Application Gateway policy still applies to all other listeners that do not have a specific policy assigned to them.
-#### configure Azure Bastion
+
+#### 2.1.7 configure Azure Bastion
 The Azure Bastion service is a new fully platform-managed PaaS service that you provision inside your virtual network. It provides secure and seamless RDP/SSH connectivity to your virtual machines directly in the Azure portal over TLS. When you connect via Azure Bastion, your virtual machines do not need a public IP address.
 
 Bastion provides secure RDP and SSH connectivity to all of the VMs in the virtual network in which it is provisioned. Using Azure Bastion protects your virtual machines from exposing RDP/SSH ports to the outside world, while still providing secure access using RDP/SSH. With Azure Bastion, you connect to the virtual machine directly from the Azure portal. You do not need an additional client, agent, or piece of software.
@@ -711,7 +780,8 @@ When you have finished specifying the settings, click Review + Create. This vali
 On the Create a bastion page, click Create.
 
 You will see a message letting you know that your deployment is underway. Status will display on this page as the resources are created. It takes about 5 minutes for the Bastion resource to be created and deployed.
-#### configure a firewall on a storage account, Azure SQL, KeyVault, or App Service
+
+#### 2.1.8 configure a firewall on a storage account, Azure SQL, KeyVault, or App Service
 Azure App Service is a platform-as-a-service (PaaS) offering that lets you create web and mobile apps for any platform or device and connect to data anywhere, in the cloud or on-premises.
 
 App Service includes the web and mobile capabilities that were previously delivered separately as Azure Websites and Azure Mobile Services.
@@ -739,7 +809,8 @@ App Service Environments has a virtual network integration feature that helps yo
 If you are unfamiliar with Azure Virtual Networks (VNETs), this is a capability that allows you to place many of your Azure resources in a non-internet, routable network that you control access to.
 
 For App Service on Windows, you can also restrict IP addresses dynamically by configuring the web.config.
-#### implement Service Endpoints
+
+#### 2.1.9 implement Service Endpoints
 Virtual Network (VNet) service endpoint provides secure and direct connectivity to Azure services over an optimized route over the Azure backbone network.
 
 Endpoints allow you to secure your critical Azure service resources to only your virtual networks. Service Endpoints enables private IP addresses in the VNet to reach the endpoint of an Azure service without needing a public IP address on the VNet.
@@ -830,7 +901,8 @@ Select + Add under Resources and enter or select the following information in Ad
 Click on Add button at bottom to finish adding the resource
 
 Select Review + Create. Validate the information and Click Create.
-#### implement DDoS protection
+
+#### 2.1.10 implement DDoS protection
 Azure DDoS protection, combined with application design best practices, provide defense against DDoS attacks. Azure DDoS protection provides the following service tiers:
 
 * Basic: Automatically enabled as part of the Azure platform. Always-on
@@ -856,9 +928,9 @@ packets, to disrupt the transmission of data between hosts. The attacks include 
 
 NOTE: DDoS Protection Standard protects resources in a virtual network including public IP addresses associated with virtual machines, load balancers, and application gateways. When coupled with the Application Gateway web application firewall, or a third-party web application firewall deployed in a virtual network with a public IP, DDoS Protection Standard can provide full layer 3 to layer 7 mitigation capability.
 
-### Configure advanced Security for compute
+### 2.2 Configure advanced Security for compute
 
-#### configure endpoint protection
+#### 2.2.1 configure endpoint protection
 * Protect VMs by using authentication and access control
 * use multiple vms for better availability
 * protect agains malware
@@ -872,8 +944,8 @@ NOTE: DDoS Protection Standard protects resources in a virtual network including
 
 - Detail: Use a least privilege approach and built-in Azure roles to enable users to access and set up VMs:
     - Virtual Machine Contributor: Can manage VMs, but not the virtual network or storage account to which they are connected.
-#### configure and monitor system updates for VMs
-#### configure authentication for Azure Container Registry
+#### 2.2.2 configure and monitor system updates for VMs
+#### 2.2.3 configure authentication for Azure Container Registry
 Security best practices for AKS authentication
 * use azure active directory
     * roles or clusterroles bound to users
@@ -883,7 +955,7 @@ Security best practices for AKS authentication
     * the node magement identity (NMI) server : listens for pod requrest to Azure services
     * the managed identity controller (MIC) : checks for an azure identity mapping that corresponds to a pod
 
-##### Configure container registry
+__**Configure container registry
 Where you put your images
 - reproducing the docker-style registry
 
@@ -898,7 +970,7 @@ images are registered in a secure docker registry to manage the images/workloads
 
 - in order to upload a image to the directory you need to use powershell (not cloud cli)
     - azure cli allows you to log in and authenticate, docker installed on your local machine allows you to use the docker commands
-#### configure security for different types of containers
+__**configure security for different types of containers
 As you manage clusters in Azure Kubernetes Service (AKS), you often need to isolate teams and workloads. The Kubernetes scheduler provides features that let you control the distribution of compute resources, or limit the impact of maintenance events.
 
 Resource requests and limits are placed in the pod specification. These limits are used by the Kubernetes scheduler at deployment time to find an available node in the cluster. These limits and requests work at the individual pod level.
@@ -913,12 +985,12 @@ Cluster networking
 * public: URI = ".westus2.azurecontiner.io"
 * private:
 * none
-##### implement vulnerability management
+##### 2.2.3.1 implement vulnerability management
 CI/CD - DevOps lifecycle
 
 - approved venders
     - aqua/twistlock - container security companies; they check the registry changes and the production cluster
-##### configure isolation for AKS
+##### 2.2.3.2 configure isolation for AKS
 Major areas to focus on for AKS security
 - master components
 - node security
@@ -1013,13 +1085,13 @@ The use of Secrets reduces the sensitive information that is defined in the pod 
 This approach only provides the specific pod access to the Secret.
 
 NOTE: The raw secret manifest files contains the secret data in base64 format (see the official documentation for more details). Therefore, this file should be treated as sensitive information, and never committed to source control.
-##### configure security for container registry
-#### implement Azure Disk Encryption
+##### 2.2.3.3 configure security for container registry
+#### 2.2.4 implement Azure Disk Encryption
 Azure Disk Encryption helps protect and safeguard your data to meet your organizational security and compliance commitments. It uses the Bitlocker feature of Windows to provide volume encryption for the OS and data disks of Azure virtual machines (VMs), and is integrated with Azure Key Vault to help you control and manage the disk encryption keys and secrets.
 
 If you use Azure Security Center, you are alerted if you have VMs that are not encrypted. The alerts show as High Severity and the recommendation is to encrypt these VMs.
 
-What VMs are supported? -
+__**What VMs are supported? -
 
 Windows VMs are available in a range of sizes. Azure Disk Encryption is not available on Basic, A-series VMs, or on virtual machines with a less than 2 GB of memory.
 
@@ -1027,7 +1099,7 @@ Azure Disk Encryption is also available for VMs with premium storage.
 
 Azure Disk Encryption is not available on Generation 2 VMs and Lsv2-series VMs.
 
-What Operating Systems are supported? -
+__**What Operating Systems are supported? -
 
 * Windows client: Windows 8 and later
 * Windows Server: Windows Server 2008 R2 and later
@@ -1035,7 +1107,7 @@ NOTE: Windows Server 2008 R2 requires the .NET Framework 4.5 to be installed for
 
 Windows Server 2012 R2 Core and Windows Server 2016 Core requires the bdehdcfg component to be installed on the VM for encryption.
 
-What are the networking requirements? -
+__**What are the networking requirements? -
 
 * To get a token to connect to your key vault, the Windows VM must be able to
 connect to an Azure Active Directory endpoint, [login.microsoftonline.com]
@@ -1067,8 +1139,8 @@ Azure Disk Encryption requires an Azure Key Vault to control and manage disk enc
 
 * **SSE with PMK - by default**
 * Azure disk encryption needs KEK
-#### configure authentication and security for Azure App Service
-##### configure SSL/TLS certs
+#### 2.2.5 configure authentication and security for Azure App Service
+##### 2.2.5.1 configure SSL/TLS certs
 You can restrict access to your Azure App Service app by enabling different types of authentication for it. One way to do it is to request a client certificate when the client request is over TLS/SSL and validate the certificate. This mechanism is called TLS mutual authentication or client certificate authentication.
 
 NOTE: If you access your site over HTTP and not HTTPS, you will not receive any client certificate. So if your application requires client certificates, you should not allow requests to your application over HTTP.
@@ -1135,8 +1207,8 @@ The free App Service Managed Certificate is a turn-key solution for securing you
 * Is not exportable
 * Does not support DNS A-records
 NOTE: The free certificate is issued by DigiCert. For some top-level domains, you must explicitly allow DigiCert as a certificate issuer by creating a CAA domain record with the value: 0 issue digicert.com
-##### configure authentication for Azure Kubernetes Service
-##### configure automatic updates
+##### 2.2.5.2 configure authentication for Azure Kubernetes Service
+##### 2.2.5.3 configure automatic updates
 The Security Baseline discipline is one of the Five Disciplines of Cloud Governance.
 
 This discipline focuses on ways of establishing policies that protect the network, assets, and most importantly the data that will reside on a cloud provider's solution.
@@ -1147,11 +1219,11 @@ From a technical perspective, this discipline also includes involvement in decis
 
 Security Baseline Tools in Azure.docx
 
-## Manage security operations (25-30%)
+## 3 Manage security operations (25-30%)
 
-### Monitor security by using Azure Monitor
+### 3.1 Monitor security by using Azure Monitor
 
-#### create and customize alerts
+#### 3.1.1 create and customize alerts
 Alerts proactively notify you when issues are found with your infrastructure or application using your monitoring data in Azure Monitor. They allow you to identify and address issues before the users of your system notice them.
 
 Alert rules are separated from alerts and the actions taken when an alert fires. The alert rule captures the target and criteria for alerting. The alert rule can be in an enabled or a disabled state. Alerts only fire when enabled.
@@ -1187,7 +1259,7 @@ For certain resources (like virtual machines), you can specify multiple resource
 **Action** - A specific action taken when the alert is fired.
 
 [What are alerts in Microsoft Azure?](https://docs.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-overview)
-#### monitor security logs by using Azure Monitor
+#### 3.1.2 monitor security logs by using Azure Monitor
 Security logging and monitoring focuses on activities related to enabling, acquiring, and storing audit logs for Azure services.
 1. Use approved time synchronization sources
 Microsoft maintains time sources for Azure resources, however, you have the option to manage the time synchronization settings for your compute resources.
@@ -1232,7 +1304,7 @@ The investigation graph provides you with:
 * Built-in investigation steps - Use predefined exploration options to make sure you are asking the right questions in the face of a threat.
 
 NOTE: You will only be able to investigate the incident if you used the entity mapping fields when you set up your analytic rule. The investigation graph requires that your original incident includes entities.
-#### configure diagnostic logging and log retention
+#### 3.1.3 configure diagnostic logging and log retention
 - Each Azure resource requires its own diagnostic setting, which defines the following criteria:
     - Categories of logs and metric data sent to the destinations defined in the setting. The available categories will vary for different resource types.
     - One or more destinations to send the logs. Current destinations include Log
@@ -1246,8 +1318,9 @@ NOTE: You will only be able to investigate the incident if you used the entity m
 
 - Data retention
     - 30 Days to 730 (2 years)
-### Monitor security by using Azure Security Center
-#### evaluate vulnerability scans from Azure Security Center
+### 3.2 Monitor security by using Azure Security Center
+
+#### 3.2.1 evaluate vulnerability scans from Azure Security Center
 The vulnerability scanner included with Azure Security Center is powered by Qualys. It is only available to users on the standard pricing tier. You do not need a Qualys license or even a Qualys account - everything's handled seamlessly inside Security Center.
 
 Your VMs will appear in one or more of the following groups:
@@ -1270,11 +1343,11 @@ The Security Center extension is a separate tool from your existing Qualys scann
 * How do I View and remediate discovered vulnerabilities? -
 
 When Security Center identifies vulnerabilities, it presents findings and related information as recommendations. The related information includes remediation steps, related CVEs, CVSS scores, and more. You can view the identified vulnerabilities for one or more subscriptions, or for a specific VM.
-#### configure Just in Time VM access by using Azure Security Center
-#### configure compliance policies and evaluate for compliance by using Azure Security Center
-#### configure workflow automation by using Azure Security Center
+#### 3.2.2 configure Just in Time VM access by using Azure Security Center
+#### 3.2.3 configure compliance policies and evaluate for compliance by using Azure Security Center
+#### 3.2.4 configure workflow automation by using Azure Security Center
 
-### Monitor security by using Azure Sentinel
+### 3.3 Monitor security by using Azure Sentinel
 - very similar to SCOM (system center operations manager); intune, log analytic capabilities, agent based monitoring
 
 - Just a few examples of what you can do with Azure Monitor include:
@@ -1300,7 +1373,7 @@ When Security Center identifies vulnerabilities, it presents findings and relate
             - Azure subscription monitoring data - Data about the operation and management of an Azure subscription, as well as data about the health and operation of Azure itself.
             - Azure tenant monitoring data - Data about the operation of tenant-level Azure services, such as Azure Active Directory.
                 - NOTE: Azure Monitor can collect log data from any REST client using the Data Collector API. This allows you to create custom monitoring scenarios and extend monitoring to resources that do not expose telemetry through other sources.
-#### create and customize alerts
+#### 3.3.1 create and customize alerts
 Monitor > Monitor | Alerts
 
 Create alert rule > Scope (Select a resource, and the hierarchy is applied) > Condition > Add action group (select security group and determine an action) > Alert rule details (name, description)
@@ -1313,9 +1386,9 @@ Create alert rule > Scope (Select a resource, and the hierarchy is applied) > Co
  * *For Log Alerts only, some additional functionality is available in Alert details:*
   * Suppress Alerts: When you turn on suppression for the alert rule, actions
 for the rule are disabled for a defined length of time after creating a new alert. The rule is still running and creates alert records provided the criteria is met. Allowing you time to correct the problem without running duplicate actions.
-#### configure data sources to Azure Sentinel
-#### evaluate results from Azure Sentinel
-#### configure a playbook by using Azure Sentinel
+#### 3.3.2 configure data sources to Azure Sentinel
+#### 3.3.3 evaluate results from Azure Sentinel
+#### 3.3.4 configure a playbook by using Azure Sentinel
 Microsoft Azure Sentinel is a scalable, cloud-native, security information event management (SIEM) and security orchestration automated response (SOAR) solution. Azure Sentinel delivers intelligent security analytics and threat intelligence across the enterprise, providing a single solution for alert detection, threat visibility, proactive hunting, and threat response.
 
 What can Azure Sentinel do?
@@ -1329,16 +1402,16 @@ Sentinel uses data connectors within the Azure and 365 fabric to pull data, cond
 - _connectors_ = template to injest elements from on solution to sentinel (come with workbooks, queries, etc)
 - _playbook_ = logic app; you can use logic app designer
 
-### Configure security policies
+### 3.4 Configure security policies
 
-#### configure security settings by using Azure Policy
-#### configure security settings by using Azure Blueprint
+#### 3.4.1 configure security settings by using Azure Policy
+#### 3.4.2 configure security settings by using Azure Blueprint
 
-## Secure data and applications (20-25%)
+## 4 Secure data and applications (20-25%)
 
-### Configure security for storage
+### 4.1 Configure security for storage
 
-#### configure access control for storage accounts
+#### 4.1.1 configure access control for storage accounts
 By default, all resources in Azure Storage are secured, and are available only to the account owner. Although you can use any of the authorization strategies outlined below to grant clients access to resources in your storage account, Microsoft recommends using Azure AD when possible for maximum security and ease of use.
 
 * **Azure Active Directory (Azure AD)** integration for blobs, and queues. Azure provides Azure role-based access control (Azure RBAC) for control over a client's access to resources in a storage account.
@@ -1431,7 +1504,7 @@ containers or queues in all of the storage accounts in the resource group.
 containers or queues in all of the storage accounts in all of the resource groups in the subscription.
 
 NOTE: If your subscription includes an Azure DataBricks namespace, roles that are scoped to the subscription will not grant access to blob and queue data. Scope roles to the resource group, storage account, or container or queue instead.
-#### configure key management for storage accounts
+#### 4.1.2 configure key management for storage accounts
 When you create a storage account, Azure generates two 512-bit storage account access keys. These keys can be used to authorize access to data in your storage account via Shared Key authorization.
 
 Microsoft recommends that you use Azure Key Vault to manage your access keys, and that you regularly rotate and regenerate your keys. Using Azure Key Vault makes it easy to rotate your keys without interruption to your applications. You can also manually rotate your keys.
@@ -1485,7 +1558,7 @@ Azure AD uses role-based access control (RBAC) to manage authorization, which is
 
 How do I manually rotate access keys? -
 Two access keys are assigned so that you can rotate your keys. Having two keys ensures that your application maintains access to Azure Storage throughout the process.
-##### NOTE: Regenerating your access keys can affect any applications or Azure services that are dependent on the storage account key. Any clients that use the account key to access the storage account must be updated to use the new key, including media services, cloud, desktop and mobile applications, and graphical user interface applications for Azure Storage, such as Azure Storage Explorer.
+__**NOTE: Regenerating your access keys can affect any applications or Azure services that are dependent on the storage account key. Any clients that use the account key to access the storage account must be updated to use the new key, including media services, cloud, desktop and mobile applications, and graphical user interface applications for Azure Storage, such as Azure Storage Explorer.
 **To rotate your storage account access keys in the Azure portal:**
 1. Update the connection strings in your application code to reference the secondary access key for the storage account.
 2. Navigate to your storage account in the Azure portal.
@@ -1493,7 +1566,7 @@ Two access keys are assigned so that you can rotate your keys. Having two keys e
 4. To regenerate the primary access key for your storage account, select the Regenerate button next to the primary access key.
 5. Update the connection strings in your code to reference the new primary access key.
 6. Regenerate the secondary access key in the same manner.
-##### *NOTE:* Microsoft recommends using only one of the keys in all of your applications at the same time. If you use Key 1 in some places and Key 2 in others, you will not be able to rotate your keys without some application losing access.
+__***NOTE:* Microsoft recommends using only one of the keys in all of your applications at the same time. If you use Key 1 in some places and Key 2 in others, you will not be able to rotate your keys without some application losing access.
 To rotate an account's access keys, the user must either be a Service Administrator, or must be assigned an RBAC role that includes the Microsoft.Storage/storageAccounts/regeneratekey/action.
 Some built-in RBAC roles that include this action are the Owner, Contributor, and Storage Account Key Operator Service Role roles.
 **To rotate your storage account access keys with PowerShell -**
@@ -1502,8 +1575,8 @@ Some built-in RBAC roles that include this action are the Owner, Contributor, an
 New-AzStorageAccountKey -ResourceGroupName <resource-group> -Name <storage-account> -KeyName key1
 3. Update the connection strings in your code to reference the new primary access key.
 4. Regenerate the secondary access key in the same manner. To regenerate the secondary key, use key2 as the key name instead of key1.
-#### configure Azure AD authentication for Azure Storage
-#### configure Azure AD Domain Services authentication for Azure Files
+#### 4.1.3 configure Azure AD authentication for Azure Storage
+#### 4.1.4 configure Azure AD Domain Services authentication for Azure Files
 Azure Files supports identity-based authentication over Server Message Block (SMB) through on-premises Active Directory Domain Services (AD DS) and Azure Active Directory Domain Services (Azure AD DS).
 
 Enabling identity-based access for your Azure file shares allows you to replace existing file servers with Azure file shares without replacing your existing directory service, maintaining seamless user access to shares.
@@ -1610,7 +1683,7 @@ Setting this property implicitly "domain joins" the storage account with the ass
 
 NOTE: You can enable Azure AD DS authentication over SMB only after you have successfully deployed Azure AD DS to your Azure AD tenant.
 
-##### Azure portal:
+__**Azure portal:
 
 1. In the Azure portal, go to your existing storage account, or create a storage account.
 
@@ -1671,7 +1744,7 @@ NOTE: Remember to sync your AD DS credentials to Azure AD if you plan to use you
 
 The general recommendation is to use share level permission for high level access management to an AD group representing a group of users and identities, then leverage NTFS permissions for granular access control on directory/file level.
 
-##### Azure portal:
+__**Azure portal:
 
 1. In the Azure portal, go to your file share, or Create a file share.
 
@@ -1694,7 +1767,7 @@ To configure NTFS with superuser permissions, you must mount the share by using 
 The following sets of permissions are supported on the root directory of a file share:
 
 BUILTIN\Administrators:(OI)(CI)(F) NT AUTHORITY\SYSTEM:(OI)(CI)(F) BUILTIN\Users:(RX) BUILTIN\Users:(OI)(CI)(IO)(GR,GE) NT AUTHORITY\Authenticated Users:(OI)(CI)(M) NT AUTHORITY\SYSTEM:(F) CREATOR OWNER:(OI)(CI)(IO)(F)
-#### create and manage Shared Access Signatures (SAS)
+#### 4.1.5 create and manage Shared Access Signatures (SAS)
 Create and manage Shared Access Signatures (SAS)
 
 A shared access signature (SAS) provides secure delegated access to resources in your storage account without compromising the security of your data. With a SAS, you have granular control over how a client can access your data. You can control what resources the client may access, what permissions they have on those resources, and how long the SAS is valid, among other parameters.
@@ -1723,7 +1796,7 @@ A shared access signature can take one of two forms:
 * Ad hoc SAS - When you create an ad hoc SAS, the start time, expiry time, and
 permissions for the SAS are all specified in the SAS URI (or implied, if start time is omitted). Any type of SAS can be an ad hoc SAS.
 
-NOTE: A user delegation SAS or an account SAS must be an ad hoc SAS. Stored access policies are not supported for the user delegation SAS or the account SAS.
+> NOTE: A user delegation SAS or an account SAS must be an ad hoc SAS. Stored access policies are not supported for the user delegation SAS or the account SAS.
 
 * Service SAS with stored access policy - A stored access policy is defined
 on a resource container, which can be a blob container, table, queue, or file share. The stored access policy can be used to manage constraints for one or more service shared access signatures. When you associate a service SAS with a stored access policy, the SAS inherits the constraints — the start time, expiry time, and permissions defined for the stored access policy.
@@ -1827,9 +1900,9 @@ can use Azure Monitor and storage analytics logging to observe any spike in auth
     - To modify the parameters of the stored access policy, you can call the access control list operation for the resource type to replace the existing policy, specifying a new start time, expiry time, or set of permissions. For example, if your existing policy grants read and write permissions to a resource, you can modify it to grant only read permissions for all future requests. In this case, the signed identifier of the new policy, as specified by the `ID` field, would be identical to the signed identifier of the policy you are replacing.
 - Revoke a stored access policy
     - To revoke a stored access policy, you can delete it, rename it by changing the signed identifier, or change the expiry time to a value in the past. Changing the signed identifier breaks the associations between any existing signatures and the stored access policy. Changing the expiry time to a value in the past causes any associated signatures to expire. Deleting or modifying the stored access policy immediately affects all of the shared access signatures associated with it. To remove a single access policy, call the resource's `Set ACL` operation, passing in the set of signed identifiers that you wish to maintain on the container. To remove all access policies from the resource, call the Set ACL operation with an empty request body.
-##### Helpful Links:
+__**Helpful Links:
 - https://docs.microsoft.com/en-us/rest/api/storageservices/define-stored-access-policy
-##### create a shared access policy for a blob or blob container
+##### 4.1.5.1 create a shared access policy for a blob or blob container
 Create a shared access policy for a blob or blob container
 
 A Shared Access Signature (SAS) is a URI that enables restricted access to entities within a storage account. This URI can then be passed to a client that requires access to a container or a single blob etc. within a storage account without having to give them a storage account key.
@@ -1890,7 +1963,7 @@ to the storage account earlier
 
 Set the Stored Access Policy Expiry time to 30 minutes in the past
 Set-AzStorageContainerStoredAccessPolicy -Container $StorageContainer.Name -Policy $SASPolicy -Context $storageContext -ExpiryTime ((Get-Date).AddMinutes(-30))
-#### configure Storage Service Encryption
+#### 4.1.6 configure Storage Service Encryption
 Data in Azure Storage is encrypted and decrypted transparently using 256-bit AES encryption, one of the strongest block ciphers available, and is FIPS 140-2 compliant. Azure Storage encryption is similar to BitLocker encryption on Windows.
 
 Azure Storage encryption is enabled for all storage accounts, including both Resource Manager and classic storage accounts. Azure Storage encryption cannot be disabled. Because your data is secured by default, you do not need to modify your code or applications to take advantage of Azure Storage encryption.
@@ -1904,17 +1977,17 @@ All Azure Storage resources are encrypted, including blobs, disks, files, queues
 NOTE: Every block blob, append blob, or page blob that was written to Azure Storage after October 20, 2017 is encrypted. Blobs created prior to this date continue to be encrypted by a background process. To force the encryption of a blob that was created before October 20, 2017, you can rewrite the blob.
 
 KEK-Key encrypting key BYOK-Bring Your Own Key
-#### configure Azure Defender for Storage
+#### 4.1.7 configure Azure Defender for Storage
 
-### Configure security for databases
+### 4.2 Configure security for databases
 
-#### enable database authentication
+#### 4.2.1 enable database authentication
 Azure Active Directory authentication is a mechanism of connecting to Azure SQL Database, Managed Instance, and Azure Synapse Analytics by using identities in Azure Active Directory (Azure AD).
 
 Connection strings - 
 
 Managed instanced need at least read permission before for the role before it's created
-#### enable database auditing
+#### 4.2.2 enable database auditing
 Auditing for Azure SQL Database and Azure Synapse Analytics tracks database events and writes them to an audit log in your Azure storage account, Log Analytics workspace, or Event Hubs.
 
 How do I define server-level vs. database-level auditing policy? -
@@ -1936,8 +2009,8 @@ The default auditing policy includes all actions and the following set of action
 * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
 * FAILED_DATABASE_AUTHENTICATION_GROUP
 NOTE: Azure SQL Database and Azure Synapse Audit stores 4000 characters of data for character fields in an audit record. When the statement or the data_sensitivity_information values returned from an auditable action contain more than 4000 characters, any data beyond the first 4000 characters will be truncated and not audited.
-#### configure Azure Defender for SQL
-##### configure Azure SQL Database Advanced Threat Protection
+#### 4.2.3 configure Azure Defender for SQL
+##### 4.2.3.1 configure Azure SQL Database Advanced Threat Protection
 Configure Azure SQL Database Advanced Threat Protection
 
 Advanced Threat Protection for Azure SQL Database, Azure SQL Managed Instance and Azure Synapse detects anomalous activities indicating unusual and potentially harmful attempts to access or exploit databases.
@@ -1945,8 +2018,9 @@ Advanced Threat Protection for Azure SQL Database, Azure SQL Managed Instance an
 Advanced Threat Protection is part of the Advanced data security offering, which is a unified package for advanced SQL security capabilities. Advanced Threat Protection can be accessed and managed via the central SQL ADS portal.
 
 Advanced Threat Protection can identify Potential SQL injection, Access from unusual location or data center, Access from unfamiliar principal or potentially harmful application, and Brute force SQL credentials.
-#### implement database encryption
-##### implement Azure SQL Database Always Encrypted
+#### 4.2.4 implement database encryption
+
+##### 4.2.4.1 implement Azure SQL Database Always Encrypted
 NOTE: By default, TDE is enabled for all newly deployed databases and must be manually enabled for older databases of Azure SQL Database, Azure SQL Managed Instance, or Azure Synapse.
 
 TDE performs real-time I/O encryption and decryption of the data at the page level. Each page is decrypted when it is read into memory and then encrypted before being written to disk.
@@ -1973,11 +2047,11 @@ Customers can verify SQL Database and SQL Managed Instance compliance with inter
 
 Microsoft also seamlessly moves and manages the keys as needed for geo-replication and restores.
 
-### Configure and manage Key Vault
+### 4.4.3 Configure and manage Key Vault
 
-#### manage access to Key Vault
-#### manage permissions to secrets, certificates, and keys
-##### configure RBAC usage in Azure Key Vault
+#### 4.4.3.1 manage access to Key Vault
+#### 4.4.3.2 manage permissions to secrets, certificates, and keys
+##### 4.4.3.2.1 configure RBAC usage in Azure Key Vault
 Azure Key Vault helps solve the following problems:
 
 * Secrets Management - can be used to Securely store and tightly control
@@ -2185,7 +2259,7 @@ Small address ranges that use the "/31" or "/32" prefix sizes are not supported.
 IP network rules are only allowed for public IP addresses. IP address ranges reserved for private networks (as defined in RFC 1918) are not allowed in IP rules. Private networks include addresses that start with 10., 172.16-31, and 192.168.
 
 NOTE: Only IPv4 addresses are supported at this time.
-#### manage certificates
+#### 4.4.3.3 manage certificates
 Key Vault Certificates - Key Vault certificates support provides for management of your x509 certificates and the following behaviors:
 
 * Allows a certificate owner to create a certificate through a Key Vault
@@ -2265,7 +2339,7 @@ Permissions for certificate management operations
 Permissions for privileged operations
 
 * purge: Purge (permanently delete) a deleted certificate
-#### manage secrets
+#### 4.4.3.4 manage secrets
 Azure Key Vault's soft delete feature allows recovery of deleted vaults and vault objects. Specifically, soft-delete addresses the following scenarios:
 
 * Support for recoverable deletion of a key vault
@@ -2415,7 +2489,7 @@ Such a vault or object can still be recovered. This feature gives added assuranc
 NOTE: You can enable purge protection only if soft-delete is also enabled.
 
 New-AzKeyVault -Name ITPTV-Vault -ResourceGroupName ITPTVRG -Loca
-#### configure key rotation
+#### 4.4.3.5 configure key rotation
 About keys, secrets, and certificates - Key Vault supports RSA and Elliptic Curve keys only.
 
 * EC: "Soft" Elliptic Curve key
@@ -2463,8 +2537,8 @@ another key, typically a symmetric content encryption key (CEK). When the key in
 decrypt a single block of data. The size of the block is determined by the key type and selected encryption algorithm. For best application performance, encrypt operations should be performed locally.
 
 NOTE: Key Vault does not support EXPORT operations. Once a key is provisioned in the system, it cannot be extracted or its key material modified. However, users of Key Vault may require their key for other use cases, such as after it has been deleted. In this case, they may use the BACKUP and RESTORE operations to export/import the key in a protected form. Keys created by the BACKUP operation are not usable outside Key Vault. Alternatively, the IMPORT operation may be used against multiple Key Vault instances.
-#### backup and restore of Key Vault items
-#### configure Azure Defender for Key Vault
+#### 4.4.3.6 backup and restore of Key Vault items
+#### 4.4.3.7 configure Azure Defender for Key Vault
 
 
 
@@ -2495,10 +2569,7 @@ NOTE: Key Vault does not support EXPORT operations. Once a key is provisioned in
 
 
 
-
-
-
-##########################################
+# Excess
 ### Configure Multi-Factor Authentication security
 * Security > Left pane, under the Manage subsection
 * Click MFA
@@ -2720,38 +2791,38 @@ Activity and diagnostic logs
 ##### Configure virtual netowrk connectivity
 Azure Virtual Network (VNet) is the fundamental building block for your private network in Azure. VNet enables many types of Azure resources, such as Azure Virtual Machines (VM), to securely communicate with each other, the internet, and on-premises networks. VNet is similar to a traditional network that you'd operate in your own data center, but brings with it additional benefits of Azure's infrastructure such as scale, availability, and isolation.
 
-###### Why use an Azure Virtual network?
+__**Why use an Azure Virtual network?
 Azure virtual network enables Azure resources to securely communicate with each other, the internet, and on-premises networks. Key scenarios that you can accomplish with a virtual network include - communication of Azure resources with the internet, communication between Azure resources, communication with on-premises resources, filtering network traffic, routing network traffic, and integration with Azure services.
 
-###### Communicate with the internet
+__**Communicate with the internet
 All resources in a VNet can communicate outbound to the internet, by default. You can communicate inbound to a resource by assigning a public IP address or a public Load Balancer. You can also use public IP or public Load Balancer to manage your outbound connections. To learn more about outbound connections in Azure, see Outbound connections, Public IP addresses, and Load Balancer.
 
 > Note
 > When using only an internal Standard Load Balancer, outbound connectivity is not available until you define how you want outbound connections to work with an instance-level public IP or a public Load Balancer.
 
-###### Communicate between Azure resources
+__**Communicate between Azure resources
 Azure resources communicate securely with each other in one of the following ways:
 
 * **Through a virtual network:** You can deploy VMs, and several other types of Azure resources to a virtual network, such as Azure App Service Environments, the Azure Kubernetes Service (AKS), and Azure Virtual Machine Scale Sets. To view a complete list of Azure resources that you can deploy into a virtual network, see Virtual network service integration.
 * **Through a virtual network service endpoint:** Extend your virtual network private address space and the identity of your virtual network to Azure service resources, such as Azure Storage accounts and Azure SQL Database, over a direct connection. Service endpoints allow you to secure your critical Azure service resources to only a virtual network. To learn more, see Virtual network service endpoints overview.
 * **Through VNet Peering:** You can connect virtual networks to each other, enabling resources in either virtual network to communicate with each other, using virtual network peering. The virtual networks you connect can be in the same, or different, Azure regions. To learn more, see Virtual network peering.
-###### Communicate with on-premises resources
+__**Communicate with on-premises resources
 You can connect your on-premises computers and networks to a virtual network using any combination of the following options:
 
 * **Point-to-site virtual private network (VPN):** Established between a virtual network and a single computer in your network. Each computer that wants to establish connectivity with a virtual network must configure its connection. This connection type is great if you're just getting started with Azure, or for developers, because it requires little or no changes to your existing network. The communication between your computer and a virtual network is sent through an encrypted tunnel over the internet. To learn more, see Point-to-site VPN.
 * **Site-to-site VPN:** Established between your on-premises VPN device and an Azure VPN Gateway that is deployed in a virtual network. This connection type enables any on-premises resource that you authorize to access a virtual network. The communication between your on-premises VPN device and an Azure VPN gateway is sent through an encrypted tunnel over the internet. To learn more, see Site-to-site VPN.
 * **Azure ExpressRoute:** Established between your network and Azure, through an ExpressRoute partner. This connection is private. Traffic does not go over the internet. To learn more, see ExpressRoute.
-###### Filter network traffic
+__**Filter network traffic
 You can filter network traffic between subnets using either or both of the following options:
 
 * **Network security groups:** Network security groups and application security groups can contain multiple inbound and outbound security rules that enable you to filter traffic to and from resources by source and destination IP address, port, and protocol. To learn more, see Network security groups or Application security groups.
 * **Network virtual appliances:** A network virtual appliance is a VM that performs a network function, such as a firewall, WAN optimization, or other network function. To view a list of available network virtual appliances that you can deploy in a virtual network, see Azure Marketplace.
-###### Route network traffic
+__**Route network traffic
 Azure routes traffic between subnets, connected virtual networks, on-premises networks, and the Internet, by default. You can implement either or both of the following options to override the default routes Azure creates:
 
 * **Route tables:** You can create custom route tables with routes that control where traffic is routed to for each subnet. Learn more about route tables.
 * **Border gateway protocol (BGP) routes:** If you connect your virtual network to your on-premises network using an Azure VPN Gateway or ExpressRoute connection, you can propagate your on-premises BGP routes to your virtual networks. Learn more about using BGP with Azure VPN Gateway and ExpressRoute.
-###### Virtual network integration for Azure services
+__**Virtual network integration for Azure services
 Integrating Azure services to an Azure virtual network enables private access to the service from virtual machines or compute resources in the virtual network. You can integrate Azure services in your virtual network with the following options:
 
 Deploying dedicated instances of the service into a virtual network. The services can then be privately accessed within the virtual network and from on-premises networks.
