@@ -32,11 +32,11 @@ Start GitBash
 ### Step 4
 Enter
 ```
-git clone https://unchar.bootcampcontent.com/The-Coding-Bootcamp/uncc-cha-cyber-pt-12-2020-u-c.git
+git clone <URL_LINK_FROM_REPO>
 ```
 'Expected Outcome'
 ```
-Cloning into 'uncc-cha-cyber-pt-12-2020-u-c'...
+Cloning into 'REPO_NAME'...
 remote: Enumerating objects: 156, done.
 remote: Counting objects: 100% (156/156), done.
 remote: Compressing objects: 100% (96/96), done.
@@ -46,14 +46,14 @@ Resolving deltas: 100% (143/143), done.
 
 ```
 ### Step 5 
-Verify that the "uncc-cha-cyber-pt-12-2020-u-c" folder downloaded 
+Verify that the "REPO_NAME" folder downloaded 
 ```
 ls
 ```
 ### Step 6
 Navigate to the directory
 ```
-cd uncc-cha-cyber-pt-12-2020-u-c
+cd 'REPO_NAME'
 ```
 ### Step 7
 Verify that you have the most recent version of our GitLab repository
@@ -65,10 +65,12 @@ git pull
 
 
 
-
-
-
-
+## Adding your credentials
+### The 'git config' command
+* To add your username:
+    * `git config --global credential.username "thor-draperjr"` 
+* To add your password:
+    * `git config --global credential.helper store`
 
 ## Common Issues
 ### Mac's
