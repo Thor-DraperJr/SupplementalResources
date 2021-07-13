@@ -1,8 +1,8 @@
 # 1. Manage identity and access (30-35%)
 
-## 1.1. Manage Azure Active Directory identities
+## 1.i. Manage Azure Active Directory identities
 
-### 1.i.a. configure security for service principles
+### 1.i.d. configure security for service principles
 An Azure Active Directory (Azure AD) service principal is the local representation of an application object in a single tenant or directory.‎It functions as the identity of the application instance. Service principals define who can access the application, and what resources the application can access. A service principal is created in each tenant where the application is used and references the globally unique application object. The tenant secures the service principal’s sign in and access to resources.
 
 ### Source
@@ -21,7 +21,7 @@ __**Definition List**__
 ### 1.i.b. manage Azure AD directory groups
 Azure Active Directory (Azure AD) lets you use groups to manage access to your cloud-based apps, on-premises apps, and your resources. Your resources can be part of the Azure AD organization, such as permissions to manage objects through roles in Azure AD, or external to the organization, such as for Software as a Service (SaaS) apps, Azure services, SharePoint sites, and on-premises resources.
 
-> Note: In the Azure portal, you can see some groups whose membership and group details you can't manage in the portal: Groups synced from on-premises Active Directory can be managed only in on-premises Active Directory. Other group types such as distribution lists and mail-enabled security groups are managed only in Exchange admin center or Microsoft 365 admin center. You must sign in to Exchange admin center or Microsoft 365 admin center to manage these groups.
+> **Note:** In the Azure portal, you can see some groups whose membership and group details you can't manage in the portal: Groups synced from on-premises Active Directory can be managed only in on-premises Active Directory. Other group types such as distribution lists and mail-enabled security groups are managed only in Exchange admin center or Microsoft 365 admin center. You must sign in to Exchange admin center or Microsoft 365 admin center to manage these groups.
 
 [Manage app and resource access using Azure Active Directory groups](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-manage-groups)
 
