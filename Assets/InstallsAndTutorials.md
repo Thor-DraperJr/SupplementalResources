@@ -12,7 +12,7 @@ This page lists links to installs and tutorials.
 * [Powershell 7.1](https://www.microsoft.com/en-us/p/powershell/9mz1snwt0n5d?activetab=pivot:overviewtab)
     * Download from the Microsoft store.
 * [Telerik Fiddler](https://www.telerik.com/download/fiddler)
-    * Used to look at HAR files for POST codes
+    * Kind of like netmon but for HTTP requests and responses.
 * [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab)
     * CMD/Powershell/WSL2 oh my!
 * [Visual Studio Code](https://code.visualstudio.com/download)
