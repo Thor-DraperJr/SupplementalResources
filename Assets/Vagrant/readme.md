@@ -16,21 +16,18 @@ Vagrant is an open-source software product for building and maintaining portable
 5. Load the new virtual machines with vagrant up.
 6. Optionally, remove outdated Vagrant base boxes with vagrant box prune.
 
-### Step 1
-Verify you're in the right directory
+## Installing Vagrant
+1. Verify you're in the right directory
 ```
 ls
 ```
 ![images/expectedPath.png](images/expectedPath.png)
-### Step 2
-
-
-`Windows`
+2. Run the following commands
+### Windows`
 ```
 bash vagrant-linux.sh --create
 ```
-
-`Mac`
+### Mac
 ```
 sudo bash vagrant-linux.sh --create
 ```
