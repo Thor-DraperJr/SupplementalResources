@@ -7,6 +7,15 @@ Vagrant is an open-source software product for building and maintaining portable
 * **bash**: this is a shell for executing scripts
 * **Virtualization**: Virtualization creates a simulated, or virtual, computing environment as opposed to a physical environment. Virtualization often includes computer-generated versions of hardware, operating systems, storage devices, and more. This allows organizations to partition a single physical computer or server into several virtual machines. Each virtual machine can then interact independently and run different operating systems or applications while sharing the resources of a single host machine.
 
+
+## Updating Vagrant
+1. Run vagrant global-status --prune to find the locations of all Vagrant machines. 
+2. Navigate to the directory where the machine is installed with cd $HOME/Documents/3. Cybersecurity-Bootcamp/Linux-Module (this directory may be different depending on your class's setup).
+3. Check for machine updates with vagrant box update.
+4. Shut down the current VM, if it's running, with vagrant destroy.
+5. Load the new virtual machines with vagrant up.
+6. Optionally, remove outdated Vagrant base boxes with vagrant box prune.
+
 ### Step 1
 Verify you're in the right directory
 ```
