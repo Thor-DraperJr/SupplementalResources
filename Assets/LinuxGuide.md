@@ -89,6 +89,15 @@ In Normal mode type: /theWord <ENTER>
 * **/usr** - This directory contains the applications installed and used by the user. It is also known as the “UNIX System Resources”. It also has its own /bin, /sbin, and /lib directory, which is different from the superuser’s /bin, /sbin, and /lib directories.
 * **/var** - This is a variable directory that contains the files and folders whose size is expected to increase with the passage of time and the system’s usage.
 
+## What do the directory colors mean?
+The colours from ls are as follows:
+
+* **Blue:** Directory
+* **Green:** Executable or recognized data file
+* **Sky Blue:** Link
+* **Yellow (black background):** Device file
+* **Pink:** Graphics image file
+* **Red:** File Archive
 
 ## Installs
 * iperf - `sudo apt install iptraf` : generates traffic to measure bandwidth
