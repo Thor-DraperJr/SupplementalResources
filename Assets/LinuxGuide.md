@@ -101,3 +101,10 @@ The colours from ls are as follows:
 
 ## Installs
 * iperf - `sudo apt install iptraf` : generates traffic to measure bandwidth
+
+## How to Show Asterisks While Typing Sudo Password in Linux+
+* `sudo cp /etc/sudoers /etc/sudoers.bak`
+    * You can enable the password feedback feature in /etc/sudoers file, but first create a backup of the file
+* `sudo visudo`
+* Search for the following line. `Defaults env_reset`
+* And append pwfeedback to it, so that it looks like this. `Defaults env_reset,pwfeedback`
