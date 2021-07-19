@@ -1,62 +1,18 @@
-# Getting into Cybersecurity
+# 01-The Cybersecurity Mindset
 ## Table of Contents
    
-* [Commitment to Learning](#commitment-to-learning)
-* [Why Cyber](#why-cyber)
-
-## Commitment to learning {#commitment-to-learning}
-* Learn how to master your collaboration tools
-    * Video Chat (ex. Zoom, Teams)
-    * File sharing (ex. Google Drive, SharePoint)
-    * Communication Apps (ex. Slack, Teams)
-    * Whiteboard
-    * GitHub
-* Over communicate to increase your feedback loop
-## Why Cyber {#why-cyber}
-* Currently Tech is at 5% of the world's GDP and looks to double to 10% by the year 2030[^1]
-* The primary focus of cyber:
-    * **Threat assessment:** The structured process of identifying the threats posed to a group or system.
-    * **Risk mitigation:** The systematic reduction of the impact and likely occurrence of a negative event.
-* The Cybersecurity Domain:
-    * Framework and Standards
-    * Security Architecture
-    * Career Development
-    * Security Operations
-    * User Education
-    * Threat Intelligence
-    * Governance
-    * Risk Assessment
-    * Physical Security
-
-[^1]: https://news.microsoft.com/wp-content/uploads/prod/2021/05/05252021-Build-KEY01-Satya-Nadella.pdf
-### Career Titles
-* IT support specialists, computer help desk specialists
-* Systems administrator and network administrator
-    * Technical cybersecurity roles often require a strong foundation in networking.
-    * Networking roles focus on configuring and maintaining networks, and often include security-related tasks such as monitoring logs, implementing firewalls, and maintaining network-based backups.
-* SOC analysts
-    * The first level of defense and responsible for monitoring the security of users, systems, and the network.
-    * Detect and investigate suspicious and potentially malicious activity on the network and within systems.
-* Security or information specialists/analysts
-    * These roles actively protect an organization from security threats and breaches. 
-    * Commonly involves keeping up to date with security improvements, monitoring and protecting security systems, implementing security tools and protocols, developing security requirements, analyzing security policies and protocols for weaknesses and flaws, and designing and developing training.
-* Information assurance technicians
-    * Focused on protecting computer assets by establishing and documenting access and maintaining files.
-* Forensics specialists
-    * Analyze logs and other data to determine what occurred.
-    * Common responsibilities include conducting security incident investigations, recovering and examining data from computers and other devices, compiling evidence for legal cases, writing technical reports, preparing evidence for trial, and working with law enforcement on the validity and preservation of data.
-* Risk analysts
-    * Examine systems and procedures to identify potential adverse events, including hardware and software crashes, physical disasters, malicious intruders, malware, denial of service attacks, and employee misconduct.
-* IT auditors
-    * Responsible for the internal controls and risks to a company’s technology network. This role includes identifying the weaknesses in a system's network and creating an action plan to prevent security breaches in the technology.
-* Security engineers
-    * Test the network for vulnerabilities, monitor for security breaches, and develop security plans and policies.
-    * Common responsibilities include installing and configuring firewalls and intrusion detection systems, performing vulnerability testing and security assessments, evaluating new technologies, testing existing security solutions, and defining, implementing, and maintaining security policies.
-    * Many of these responsibilities are similar to those of a security analyst, but are more advanced and often more technical.
-* Penetration testers or ethical hackers
-    * Often hired by a company to test and break into their security controls and defenses and identify and report vulnerabilities and flaws in a system, using specific tools to simulate cyberattacks.
-* Chief Information Officers (CIO) and Chief Information Security Officers (CISO)
-    * Advanced managerial roles in cybersecurity
+* [Fundamentals](#fundamentals)
+* [Intro to GRC](#intro-to-grc)
+    * [Risk Management and Threat Modeling](#risk-management-and-threat-modeling)
+        * [OWASP in Depth](#owasp-in-depth)
+        * [Qualitative vs Quantitative Risk Analysis](#qualitative-vs-quantitative-risk-analysis)
+        * [Mitigating Risk](#mitigating-risk)
+        * [Cybersecurity Frameworks](#cybersecurity-frameworks)
+* [Consumer vs Professional Environments](#consumer-vs-professional-environments)
+* [Intro to Cyber Attacks](#intro-to-cyber-attacks)
+* [Contingency Planning for Business Continuity and Disaster Recovery](#contingency-planning-for-business-continuity-and-disaster-recovery)
+    * [Business Impact Analysis](#business-impact-analysis-bia)
+        * [BIA Metrics](#bia-metrics)
 
 ## Fundamentals
 * The CIA triad highlights the three cornerstones of information security: confidentiality, integrity, and availability.
