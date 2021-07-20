@@ -15,7 +15,7 @@
 | pwd | | present working directory |
 | ls | | show directory contents, lists names of files |
 | | -a | do not ignore entries starting with `.` |
-| | -l | use a long listing format |
+| | -l | use a long listing format and shows permissions |
 | | -h | with -l and -s, print sizes like 1K 234M 2G etc. |
 | cd | | change directory |
 | mv | | move |
@@ -57,9 +57,23 @@
 | cat |  | concatenate files and print on the standard output |
 | more |  | a filter for paging through text one screenful at a time. |
 | less |  |  Less is a program similar to more, but it has many more features.  Less does not have to read the entire input file before starting, so with large input files it starts up faster than text editors like vi |
-|  |  |  |
+| gzip |  | used to compress files |
+| gunzip |  |  decompress files created by gzip, zip, compress, compress -H or packq |
+| sh |  | The shell is a command that reads lines from either a file or the terminal, interprets them, and generally executes other commands |
+| su |  | allows to run commands with a substitute user and group ID |
+| whoami | | determines the current user | 
+| visudo | | used to edit the sudoers file |
+| systemctl | | query or send control commands to the system manager |
+| | -t | list units of a particular type |
+| apt | | package management system |
+| deluser | | delete user|
+| which | | locate a command |
+| tail | | output the last part of files q|
 
-### Reading `ls`
+### Reading `ls -l`
+When using the list permission option you will see a printout like:
+
+`drwxrwxrwx 1 root root     512 May 24 11:32  Documents/`
 
 * Column 1 indicates information regarding file permission.
     * The very first character represents the file type. It will be one of:
