@@ -10,65 +10,68 @@
 ## Basic Commands 
 | Command | Options |Definition |
 | :------ | :-------: | -----: |
-| sudo | | allows a permitted user to execute a command as the super user |
-| | -l | list user's privileges or check a specific command; use twice for longer format |
-| pwd | | present working directory |
-| ls | | show directory contents, lists names of files |
-| | -a | do not ignore entries starting with `.` |
-| | -l | use a long listing format and shows permissions |
-| | -h | with -l and -s, print sizes like 1K 234M 2G etc. |
-| cd | | change directory |
-| mv | | move |
+| awk |  | pattern scanning and processing language; awk -F(DELIMITER) '{print $(FIELD_NUMBER)}' (FILE) |
+| | -F | input field separator |
+| apt | | package management system |
+| | update | used to download package information from all configured sources |
+| | upgrade | used to install available upgrades of all packages currently installed on the system |
+| cat |  | concatenate files and print on the standard output |
+| cut |  | remove sections from each line of files |
 | cp | | copy |
-| su | | switch user |
-| | -s | run shell if /etc/shells allows it |
-| mkdir | | make directories |
+| cd | | change directory |
+| curl | | transfer a URL |
+| clear | | clears the terminal history on the page |
+| chmod | | change the permissions info |
+| chown | | change the owner and group of a file |
 | df | | report file system disk space usage |
 | dd | | covert and copy a file |
+| deluser | | delete user|
 | dig | | DNS lookup utility |
-| nslookup | | query Internet name servers interactively |
-| ip | | show / manipulate routing, network devices, interfaces and tunnels |
-| man | | an interface to the on-line reference manuals |
-| touch | | change file timestamps |
-| grep  | | print lines matching a pattern |
-| hostname | | show or set the system's host name |
 | find | | search for files in a directory hierarchy |
 | | -iname | the match is case insensitive |
 | | -type f | search for files |
 | | -type d | search for directories |
-| locate | | find files by name |
-| mtr | | combines the functionality of the traceroute and ping programs in a single network diagnostic tool |
-| curl | | transfer a URL |
-| wget | | The non-interactive network downloader |
-| nc | | arbitrary TCP and UDP connections and listens |
-| clear | | clears the terminal history on the page |
-| history | | Display or manipulate the history list |
-| chmod | | change the permissions info |
-| chown | | change the owner and group of a file |
-| usermod | | modify a user account |
-| useradd | | create a new user or update default new user information |
-| groupadd | | create a new group |
-| wc | | print newline, word, and byte counts for each file |
-| | -l | print the newline counts |
-| cut |  | remove sections from each line of files |
-| awk |  | pattern scanning and processing language; awk -F(DELIMITER) '{print $(FIELD_NUMBER)}' (FILE) |
-| | -F | input field separator |
-| sed |  | stream editor for filtering and transforming text |
-| cat |  | concatenate files and print on the standard output |
-| more |  | a filter for paging through text one screenful at a time. |
-| less |  |  Less is a program similar to more, but it has many more features.  Less does not have to read the entire input file before starting, so with large input files it starts up faster than text editors like vi |
+| grep  | | print lines matching a pattern |
 | gzip |  | used to compress files |
 | gunzip |  |  decompress files created by gzip, zip, compress, compress -H or packq |
-| sh |  | The shell is a command that reads lines from either a file or the terminal, interprets them, and generally executes other commands |
+| groupadd | | create a new group |
+| hostname | | show or set the system's host name |
+| history | | Display or manipulate the history list |
+| ip | | show / manipulate routing, network devices, interfaces and tunnels |
+| locate | | find files by name |
+| ls | | show directory contents, lists names of files |
+| | -a | do not ignore entries starting with `.` |
+| | -l | use a long listing format and shows permissions |
+| | -h | with -l and -s, print sizes like 1K 234M 2G etc. |
+| less |  |  Less is a program similar to more, but it has many more features.  Less does not have to read the entire input file before starting, so with large input files it starts up faster than text editors like vi |
+| man | | an interface to the on-line reference manuals |
+| mkdir | | make directories |
+| mv | | move |
+| mtr | | combines the functionality of the traceroute and ping programs in a single network diagnostic tool |
+| more |  | a filter for paging through text one screenful at a time. |
+| nslookup | | query Internet name servers interactively |
+| nc | | arbitrary TCP and UDP connections and listens |
+| pwd | | present working directory |
 | su |  | allows to run commands with a substitute user and group ID |
-| whoami | | determines the current user | 
-| visudo | | used to edit the sudoers file |
+| | -s | run shell if /etc/shells allows it |
+| sudo | | allows a permitted user to execute a command as the super user |
+| | -l | list user's privileges or check a specific command; use twice for longer format |
 | systemctl | | query or send control commands to the system manager |
 | | -t | list units of a particular type |
-| apt | | package management system |
-| deluser | | delete user|
-| which | | locate a command |
+| sh |  | The shell is a command that reads lines from either a file or the terminal, interprets them, and generally executes other commands |
+| sed |  | stream editor for filtering and transforming text |
 | tail | | output the last part of files q|
+| touch | | change file timestamps |
+| usermod | | modify a user account |
+| useradd | | create a new user or update default new user information |
+| wget | | The non-interactive network downloader |
+| wc | | print newline, word, and byte counts for each file |
+| | -l | print the newline counts |
+| whoami | | determines the current user |
+| which | | locate a command |
+| visudo | | used to edit the sudoers file |
+
+
 
 ### Reading `ls -l`
 When using the list permission option you will see a printout like:
