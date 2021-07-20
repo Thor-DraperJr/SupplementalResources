@@ -1,71 +1,83 @@
+# 02-Learning-Linux
 ## Common Symbol Alias
 | Directory | Description |
 | :-------- | :---------: |
-| / | root |
-| ~ | home |
-| . | current directory |
-| .. | previous directory |
-
+| `/` | root |
+| `~` | home |
+| `.` | current directory |
+| `..` | previous directory |
 
 ## Basic Commands 
-| Command | Definition |
-| :------ | :-------: |
-| sudo | allows a permitted user to execute a command as the super user |
-| ls | Show directory contents, lists names of files |
-| cd | Change directory |
-| mv | move |
-| cp | copy |
-| su | switch user |
-| mkdir | make directories |
-| df | report file system disk space usage |
-| dd | covert and copy a file |
-| dig | DNS lookup utility |
-| nslookup | query Internet name servers interactively |
-| ip | show / manipulate routing, network devices, interfaces and tunnels |
-| man | an interface to the on-line reference manuals |
-| history | GNU History Library |
-| touch | change file timestamps |
-| grep  | print lines matching a pattern |
-| hostname | show or set the system's host name |
-| find | search for files in a directory hierarchy |
-| locate | find files by name |
-| mtr | combines the functionality of the traceroute and ping programs in a single network diagnostic tool |
-| curl | transfer a URL |
-| wget | The non-interactive network downloader |
-| nc | arbitrary TCP and UDP connections and listens |
+| Command | Options |Definition |
+| :------ | :-------: | -----: |
+| sudo | | allows a permitted user to execute a command as the super user |
+| | -l | list user's privileges or check a specific command; use twice for longer format |
+| pwd | | present working directory |
+| ls | | show directory contents, lists names of files |
+| | -a | do not ignore entries starting with `.` |
+| | -l | use a long listing format |
+| | -h | with -l and -s, print sizes like 1K 234M 2G etc. |
+| cd | | change directory |
+| mv | | move |
+| cp | | copy |
+| su | | switch user |
+| | -s | run shell if /etc/shells allows it |
+| mkdir | | make directories |
+| df | | report file system disk space usage |
+| dd | | covert and copy a file |
+| dig | | DNS lookup utility |
+| nslookup | | query Internet name servers interactively |
+| ip | | show / manipulate routing, network devices, interfaces and tunnels |
+| man | | an interface to the on-line reference manuals |
+| touch | | change file timestamps |
+| grep  | | print lines matching a pattern |
+| hostname | | show or set the system's host name |
+| find | | search for files in a directory hierarchy |
+| | -iname | the match is case insensitive |
+| | -type f | search for files |
+| | -type d | search for directories |
+| locate | | find files by name |
+| mtr | | combines the functionality of the traceroute and ping programs in a single network diagnostic tool |
+| curl | | transfer a URL |
+| wget | | The non-interactive network downloader |
+| nc | | arbitrary TCP and UDP connections and listens |
+| clear | | clears the terminal history on the page |
+| history | | Display or manipulate the history list |
 
+### Combining Commands
+* Pipe operator `|`:
+    * Pipe is used to combine two or more commands, and in this, the output of one command acts as input to another command, and this command’s output may act as input to the next command and so on.
+* Logical AND operator`&&`:
+    * The second command will only execute if the first command has executed successfully.
+* Semi-Colon Operator `;`:
+    * The execution of the second command is independent of the execution status of the first command.
 
 ## vim | Vi IMproved, a programmer's text editor
-### Basics
-#### Normal mode
-When vim starts up, you will be in Normal mode. Normal mode is not for inserting text into your file but allow you to preform many operations, like saving and exiting. Pressing <ESC> will always return you to Normal mode.
-
-#### Insert Mode
-To insert allow you to insert text. Type: `i` to enter insert mode. Press <ESC> to exit insert mode and enter Normal mode.
-
-##### Exit
-To exit Vim type:
-<ESC> :q! <ENTER> to trash all changes.
-
-OR type:
-<ESC> :wq <ENTER> to save the changes.
-
-##### Undo
-In Normal mode type: u
-##### Return line to its original state
-In Normal mode type: <SHIFT>-U
-##### Redo (undo the previous undo)
-In Normal mode type: <CTRL>-R
-##### Delete line
-In Normal mode type: dd
-##### Delete word(under the cursor)
-In Normal mode type: dw
-##### Delete character(under the cursor)
-In Normal mode type: x
-##### Delete from the cursor to the end of the line
-In Normal mode type: d$
-##### Find word(or string)
-In Normal mode type: /theWord <ENTER>
+__**Basics**__
+* Normal mode
+    * When vim starts up, you will be in Normal mode. Normal mode is not for inserting text into your file but allow you to preform many operations, like saving and exiting. Pressing <ESC> will always return you to Normal mode.
+* Insert Mode
+    * To insert allow you to insert text. Type: `i` to enter insert mode. Press <ESC> to exit insert mode and enter Normal mode.
+    * To exit Vim press `ESC` and then type: 
+        * `:q!` + [ENTER] to trash all changes.
+        * `:wq` + [ENTER] to save the changes.
+* Undo
+    * In Normal mode type: u
+    * Return line to its original state
+        * In Normal mode type: [SHIFT] + U
+    * Redo (undo the previous undo)
+        * In Normal mode type: [CTRL] + R
+* Delete 
+    * Delete line
+        * In Normal mode type: dd
+    * Delete word(under the cursor)
+        * In Normal mode type: dw
+    * Delete character(under the cursor)
+        * In Normal mode type: x
+    * Delete from the cursor to the end of the line
+        * In Normal mode type: d$
+* Find word(or string)
+    * In Normal mode type: `/`theWord + [ENTER]
 
 ## file hierachy
 * **/** - The "root" directory. This is the entry point of all directories and is described as a forward slash, which is actually the home of the Operating System. Everything is in it. Not every user has read and write privileges to this directory; only the administrators or allowed users of the operating systems can have access to such privileges.

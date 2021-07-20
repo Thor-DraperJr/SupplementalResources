@@ -1,4 +1,4 @@
-# 01-The Cybersecurity Mindset
+# 01-The-Cybersecurity-Mindset
 ## Table of Contents
    
 * [Fundamentals](#fundamentals)
