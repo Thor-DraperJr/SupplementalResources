@@ -15,6 +15,8 @@
 | apt | | package management system |
 | | update | used to download package information from all configured sources |
 | | upgrade | used to install available upgrades of all packages currently installed on the system |
+| | install | installs a package |
+| | remove | removes a package |
 | cat |  | concatenate files and print on the standard output |
 | cut |  | remove sections from each line of files |
 | cp | | copy |
@@ -206,6 +208,12 @@ The colours from ls are as follows:
 * **Pink:** Graphics image file
 * **Red:** File Archive
 
+## Sudoers
+All=ALL:ALL ALL
+* The first ALL is the users allowed
+* The second one is the hosts
+* The third one is the user as you are running the command
+* The last one is the commands allowed
 
 ## Other Helpful Tools
 ### Installs
