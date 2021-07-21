@@ -68,7 +68,7 @@
 | wc | | print newline, word, and byte counts for each file |
 | | -l | print the newline counts |
 | whoami | | determines the current user |
-| which | | locate a command |
+| which | | searches through the directories that are defined in the $PATH environment variable for a given filename |
 | visudo | | used to edit the sudoers file |
 
 
