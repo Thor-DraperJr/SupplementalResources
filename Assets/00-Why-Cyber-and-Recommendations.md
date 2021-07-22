@@ -9,7 +9,7 @@
 * The primary focus of cyber:
     * **Threat assessment:** The structured process of identifying the threats posed to a group or system.
     * **Risk mitigation:** The systematic reduction of the impact and likely occurrence of a negative event.
-* The Cybersecurity Domain:
+* The Cybersecurity Domains:
     * Framework and Standards
     * Security Architecture
     * Career Development
@@ -19,6 +19,7 @@
     * Governance
     * Risk Assessment
     * Physical Security
+    * Incident Response and Recovery
 
 [^1]: https://news.microsoft.com/wp-content/uploads/prod/2021/05/05252021-Build-KEY01-Satya-Nadella.pdf
 
