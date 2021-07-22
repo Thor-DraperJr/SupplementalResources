@@ -17,6 +17,7 @@
 | | upgrade | used to install available upgrades of all packages currently installed on the system |
 | | install | installs a package |
 | | remove | removes a package |
+| | list --installed | list all the packages that have been installed on your system using the apt command and using the .deb files, as well as listing the packages installed as dependencies. |
 | cat |  | concatenate files and print on the standard output |
 | cut |  | remove sections from each line of files |
 | cp | | copy |
@@ -34,6 +35,7 @@
 | | -type f | search for files |
 | | -type d | search for directories |
 | grep  | | print lines matching a pattern |
+|  | -R | read all files under each directory, recursively.  Follow all symbolic links |
 | gzip |  | used to compress files |
 | gunzip |  |  decompress files created by gzip, zip, compress, compress -H or packq |
 | groupadd | | create a new group |
@@ -63,17 +65,65 @@
 | sh |  | The shell is a command that reads lines from either a file or the terminal, interprets them, and generally executes other commands |
 | sed |  | stream editor for filtering and transforming text |
 | tail | | output the last part of files q|
+| tar | | an archiving utility |
+| | -c | create an archive |
+| | -v | verbose, prints progress status and other useful info |
+| | -f | indicates the title |
+| | -t | list contents |
+| | -x | extract |
+|  | -C | name of the directory to place the files |
+|  | -W | validates the data |
 | touch | | change file timestamps |
 | usermod | | modify a user account |
 | useradd | | create a new user or update default new user information |
+| unzip | | unpacks `zip` archives |
 | wget | | The non-interactive network downloader |
 | wc | | print newline, word, and byte counts for each file |
 | | -l | print the newline counts |
 | whoami | | determines the current user |
 | which | | searches through the directories that are defined in the $PATH environment variable for a given filename |
 | visudo | | used to edit the sudoers file |
+| zip | | package and compress (archive) files |
 
+## Reading the Synopsis Section
+The synopsis section usually gives some example use-cases. Sometimes sub-commands have different options, so several examples might be shown.
+* Brackets `[]` always denote optional switches, arguments, options, etc.
+* the pipe `|` means or, particularly when inside brackets or parenthesis.
+* Brackets in brackets just means that the second part is dependent on the first, and also itself optional. Some switches you can use on their own or add a value to them. Commas at the start of a bracket would indicate there can be multiple comma separated values.
+* They lean on Regex concepts, but are meant to be human readable so don't follow all the escaping rules etc.
 
+### Regular Expressions (RegEx)
+| Symbol | Description |
+| :--- | --: |
+| . | It is called a wild card character, It matches any one character other than the new line. |
+| ^ | It matches the start of the string. |
+| * | It matches up to zero or more occurrences i.e. any number of times of the character of the string. |
+| \ | It is used for escape following character. |
+| () | It is used to match or search for a set of regular expressions. |
+| ? | It matches exactly one character in the string or stream. |
+
+#### Escaping
+Escaping is a method of quoting single characters. The escape `\` preceding a character tells the shell to interpret that character literally.
+
+| Symbol | Description |
+| :--- | --: |
+| \n | newline |
+| \r | return |
+| \t | tab |
+| \v | vertical tab |
+| \b | backspace |
+| \a | "alert" (beep or flash) |
+| \0xx | translates to the octal ASCII equivalent of 0xx |
+| \" | gives the quote its literal meaning | 
+| \$ | gives the dollar sign its literal meaning (variable name following \$ will not be referenced) | 
+| `\\` | gives the backslash its literal meaning |
+
+#### Unix Shell - Understanding the use of parenthesis for variables
+* `abc` - bare word\string that can be a variable name: abc=123
+* `$abc` - reference to a variable called abc
+* `${abc}` - string safe variable reference file_${abc}_name.txt
+* `$(abc)` - run the command abc and use it's stdout in place of the $(abc)
+* `($abc)` - run the command stored $abc in a subshell
 
 ### Reading `ls -l`
 When using the list permission option you will see a printout like:
@@ -214,6 +264,10 @@ All=ALL:ALL ALL
 * The second one is the hosts
 * The third one is the user as you are running the command
 * The last one is the commands allowed
+
+## 
+
+
 
 ## Other Helpful Tools
 ### Installs

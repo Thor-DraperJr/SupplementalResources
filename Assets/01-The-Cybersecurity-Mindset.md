@@ -116,6 +116,13 @@ As information security professionals, it is important to understand the distinc
 * **Regulations:** Detailed instructions for how to enforce laws.
 
 #### Cybersecurity Frameworks
+* NIST Framework for Improving Critical Infrastructure Cybersecurity
+    * Identify, Protect, Detect, Respond, Recover
+    * Framework Implementation Tiers
+        * Partial, Risk Informed, Repeatable, Adaptive
+            * Risk Management Process
+            * Integrated Risk Management Program
+            * External Participation
 * ISO/IEC 27001 - INFORMATION SECURITY MANAGEMENT[^2] 
 * NIST Special Publication 800-37[^4] - Risk Management Framework for Information Systems and Organizations
     * Describes the formal RMF certification and accreditation process.
@@ -125,7 +132,15 @@ and Organizations
 * NIST Special Publication 800-171 - Protecting Controlled Unclassified Information in Nonfederal Systems and Organizations[^3]
 * GDPR
 * CMMC
-* PCI
+* PCI DSS Compliance
+    * The Payment Card Industry Data Security Standards (PCI DSS) specify technical and operational requirements set by the PCI Security Standards Council (PCI SSC) to protect cardholder data. 
+* SOC 2 Compliance
+    * Five Trust Service Criteria (TSC) - Security, Availability, Processing Integrity, Confidentiality and Privacy.
+* 23 NYCRR 500 Compliance
+    * A regulation by the New York State Department of Financial Services that requires financial companies to implement a detailed framework to better protect consumer data privacy.
+* SEC Compliance
+    * he Office of Compliance Inspections and Examinations (OCIE) conducts the U.S. Securities and Exchange Commission’s (SEC) National Exam Program
+* FINRA
 
 [^2]: https://www.iso.org/isoiec-27001-information-security.html
 [^3]: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171r2.pdf
