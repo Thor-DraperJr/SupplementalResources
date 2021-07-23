@@ -30,6 +30,7 @@
 | dd | | covert and copy a file |
 | deluser | | delete user|
 | dig | | DNS lookup utility |
+| du | | estimate file space usage |
 | find | | search for files in a directory hierarchy |
 | | -iname | the match is case insensitive |
 | | -type f | search for files |

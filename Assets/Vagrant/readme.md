@@ -35,6 +35,11 @@ sudo bash vagrant-linux.sh --create
 
 
 ## Common issues:
+### Easy fix
+Simply destroy and restore
+`cd $HOME/Documents/Cybersecurity-Bootcamp/Linux-Module && vagrant box update && vagrant destroy --force && vagrant up`
+
+
 ### Virutalizaion not turned on in the BIOS
 ![images/2-VT-xError.png](images/2-VT-xError.png)
 #### If you see this error ####
