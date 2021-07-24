@@ -38,6 +38,8 @@
 | | -iname | the match is case insensitive |
 | | -type f | search for files |
 | | -type d | search for directories |
+| free | | display amount of free and used memory in the system |
+| | -h | show all output fields automatically scaled to shortest three digit unit and display the units of print out (B=bytes, K=kibibyts, M=mebibyte, G=gibibyte, T=tebibyte, P=pebibyte)
 | grep  | | print lines matching a pattern |
 |  | -R | read all files under each directory, recursively.  Follow all symbolic links |
 | gzip |  | used to compress files |
@@ -75,6 +77,7 @@
 | | -f | indicates the title |
 | | -t | list contents |
 | | -x | extract |
+| | -z | filter the archive through gzip |
 |  | -C | name of the directory to place the files |
 |  | -W | validates the data |
 | touch | | change file timestamps |
@@ -122,12 +125,99 @@ Escaping is a method of quoting single characters. The escape `\` preceding a ch
 | \$ | gives the dollar sign its literal meaning (variable name following \$ will not be referenced) | 
 | `\\` | gives the backslash its literal meaning |
 
-#### Unix Shell - Understanding the use of parenthesis for variables
+#### Unix Shell - Understanding Variables
 * `abc` - bare word\string that can be a variable name: abc=123
 * `$abc` - reference to a variable called abc
 * `${abc}` - string safe variable reference file_${abc}_name.txt
 * `$(abc)` - run the command abc and use it's stdout in place of the $(abc)
 * `($abc)` - run the command stored $abc in a subshell
+
+#### Expanding Expressions
+* Group commands in a sub-shell: ( )
+    * (list)
+        * Placing a list of commands between parentheses causes a subshell to be created, and each of the commands in list to be executed in that subshell, without removing non-exported variables.
+        * Since the list is executed in a subshell, variable assignments do not remain in effect after the subshell completes.
+        * Not to be confused with Command Substitution   $(command) Notice the dollar prefix, which tells the shell to substitute the output of the command into the main command.
+* Group commands in the current shell: { }
+    * { list; }
+        * Placing a list of commands between curly braces causes the list to be executed in the current shell context. No subshell is created. The semicolon (or newline) following list is required.
+        * In addition to the creation of a subshell, there is a subtle difference between these two constructs due to historical reasons. The braces are reserved words, so they must be separated from the list by blanks. The parentheses are operators, and are recognized as separate tokens by the shell even if they are not separated from the list by whitespace.
+        * The exit status of both of these constructs is the exit status of list.
+* Group commands in the current shell: { }
+    * { list; }
+        * Placing a list of commands between curly braces causes the list to be executed in the current shell context. No subshell is created. The semicolon (or newline) following list is required.
+        * In addition to the creation of a subshell, there is a subtle difference between these two constructs due to historical reasons. The braces are reserved words, so they must be separated from the list by blanks. The parentheses are operators, and are recognized as separate tokens by the shell even if they are not separated from the list by whitespace.
+        * The exit status of both of these constructs is the exit status of list.
+* Test - return the binary result of an expression: [[ ]]
+    * [[ expression ]]
+        * Return a status of 0 or 1 depending on the evaluation of the conditional expression. Word splitting and filename expansion are not performed on the words between the [[ and ]]; tilde expansion, parameter and variable expansion, arithmetic expansion, command substitution, process substitution, and quote removal are performed.
+        * When the == and != operators are used, pattern matching will be done on the string to the right of the operator.
+        * The return value is 0 if the string matches or does not match the pattern, respectively, and 1 otherwise.
+        * Any part of the pattern can be quoted to force it to be matched as a string.
+* Arithmetic expansion
+    * Arithmetic expansion allows the evaluation of an arithmetic expression and the substitution of the result.
+        * The format for arithmetic expansion is:
+            * $(( expression ))
+        * The format for a simple Arithmetic Evaluation is:
+            * (( expression ))
+    * The expression is treated as if it were within double quotes, but a double quote inside the parentheses is not treated specially. All tokens in the expression undergo parameter expansion, command substitution, and quote removal. Arithmetic substitutions can be nested.
+    * The exit status of arithmetic expressions are Success(0) / Fail (1) codes rather then the True (1) / False (0) which you might expect, so an expression like (( 2 > 4)) will return an exit code of 1
+    * However if you set a variable to the results of an arithmetic expression that will be set to the more logical True (1) / False (0)
+```
+let "NUM = (( 2 > 4 ))"
+echo $?
+# 1
+echo $NUM
+# 0
+```
+* Shell variables can be used as operands:
+
+```
+TEST=STRING
+STRING=3
+echo $((TEST))
+# 3
+```
+* Arithmetic operators e.g. (( DEMOVAR += 5 ))
+```
+  = Set Equal to
+ *= Multiply
+ /= divide
+ %= Modulo
+ += Add
+ -= Subract
+<<= bitwise shift left
+>>= bitwise shift right
+ &= bitwise AND
+ ^= bitwise XOR
+ |= bitwise NOT
+ ```
+* Comparison operators e.g. (( DEMOVAR == 5 ))
+```
+== Test Equality
+!= Test Inequality
+ < Less than
+ > Greater than
+<= Less than or equal
+>= Greater than or equal
+```
+* Combine multiple expressions
+Expressions can be combined using the following operators, listed in decreasing order of precedence:
+| operator | definition |
+| :--- | ---: |
+| ( expression ) | Returns the value of expression. This can be used to override the normal precedence of operators. |
+| ! expression | Logical NOT, True if expression is false. |
+| (( expr1 && expr2 )) | Logical AND |
+| (( expr1 || expr2 )) | Logical OR |
+| (( expr1 | expr2 )) | Bitwise OR |
+
+The && and || commands do not execute expression2 if the value of expression1 is sufficient to determine the return value of the entire conditional expression. If the expression is invalid, Bash prints a message indicating failure to the standard error and no substitution occurs.
+
+Logical operators operate on logical values, while bitwise operators operate on integer bits.
+
+`if x and y: # logical operation`
+
+`z = z & 0xFF # bitwise operation`
 
 ### Reading `ls -l`
 When using the list permission option you will see a printout like:
