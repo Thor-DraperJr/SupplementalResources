@@ -26,6 +26,9 @@
 | clear | | clears the terminal history on the page |
 | chmod | | change the permissions info |
 | chown | | change the owner and group of a file |
+|crontab | | maintain crontab files for individual users |
+| | -e | used to edit the current crontab using the editor specified by the VISUAL or EDITOR environment variables |
+| | -l | causes the current crontab to be displayed on standard output |
 | df | | report file system disk space usage |
 | dd | | covert and copy a file |
 | deluser | | delete user|
@@ -266,9 +269,35 @@ All=ALL:ALL ALL
 * The third one is the user as you are running the command
 * The last one is the commands allowed
 
-## 
+## cron
+A system daemon that keeps track of when to run scheduled tasks.
+The general syntax for a crontab is:
 
+`minute hour day-of-month month day-of-week [user] command`
 
+The time and date fields are:
+| Field | Allowed Values |
+| :---- | -------: |
+| minute | 0-59 |
+| hour | 0-23 |
+| day of month | 0-31 |
+| month | 0-12 (or names, see below) |
+| day of week | 0-7 (0 or 7 is Sun, or use names) |
+
+A  field  may  be an asterisk (*), which always stands for ``first-last''.
+
+Ranges of numbers are allowed.   Ranges  are  two  numbers separated  with  a  hyphen.  The specified range is inclusive.  For example, 8-11 for an ``hours'' entry  specifies execution at hours 8, 9, 10 and 11.
+
+Lists are allowed.  A list is a set of numbers (or ranges) separated by commas.  Examples: ``1,2,5,9'', ``0-4,8-12''.
+
+Step  values can be used in conjunction with ranges.  Following a range with ``/<number>'' specifies skips  of  the number's value through the range.  For example, ``0-23/2'' can be used in the hours field to specify  command  execution  every other hour (the alternative in the V7 standard is ``0,2,4,6,8,10,12,14,16,18,20,22'').   Steps  are  also permitted after an asterisk, so if you want to say ``every two hours'', just use ``*/2''.
+
+Names can also be used for the ``month''  and  ``day  of week'' fields.  Use the first three letters of the particular day or month (case doesn't matter).  Ranges or  lists of names are not allowed. The  ``sixth''  field (the rest of the line) specifies the command to be run.  The  entire  command  portion  of  the line,  up to a newline or % character, will be executed by /bin/sh or by the shell specified in the SHELL variable of the  cronfile.   Percent-signs  (%) in the command, unless escaped with backslash (\), will be changed  into  newline characters, and all data after the first % will be sent to the command as standard input.
+
+ > Note: The day of a command's execution can be specified by two  fields  --  day  of  month, and day of week.  If both fields are restricted (ie, aren't *), the command will be run when either field matches the current time.  For example, ``30 4 1,15 * 5'' would cause a command to be run at  4:30am on the 1st and 15th of each month, plus every Friday.
+
+## Lynis
+A security scanner used to scan a machine for vulnerabilities. It generates and saves a report of its findings for administrators to review.
 
 ## Other Helpful Tools
 ### Installs

@@ -64,6 +64,13 @@
     * [Soft Skills Engineering](https://softskills.audio/)
 * Blog
     * [Thor Draper Jr's Blog](www.thor-draperjr.github.io)
+* Vuln
+    * tryhackme
+    * hackthebox
+    * vulnhub
+* Coding
+    * freecodecamp
+    * codeacademy
 
 ## Collaboration Tools
 * Learn how to master your collaboration tools
