@@ -270,10 +270,7 @@ All=ALL:ALL ALL
 * The last one is the commands allowed
 
 ## cron
-A system daemon that keeps track of when to run scheduled tasks.
-The general syntax for a crontab is:
-
-`minute hour day-of-month month day-of-week [user] command`
+A system daemon that keeps track of when to run scheduled tasks. The general syntax for a crontab is: `minute hour day-of-month month day-of-week [user] command`
 
 The time and date fields are:
 | Field | Allowed Values |
@@ -284,13 +281,13 @@ The time and date fields are:
 | month | 0-12 (or names, see below) |
 | day of week | 0-7 (0 or 7 is Sun, or use names) |
 
-A  field  may  be an asterisk (*), which always stands for ``first-last''.
+A  field  may  be an asterisk (*), which always stands for first-last.
 
-Ranges of numbers are allowed.   Ranges  are  two  numbers separated  with  a  hyphen.  The specified range is inclusive.  For example, 8-11 for an ``hours'' entry  specifies execution at hours 8, 9, 10 and 11.
+Ranges of numbers are allowed. Ranges  are  two  numbers separated  with  a  hyphen.  The specified range is inclusive.  For example, 8-11 for an 'hours' entry specifies execution at hours 8, 9, 10 and 11.
 
-Lists are allowed.  A list is a set of numbers (or ranges) separated by commas.  Examples: ``1,2,5,9'', ``0-4,8-12''.
+Lists are allowed.  A list is a set of numbers (or ranges) separated by commas.  Examples: '1,2,5,9' '0-4,8-12'.
 
-Step  values can be used in conjunction with ranges.  Following a range with ``/<number>'' specifies skips  of  the number's value through the range.  For example, ``0-23/2'' can be used in the hours field to specify  command  execution  every other hour (the alternative in the V7 standard is ``0,2,4,6,8,10,12,14,16,18,20,22'').   Steps  are  also permitted after an asterisk, so if you want to say ``every two hours'', just use ``*/2''.
+Step values can be used in conjunction with ranges.  Following a range with '/<number>' specifies skips  of  the number's value through the range.  For example, ``0-23/2'' can be used in the hours field to specify  command  execution  every other hour (the alternative in the V7 standard is ``0,2,4,6,8,10,12,14,16,18,20,22'').   Steps  are  also permitted after an asterisk, so if you want to say ``every two hours'', just use ``*/2''.
 
 Names can also be used for the ``month''  and  ``day  of week'' fields.  Use the first three letters of the particular day or month (case doesn't matter).  Ranges or  lists of names are not allowed. The  ``sixth''  field (the rest of the line) specifies the command to be run.  The  entire  command  portion  of  the line,  up to a newline or % character, will be executed by /bin/sh or by the shell specified in the SHELL variable of the  cronfile.   Percent-signs  (%) in the command, unless escaped with backslash (\), will be changed  into  newline characters, and all data after the first % will be sent to the command as standard input.
 
@@ -309,3 +306,4 @@ A security scanner used to scan a machine for vulnerabilities. It generates and 
 * `sudo visudo`
 * Search for the following line. `Defaults env_reset`
 * And append pwfeedback to it, so that it looks like this. `Defaults env_reset,pwfeedback`
+

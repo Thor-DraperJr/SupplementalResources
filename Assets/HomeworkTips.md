@@ -13,3 +13,13 @@ Be mindful of the situation presented at the beginning of the assignment. Some w
 * Use the assignment's readme as a framework. If you copy and paste the text into the google folder you are working in, it's an easy way to make sure that you don't miss any aspects of the homework, and rewrite the question (or the ask) is always a solid technique!
 * Office hourse are a good resource for Instructor/TA help with any oddball commands or issues.
 * Requesting a Tutor is really helpful for those that would like 1:1 attention
+
+## How to ask Questions
+Avoid referencing the questions when asking the question.
+
+## How to view the BCS class recordings
+![step1](/Assets/images/session.png)
+![step2](/Assets/images/viewsessionsyllabus.png)
+![step3](/Assets/images/class1-1.png)
+![step4](/Assets/images/playvideo.png)
+
