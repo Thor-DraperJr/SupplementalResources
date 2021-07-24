@@ -109,6 +109,9 @@ The synopsis section usually gives some example use-cases. Sometimes sub-command
 | () | It is used to match or search for a set of regular expressions. |
 | ? | It matches exactly one character in the string or stream. |
 
+#### Bash Brace Expansion
+Bash brace expansion is used to generate stings at the command line or in a shell script. The syntax for brace expansion consists of either a sequence specification or a comma separated list of items inside curly braces "{}". A sequence consists of a starting and ending item separated by two periods "..".
+
 #### Escaping
 Escaping is a method of quoting single characters. The escape `\` preceding a character tells the shell to interpret that character literally.
 
@@ -383,7 +386,8 @@ Names can also be used for the ``month''  and  ``day  of week'' fields.  Use the
 
  > Note: The day of a command's execution can be specified by two  fields  --  day  of  month, and day of week.  If both fields are restricted (ie, aren't *), the command will be run when either field matches the current time.  For example, ``30 4 1,15 * 5'' would cause a command to be run at  4:30am on the 1st and 15th of each month, plus every Friday.
 
-## Lynis
+## Cyber Programs
+### Lynis (Auditing)
 A security scanner used to scan a machine for vulnerabilities. It generates and saves a report of its findings for administrators to review.
 
 ## Other Helpful Tools
