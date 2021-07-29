@@ -34,6 +34,9 @@
 | deluser | | delete user|
 | dig | | DNS lookup utility |
 | du | | estimate file space usage |
+| echo | | display a line of text |
+| | -e | enable interpretation of backslash escapes |
+| file | | determine file type |
 | find | | search for files in a directory hierarchy |
 | | -iname | the match is case insensitive |
 | | -type f | search for files |
@@ -62,6 +65,7 @@
 | nslookup | | query Internet name servers interactively |
 | nc | | arbitrary TCP and UDP connections and listens |
 | pwd | | present working directory |
+| read | | read a line from the standard input and split it into fields |
 | su |  | allows to run commands with a substitute user and group ID |
 | | -s | run shell if /etc/shells allows it |
 | sudo | | allows a permitted user to execute a command as the super user |
@@ -70,6 +74,7 @@
 | | -t | list units of a particular type |
 | sh |  | The shell is a command that reads lines from either a file or the terminal, interprets them, and generally executes other commands |
 | sed |  | stream editor for filtering and transforming text |
+| source | | read and execute commands from FILENAME in the current shell |
 | tail | | output the last part of files q|
 | tar | | an archiving utility |
 | | -c | create an archive |

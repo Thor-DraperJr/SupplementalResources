@@ -143,6 +143,7 @@ and Organizations
 * FINRA
 * HIPAA
     * Maintain data for six years. Local and offsite backup
+* MITRE
 
 [^2]: https://www.iso.org/isoiec-27001-information-security.html
 [^3]: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171r2.pdf
