@@ -34,6 +34,9 @@
 | deluser | | delete user|
 | dig | | DNS lookup utility |
 | du | | estimate file space usage |
+| echo | | display a line of text |
+| | -e | enable interpretation of backslash escapes |
+| file | | determine file type |
 | find | | search for files in a directory hierarchy |
 | | -iname | the match is case insensitive |
 | | -type f | search for files |
@@ -68,6 +71,7 @@
 | nslookup | | query Internet name servers interactively |
 | nc | | arbitrary TCP and UDP connections and listens |
 | pwd | | present working directory |
+| read | | read a line from the standard input and split it into fields |
 | su |  | allows to run commands with a substitute user and group ID |
 | | -s | run shell if /etc/shells allows it |
 | sudo | | allows a permitted user to execute a command as the super user |
@@ -76,6 +80,7 @@
 | | -t | list units of a particular type |
 | sh |  | The shell is a command that reads lines from either a file or the terminal, interprets them, and generally executes other commands |
 | sed |  | stream editor for filtering and transforming text |
+| source | | read and execute commands from FILENAME in the current shell |
 | tail | | output the last part of files q|
 | tar | | an archiving utility |
 | | -c | create an archive |
@@ -99,6 +104,10 @@
 | zip | | package and compress (archive) files |
 
 ## Reading the Synopsis Section
+commands typically follow this format:
+
+`program -options arguments`
+
 The synopsis section usually gives some example use-cases. Sometimes sub-commands have different options, so several examples might be shown.
 * Brackets `[]` always denote optional switches, arguments, options, etc.
 * the pipe `|` means or, particularly when inside brackets or parenthesis.
@@ -407,3 +416,16 @@ A security scanner used to scan a machine for vulnerabilities. It generates and 
 * Search for the following line. `Defaults env_reset`
 * And append pwfeedback to it, so that it looks like this. `Defaults env_reset,pwfeedback`
 
+### Auditd
+
+
+| auditd | linux audit daemon| 
+| auditctl |  |  |
+|  | -l | list rules |
+|  | -w | write |
+| aurport | | authentication report|
+| | -m | modifications |
+
+-w watch
+-p
+-k
