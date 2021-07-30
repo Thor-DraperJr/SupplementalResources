@@ -48,7 +48,13 @@
 | hostname | | show or set the system's host name |
 | history | | Display or manipulate the history list |
 | ip | | show / manipulate routing, network devices, interfaces and tunnels |
+| journal | | query the journal |
+| | e | immediately jump to the end in the pager |
+| | f | follow the journal |
 | locate | | find files by name |
+| logrotate | | rotates, compresses, and mails system logs |
+| | -v | verbose |
+| | -f | force outside of the normal cronjob |
 | ls | | show directory contents, lists names of files |
 | | -a | do not ignore entries starting with `.` |
 | | -l | use a long listing format and shows permissions |
