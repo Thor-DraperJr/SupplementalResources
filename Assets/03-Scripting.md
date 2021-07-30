@@ -38,3 +38,9 @@ if [ condition ] ; then
 Command(s)
 fi
 ```
+
+#### Links
+* https://www.howtogeek.com/68563/HTG-EXPLAINS-WHAT-ARE-THE-DIFFERENCES-BETWEEN-LINUX-SHELLS/
+* https://www.educba.com/variables-in-shell-scripting/
+* https://linuxhint.com/bash_conditional_statement/
+* 

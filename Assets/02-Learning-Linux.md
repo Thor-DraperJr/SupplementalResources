@@ -98,6 +98,10 @@
 | zip | | package and compress (archive) files |
 
 ## Reading the Synopsis Section
+commands typically follow this format:
+
+`program -options arguments`
+
 The synopsis section usually gives some example use-cases. Sometimes sub-commands have different options, so several examples might be shown.
 * Brackets `[]` always denote optional switches, arguments, options, etc.
 * the pipe `|` means or, particularly when inside brackets or parenthesis.
@@ -406,3 +410,16 @@ A security scanner used to scan a machine for vulnerabilities. It generates and 
 * Search for the following line. `Defaults env_reset`
 * And append pwfeedback to it, so that it looks like this. `Defaults env_reset,pwfeedback`
 
+### Auditd
+
+
+| auditd | linux audit daemon| 
+| auditctl |  |  |
+|  | -l | list rules |
+|  | -w | write |
+| aurport | | authentication report|
+| | -m | modifications |
+
+-w watch
+-p
+-k
