@@ -39,6 +39,56 @@ Command(s)
 fi
 ```
 
+# Powershell
+Cmdlets − Cmdlets perform common system administration tasks, for example managing the registry, services, processes, event logs, and using Windows Management Instrumentation (WMI).
+
+Task oriented − PowerShell scripting language is task based and provide supports for existing scripts and command-line tools.
+
+Consistent design − As cmdlets and system data stores use common syntax and have common naming conventions, data sharing is easy. The output from one cmdlet can be pipelined to another cmdlet without any manipulation.
+
+Simple to Use − Simplified, command-based navigation lets users navigate the registry and other data stores similar to the file system navigation.
+
+Object based − PowerShell possesses powerful object manipulation capabilities. Objects can be sent to other tools or databases directly.
+
+Extensible interface. − PowerShell is customizable as independent software vendors and enterprise developers can build custom tools and utilities using PowerShell to administer their software.
+
+## Variables
+PowerShell variables are named objects. As PowerShell works with objects, these variables are used to work with objects.
+
+Use a '$' to create a variable.
+```
+$variable = [command]
+```
+From that session on you'll be able to uses the $variable as a command to invoke the command.
+
+## Looping
+A loop statement allows us to execute a statement or group of statements multiple times and following is the general form of a loop statement in most of the programming languages
+
+for loop:
+    Execute a sequence of statements multiple times and abbreviates the code that manages the loop variable.
+```
+```
+
+forEach loop:
+    Enhanced for loop. This is mainly used to traverse collection of elements including arrays.
+```Powershell
+$declaredVariable = Get-ChildItem .
+
+foreach ($object in $declaredVariable){
+    Write-Host $object
+}
+```
+
+while loop:
+    Repeats a statement or group of statements while a given condition is true. It tests the condition before executing the loop body.
+```
+```
+
+do...while loop:
+    Like a while statement, except that it tests the condition at the end of the loop body.
+```
+```
+
 #### Links
 * https://www.howtogeek.com/68563/HTG-EXPLAINS-WHAT-ARE-THE-DIFFERENCES-BETWEEN-LINUX-SHELLS/
 * https://www.educba.com/variables-in-shell-scripting/

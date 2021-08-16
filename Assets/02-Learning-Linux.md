@@ -354,6 +354,9 @@ __**Basics**__
 * **/usr** - This directory contains the applications installed and used by the user. It is also known as the “UNIX System Resources”. It also has its own /bin, /sbin, and /lib directory, which is different from the superuser’s /bin, /sbin, and /lib directories.
 * **/var** - This is a variable directory that contains the files and folders whose size is expected to increase with the passage of time and the system’s usage.
 
+### Important etc files
+* hosts: This file contains the mappings of IP addresses to host names
+
 ## What do the directory colors mean?
 The colours from ls are as follows:
 
@@ -411,15 +414,42 @@ A security scanner used to scan a machine for vulnerabilities. It generates and 
 * And append pwfeedback to it, so that it looks like this. `Defaults env_reset,pwfeedback`
 
 ### Auditd
+auditd is the userspace component to the Linux Auditing System. It's responsible for writing audit records to the disk. Viewing the logs is done with  the  ause‐arch  or  aureport  utilities.
 
-
-| auditd | linux audit daemon| 
-| auditctl |  |  |
+| command | options | definition |
+| :---- | :----: | ----: | 
+| auditctl |  | a utility to assist controlling the kernel's audit system |
 |  | -l | list rules |
 |  | -w | write |
-| aurport | | authentication report|
+| aureport | | a tool that produces summary reports of audit daemon logs |
 | | -m | modifications |
+| | -p | Report about processes |
+| | -k | Report about audit rule keys |
 
--w watch
--p
--k
+### chkrootkit
+chkrootkit examines certain elements of the target system and determines whether they have been tampered with.
+
+| options | definition |
+| :--- | --: |
+| -x | Enter expert mode. |
+
+### john
+john, better known as John the Ripper, is a tool to find weak passwords of users in a server
+
+john [options] password-files
+
+To see the cracked passwords, use john -show passwd
+
+### fping
+fping differs from ping in that you can specify any number of targets on the command line, or specify a file containing the lists of targets to ping.
+
+| options | definitions |
+| :-- | --: |
+| -g | Generate a target list from a supplied IP netmask, or a starting and ending IP. |
+
+### nmap
+Nmap (“Network Mapper”) is an open source tool for network exploration and security auditing.
+
+| options | definitions |
+| :-- | --: |
+| -sS | TCP SYN Scan |

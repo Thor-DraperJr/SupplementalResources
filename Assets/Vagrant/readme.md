@@ -23,7 +23,7 @@ ls
 ```
 ![images/expectedPath.png](images/expectedPath.png)
 2. Run the following commands
-### Windows`
+### Windows
 ```
 bash vagrant-linux.sh --create
 ```
