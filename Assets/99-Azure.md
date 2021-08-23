@@ -79,3 +79,9 @@ spot workloads: good for processes that can be interrupted
 
 * https://docs.microsoft.com/en-us/azure/virtual-machines/sizes
 * (https://www.youtube.com/watch?v=zOSvnJFd3ZM
+
+
+https://docs.microsoft.com/en-us/azure/storage/common/storage-introduction
+https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview#resource-groups
+https://docs.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview
+https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/get-started/
