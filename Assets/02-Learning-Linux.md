@@ -30,6 +30,7 @@
 | | -e | used to edit the current crontab using the editor specified by the VISUAL or EDITOR environment variables |
 | | -l | causes the current crontab to be displayed on standard output |
 | df | | report file system disk space usage |
+| | -h | human-readable, print sizes in powers of 1024 |
 | dd | | covert and copy a file |
 | deluser | | delete user|
 | dig | | DNS lookup utility |
