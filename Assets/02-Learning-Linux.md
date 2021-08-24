@@ -1,4 +1,109 @@
 # 02-Learning-Linux
+## What are basic elements or components of Linux?
+* **Kernel:** It is considered a core or main part of Linux and is generally responsible for all major activities of OS such as process management, device management, etc.  
+* **System Library:** These are special functions or programs with the help of which application programs or system utilities can access features of the kernel without any requirement of code. It is simply used to implement the functionality of the OS. 
+* **System Utility:** These are utility programs that are responsible to perform specialized and individual-level tasks. They are considered more liable and allow users to manage the computer.  
+* **Hardware:** It is physical hardware that includes items such as a mouse, keyboard, display, CPU, etc. 
+* **Shell:** It is an environment in which we can run our commands, shell scripts, and programs. It is an interface between user and kernel that hides all complexities of functions of the kernel from the user. It is used to execute commands. 
+
+### What is BASH?
+BASH (Bourne Again Shell) is basically a command language interpreter.
+
+### What is Kernel?
+A resource manager that acts as a bridge between hardware and software. Its main role is to manage hardware resources for users and is generally used to provide an interface for user-level interaction. A kernel is the first program that is loaded whenever a computer system starts. It is also referred to as low-level system software.
+
+Main functions include:
+* Memory Management
+* Process Management
+* Device Management
+* Storage Management
+* Manage access, and use of various peripherals that are connected to the computer.
+
+### What are two types of Linux User Mode?
+Command Line & GUI
+
+### What is swap space?
+Swap space is space on the hard disk that is used when the amount of physical memory or RAM is full. It can be used as an extension of RAM by linux.
+
+### What do you mean by a Process States in Linux?
+Linux Process is a type of process that can be in a number of different states. The process enters these states from start till end. 
+
+Process states in Linux are as follows:
+* **New/Ready:** In this state, a new process is created and is ready to run.
+* **Running:** In this state, the process is being executed.
+* **Blocked/Wait:** In this state, the process is waiting for input from the user and if doesn't have resources to run such as memory, file locks, input, then it can remain in a waiting or blocked state.
+* **Terminated/Completed:** In this state, the process has completed the execution or terminated by the OS.
+* **Zombie:** Zombie Process, also referred to as a defunct or dead process in Linux, is a process that has finished the execution, but its entry remains in the process table. It usually happens due to a lack of correspondence between parent and child processes. This process occurs for the child process because the parent process needs to read the status of the child process.
+
+### What is Linux Shell? What types of Shells are there in Linux?
+Linux shell is a user interface present between user and kernel. Linux shell is basically a program used by users for executing commands. It accepts human-readable commands as input and converts them into kernel understandable language. 
+
+Different types of shells are commonly used on typical Linux system as listed below: 
+* BASH (Bourne Again Shell)
+* CSH (C Shell)
+* KSH (Korn Shell)
+* TCSH
+* ZSH
+* Bourne Shell
+
+### Name different types of modes used in VI editor.
+VI editor (Visual Editor) is basically a default text editor that usually comes with most of the Linux OS. There are basically three types of modes used in VI editor as given below: 
+
+* **Command Mode/Regular Mode:** It is the default mode for the vi editors. It is generally used to type commands that usually perform particular or specific vi functions. To enter this mode from another mode (Insert mode), one must press [esc]. In simple words, it lets you view the content.  
+* **Insertion Mode/Edit Mode:** This mode allows you to do text editing, or type text into a file. To enter this mode from another mode (command mode), one must press [esc]. In simple words, it lets you delete or insert text or content. 
+* **Ex Mode/Replacement Mode:** This mode is generally used to save the files and execution of the commands. It basically executes files with different parameters. To enter this mode, one must press [:]. In simple words, it lets you overwrite content or text.
+
+### Name the file that is used to automatically mount file systems.
+File that is used to automatically mount file systems is a Fstab file.
+
+### What is LVM and why is it required?
+LVM (Logical Volume Management) is basically a tool that provides logical volume management for the Linux kernel. It is being introduced simply to make physical storage device management easier. It also includes allocating disks, striping, mirroring, resizing logical volumes. Its main advantages are increased abstraction, flexibility, and control. It allows for flexible disk space management. It is especially required to resize the size of the file system online. In Linux, the size of the LVM partition can be extended using “lvextend” command and can be reduced using “lvreduce” commands, respectively.
+
+### What is a “/proc” file system?
+Proc file system is a pseudo or virtual file system that provides an interface to the kernel data structure. It generally includes useful information about processes that are running currently. It can also be used to change some kernel parameters at runtime or during execution. It is also regarded as a control and information center for the kernel. All files under this directory are named virtual files.
+
+### What do you mean by the daemons?
+Daemons also referred to as the background process, is a long-running Linux program that runs in the background. They do not have any controlling terminal, therefore, they run in the background. These are the processes that are generally started when the system is bootstrapped and terminate or end only when the system is shut down.
+
+## What is the difference between cron and anacron?
+Cron: It is a program in Linux that is used to execute tasks at a scheduled time. It works effectively on machines that run continuously. 
+
+Anacron: It is a program in Linux that is used to execute tasks at certain intervals. It works effectively on machines that are powered off in a day or week. 
+
+| Cron | Anacron |
+| :--- | ---: |
+|It is a daemon.|It is not a daemon. |
+|It can be scheduled by any normal user. |It can only be used by super users.|
+|It is considered ideal for servers. |It is considered ideal for desktops and laptops.|
+|It expects the system to run 24*7|It does not expect the system to run 24*7|
+|Its minimum granularity is in minutes.|Its minimum granularity is only in days|
+|It is used to execute scheduled commands.|It is used to execute commands periodically.|
+
+### What is load average in Linux?
+Load average, as the name suggests, is the average system load on Linux servers being calculated over a given period of time. The load average of Linux servers can be found using “top” and “uptime” commands. It is simply used to keep track of system resources. It is represented by a decimal number starting at 0.00.  It tells you the load that the system has been under.
+
+### What is INODE and Process Id?
+**INODE:** It is a unique name given to each file by OS. Each inode has a unique inode number within a file system. It stores various information about files in Linux such as ownership, file size, file type, access mode, number of links, etc.  
+
+**Process Id (Identifier):** It is a unique Id given to each process. It is simply used to uniquely identify an active process throughout the system until the process terminates. The first process started by the kernel in Linux is “init” and its process id is 1.
+
+### Why /etc/resolv.conf and /etc/hosts files are used?
+**/etc/resolv.conf:** It is used to configure DNS name servers as it contains the details of the nameserver i.e., details of your DNS server. The DNS server is then used to resolve the hostname of the IP address. 
+
+**/etc/hosts:** It is used to map or translate any hostname or domain name to its relevant IP address.
+
+### What are the advantages of using NIC teaming?
+Network Bonding, also known as NIC Teaming, is a type of bonding that is used to connect multiple network interfaces into a single interface. It usually improves performance and redundancy simply by increasing network throughput and bandwidth. NIC (Network Interface Card) teaming has several advantages as given below: 
+* Load Balancing  
+* Failover  
+* Increases uptime
+
+### Name three standard streams in Linux.
+Standard streams are basically I/O (Input and Output) communication channels between a program and its environment in Linux. Input and output in the Linux environment are distributed across three standard streams. Three standard streams in Linux are as follows:
+* Standard Input (stdin)
+* Standard Output (stdout)
+* Standard Error (stderr)
+
 ## Common Symbol Alias
 | Directory | Description |
 | :-------- | :---------: |
@@ -93,6 +198,7 @@
 |  | -C | name of the directory to place the files |
 |  | -W | validates the data |
 | touch | | change file timestamps |
+| top | |  display Linux processes |  
 | usermod | | modify a user account |
 | useradd | | create a new user or update default new user information |
 | unzip | | unpacks `zip` archives |
@@ -102,6 +208,7 @@
 | whoami | | determines the current user |
 | which | | searches through the directories that are defined in the $PATH environment variable for a given filename |
 | visudo | | used to edit the sudoers file |
+| vmstat | | report statistics of virtual memory |
 | zip | | package and compress (archive) files |
 
 ## Reading the Synopsis Section
