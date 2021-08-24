@@ -59,22 +59,26 @@ you can take advantage of brands
 entry level - A series; low cost
 bustable - low to moderate cpu but need to burst for high cpu - check in/ check out at hotel
 
-D-family: vcpus/memory/and temporary storage good for producaiton
-Da-series: run an AMD
-Dc-encrypts the data while in use with dedicated hardware TPMs
-
-E-series: high memory, data analyitics, in-memory business critical workloads
-
-M-sereies: designed for apps that process a lot of information in memory; like SAP hannah
-
-F-series: high cpue to memory ratio; video encoding/rendering; lates intel xeon vido processors
-
-L series: big data; storage optimized for I/O bandwidth
+* D-family: vcpus/memory/and temporary storage good for producaiton
+* Da-series: run an AMD
+* Dc-encrypts the data while in use with dedicated hardware TPMs
+* E-series: high memory, data analyitics, in-memory business critical workloads
+* M-sereies: designed for apps that process a lot of information in memory; like SAP hannah
+* F-series: high cpue to memory ratio; video encoding/rendering; lates intel xeon vido processors
+* L series: big data; storage optimized for I/O bandwidth
 
 ## Scale sets
 Scale sets: in response to demand or based on a schedule you define
 
 spot workloads: good for processes that can be interrupted
+
+
+## Availability sets
+Deployed across multiple fault domains and have different maintenance windows
+
+
+
+VMs requre a resource group, storage account, vnet, NIC
 
 
 * https://docs.microsoft.com/en-us/azure/virtual-machines/sizes
