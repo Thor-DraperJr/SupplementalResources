@@ -17,8 +17,36 @@ Keep in mind:
 ## Azure Storage
 Core storage services offer a built around being durable and highly available
 
-Core storage services offer a massively scalable object store for data objects, disk storage for Azure virtual machines (VMs), a file system service for the cloud, a messaging store for reliable messaging, and a NoSQL store. The services are:
-* Durable and
+Two main groups of storage:
+* accessible via REST API
+    * Queue Storage
+        * When your services need to communicate with each other. Queue Storage is designed to connect the components of your application. It allows you to build flexible applications with independent components that rely on asynchronous message queuing.
+    * Table Storage
+        * Cheaper, more scalable storage for your structured data and big data analysis. In Table storage you can store, what a surprise, tables. But not all tables. Microsoft Azure Table Storage was designed to store structured NoSQL data.
+    * Blob Storage 
+        * Blob is a file. It all has begun with Blob Storage in Microsoft Azure. BLOB is an acronym and means Binary Large OBject. Or, in plain English, the unstructured files, such as images, video, music files, backup files, etc.
+* access exclusively from VMs
+    * File Storage
+        * a network share
+    * Disk Storage
+        * your local drive
+            * Speeds
+                * HDDs that are cheap but slow and called **standard** storage.
+                * SSDs that are fast but expensive and called **premium** storage.
+        * Management
+            * Unmanaged disk - you should manage the disk storage and corresponding account yourself
+            * Managed disk - Azure does everything for you. You need to select only the size of the disk and the desired type - standard or premium
+
+
+Redundancy: 
+* Locally-Redundant Storage
+    * 3 copies of each file in one building but 3 different places
+* Geo-Redundant Storage
+    * 3 copies in one building, 3 copies in the other.
+    * Basically, this is LRS times 2.
+* Zone Redundant Storage
+    * Zone-redundant storage (ZRS) asynchronously replicates your data across data centers in one or two regions in addition to storing three replicas similarly to LRS. The data stored in ZRS is durable even if the primary data center is unavailable thus. ZRS is only available for block blobs and cannot be converted to LRS or GRS or vice versa.
+
 
 ## How to connect to an Azure resource: 
 * CLI
@@ -28,17 +56,23 @@ Core storage services offer a massively scalable object store for data objects, 
 * RDP
 
 ## What if an RDP connection attempt fails, what would you do?
-* Scale set and availibility set
-    * what they are and how they work
 
-* Storage account
-    * different types of storage: https://azure.microsoft.com/en-us/product-categories/storage
-        * disk storage
-        * blog storage...
-* What can you store in a storage account
+
+
+
+
+
 * Roles and permissions: https://docs.microsoft.com/en-us/azure/azure-monitor/roles-permissions-security
-* What is IaaS? PaaS? SaaS?
-
+## What is IaaS? PaaS? SaaS?
+IaaS
+* Data center physical plant / building
+* Networking firewalls / security
+* Servers and storage
+PaaS
+* Operating systems
+* Deployment tools, database management, business analytics
+SaaS
+* Hosted applications
 
 ## Advantages of using Cloud
 * Easy to lift and shift without rewriting code and you can even get dedicated hosts that can provide single tenant physical servers dedicated to your organization
@@ -68,13 +102,30 @@ bustable - low to moderate cpu but need to burst for high cpu - check in/ check 
 * L series: big data; storage optimized for I/O bandwidth
 
 ## Scale sets
-Scale sets: in response to demand or based on a schedule you define
+Increase or decrease the number of VMs automatically in response to demand or based on a schedule you define.
+
+Vertical scaling, also known as scale up and scale down, means increasing or decreasing virtual machine (VM) sizes in response to a workload. Compare this behavior with horizontal scaling, also referred to as scale out and scale in, where the number of VMs is altered depending on the workload.
 
 spot workloads: good for processes that can be interrupted
 
 
 ## Availability sets
 Deployed across multiple fault domains and have different maintenance windows
+
+An availability set is a logical grouping of VMs that allows Azure to understand how your application is built to provide for redundancy and availability. We recommended that two or more VMs are created within an availability set to provide for a highly available application and to meet the 99.95% Azure SLA. There is no cost for the Availability Set itself, you only pay for each VM instance that you create.
+
+Each virtual machine in your availability set is assigned an update domain and a fault domain by the underlying Azure platform. Each availability set can be configured with up to three fault domains and twenty update domains.
+
+## Availability Zone
+geography	An area of the world containing at least one Azure region
+
+region	A set of datacenters deployed within a latency-defined perimeter and connected through a dedicated regional low-latency network.
+
+Availability Zone	Unique physical locations within a region.
+
+
+
+#####
 
 
 
