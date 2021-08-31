@@ -31,13 +31,17 @@ Core storage services offer a massively scalable object store for data objects, 
 * Scale set and availibility set
     * what they are and how they work
 
-* Storage account
+## Storage account
     * different types of storage: https://azure.microsoft.com/en-us/product-categories/storage
         * disk storage
         * blog storage...
-* What can you store in a storage account
-* Roles and permissions: https://docs.microsoft.com/en-us/azure/azure-monitor/roles-permissions-security
-* What is IaaS? PaaS? SaaS?
+
+### What can you store in a storage account
+
+## Roles and permissions: 
+https://docs.microsoft.com/en-us/azure/azure-monitor/roles-permissions-security
+
+## What is IaaS? PaaS? SaaS?
 
 
 ## Advantages of using Cloud
