@@ -93,3 +93,79 @@ DESCRIPTION
        Hashcat is the self-proclaimed world’s fastest CPU-based password recovery tool,
        Examples of hashcat supported hashing algorithms are Microsoft LM  Hashes,  MD4,
        MD5, SHA-family, Unix Crypt formats, MySQL, Cisco PIX.
+       
+hashcat -m 0 -a 0 -o solved.txt hash.txt /usr/share/rockyou.txt --force
+
+
+## GPG
+DESCRIPTION
+       gpg  is  the OpenPGP part of the GNU Privacy Guard (GnuPG). It is a tool to pro‐
+       vide digital encryption and signing services using  the  OpenPGP  standard.  gpg
+       features complete key management and all the bells and whistles you would expect
+       from a full OpenPGP implementation.
+
+       There are two main versions of GnuPG: GnuPG 1.x and GnuPG 2.x.  GnuPG  2.x  sup‐
+       ports  modern encryption algorithms and thus should be preferred over GnuPG 1.x.
+       You only need to use GnuPG 1.x if your platform doesn't support  GnuPG  2.x,  or
+       you need support for some features that GnuPG 2.x has deprecated, e.g., decrypt‐
+       ing data created with PGP-2 keys.
+
+       If you are looking for version 1 of GnuPG, you may find that  version  installed
+       under the name gpg1.
+
+gpg --list-keys
+
+gpg --gen-key
+
+gpg --delete-secret-and-public-key
+
+## nmap
+Nmap (“Network Mapper”) is an open source tool for network exploration and security auditing.
+
+nmap -sV
+nmap -sV -oN zenmapscan.txt --script smb-enum-shares 192.168.0.10`
+
+Use nmap -O -p 1-500 --osscan-guess to perform OS fingerprinting, and scan ports 1 through 500.
+Use uname -a to print the OS type and version.
+Use nmap -sV to enumerate service type.
+Use nmap -A -T4 to perform OS fingerprinting using fast execution.
+Use nmap -sO to perform an IP protocol scan.
+Use nmap -sU -F to perform device and port enumeration.
+Use nmap -sA to enumerate the type of firewall in use.
+
+## searchsploit
+
+search icecast
+use 0
+set RHOST
+search -f *secretfile*.txt
+
+## msfconsole
+
+## Github
+- Commands include:
+    - git clone
+    - git add
+    - git commit -m
+    - git push
+
+## ufw
+* `sudo ufw reset` to reset all UFW rules back to factory defaults.
+* `sudo ufw status` to check the current status of the firewall.
+* `sudo ufw enable` to start the firewall and update rules.
+* `sudo ufw reload` to stop, and restart the UFW firewall.
+* `sudo ufw default deny incoming` to block all incoming connections.
+* `sudo ufw default allow outgoing` to allow all outgoing connections.
+* `sudo ufw allow` to open specific ports.
+* `sudo ufw deny` to close specific ports.
+* `sudo ufw delete` to delete rules.
+* `sudo ufw disable` to shut down the firewall.
+
+## firewalld
+* `sudo /etc/init.d/firewalld start` to start firewalld.
+* `sudo firewall-cmd --list-all-zones` to list all current zones.
+* `sudo firewall-cmd --zone=home --change-interface=eth0` to bind together interfaces.
+* `sudo firewall-cmd --get-services` to list currently configured services.
+* `sudo firewall-cmd --zone=home --list-all` to list all currently configured services for a specific zone.
+* `sudo firewall-cmd --zone=home --add-rich-rule=` to add specific rules to specific zones.
+* `--add-icmp-block=echo-reply --add-icmp-block=echo-request` to block pings for specific zones.

@@ -1,7 +1,9 @@
 # What up!
 
 ## Supplemental Resources
-Welcome to my repository of useful resources to help ease your learning. A collection of all of the ah-ha moments and things I wish I knew earlier.
+It wasn't long ago that I started my career changing journey. It can be pretty rough making a transition into the everchanging world that is technology. Here are some bits of information I've collected along the way. The resources are all over the place and they might look like the scatter brained notes of a mad man (well they kind of are). 
+
+I also write blog posts. Generally I'll put them on [LinkedIn](www.linkedin.com/in/thor-draperjr) but sometimes I only post them on my [website](www.thor-draperjr.github.io)
 
 Good luck!
 
@@ -16,4 +18,5 @@ Good luck!
 
 ## How to Contribute
 Feel free to message or email me directly!
+
 * [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
