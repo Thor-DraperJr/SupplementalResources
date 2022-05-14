@@ -33,6 +33,10 @@
       "metadata": {
         "description": "description"
       }
+    },
+    "webVmSize": {
+      "type": "string",
+      "defaultValue": "Standard_B1s"
     }
   },
   "variables": {
@@ -270,7 +274,7 @@
           "id": "[resourceId('Microsoft.Compute/availabilitySets', variables('availabilitySetName'))]"
         },
         "hardwareProfile": {
-          "vmSize": "[parameters('vmSize')]"
+          "vmSize": "[parameters('webVmSize')]"
         },
         "osProfile": {
           "computerName": "[concat(variables('webVmName'), copyindex())]",
@@ -301,7 +305,7 @@
         "networkProfile": {
           "networkInterfaces": [
             {
-                "id": "[resourceId('Microsoft.Network/networkInterfaces',concat(variables('vmName'),copyindex()))]"
+                "id": "[resourceId('Microsoft.Network/networkInterfaces',concat(variables('webVmName'),copyindex()))]"
             }
           ]
         }
