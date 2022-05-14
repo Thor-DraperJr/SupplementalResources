@@ -29,14 +29,14 @@
     },
     "vmSize": {
       "type": "string",
-      "defaultValue": "Standard_B2ms",
+      "defaultValue": "Standard_B1s",
       "metadata": {
         "description": "description"
       }
     },
     "webVmSize": {
       "type": "string",
-      "defaultValue": "Standard_B1s"
+      "defaultValue": "Standard_B2s"
     }
   },
   "variables": {
