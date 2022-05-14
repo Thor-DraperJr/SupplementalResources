@@ -47,8 +47,8 @@
     "vNetAddressPrefixes": "10.0.0.0/16",
     "vNetSubnetName": "default",
     "vNetSubnetAddressPrefix": "10.0.0.0/24",
-    "vmName": "[concat(parameters('projectName'), '-vm')]",
-    "publicIPAddressName": "[concat(parameters('projectName'), '-ip')]",
+    "vmName": "Jumpbox",
+    "publicIPAddressName": "[concat(variables('vmName'), '-ip')]",
     "networkInterfaceName": "[concat(parameters('projectName'), '-nic')]",
     "networkSecurityGroupName": "[concat(parameters('projectName'), '-nsg')]",
     "networkSecurityGroupName2": "[concat(variables('vNetSubnetName'), '-nsg')]"
@@ -104,36 +104,12 @@
       }
     },
     {
-      "comments": "Simple Network Security Group for subnet [variables('vNetSubnetName')]",
-      "type": "Microsoft.Network/networkSecurityGroups",
-      "apiVersion": "2020-05-01",
-      "name": "[variables('networkSecurityGroupName2')]",
-      "location": "[parameters('location')]",
-      "properties": {
-        "securityRules": [
-          {
-            "name": "default-allow-22",
-            "properties": {
-              "priority": 1000,
-              "access": "Allow",
-              "direction": "Inbound",
-              "destinationPortRange": "22",
-              "protocol": "Tcp",
-              "sourceAddressPrefix": "*",
-              "sourcePortRange": "*",
-              "destinationAddressPrefix": "*"
-            }
-          }
-        ]
-      }
-    },
-    {
       "type": "Microsoft.Network/virtualNetworks",
       "apiVersion": "2020-05-01",
       "name": "[variables('vNetName')]",
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName2'))]"
+        "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
       ],
       "properties": {
         "addressSpace": {
@@ -147,7 +123,7 @@
             "properties": {
               "addressPrefix": "[variables('vNetSubnetAddressPrefix')]",
               "networkSecurityGroup": {
-                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName2'))]"
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
               }
             }
           }
