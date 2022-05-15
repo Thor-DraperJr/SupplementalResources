@@ -34,6 +34,13 @@
         "description": "description"
       }
     },
+    "ipAddress": {
+      "type": "string",
+      "defaultValue": "*",
+      "metadata": {
+        "description": "Your IP Address"
+      }
+    },
     "webVmSize": {
       "type": "string",
       "defaultValue": "Standard_B2s"
@@ -50,8 +57,7 @@
     "vmName": "Jumpbox",
     "publicIPAddressName": "[concat(variables('vmName'), '-ip')]",
     "networkInterfaceName": "[concat(parameters('projectName'), '-nic')]",
-    "networkSecurityGroupName": "[concat(parameters('projectName'), '-nsg')]",
-    "networkSecurityGroupName2": "[concat(variables('vNetSubnetName'), '-nsg')]"
+    "networkSecurityGroupName": "[concat(parameters('projectName'), '-nsg')]"
   },
   "resources": [
     {
@@ -81,7 +87,7 @@
               "protocol": "Tcp",
               "sourcePortRange": "*",
               "destinationPortRange": "22",
-              "sourceAddressPrefix": "*",
+              "sourceAddressPrefix": "[parameters('ipAddress')]",
               "destinationAddressPrefix": "*",
               "access": "Allow",
               "priority": 1000,

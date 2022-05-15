@@ -15,7 +15,13 @@
             "value": "East US"
         },
         "vmSize": {
-            "value": "Standard_B2ms"
+            "value": "Standard_B1s"
+        },
+        "ipAddress": {
+            "value": "*"
+        },
+        "webVmSize": {
+            "value": "Standard_B2s"
         }
     }
 }
