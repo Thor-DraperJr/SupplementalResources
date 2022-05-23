@@ -50,18 +50,17 @@
                "description": "Make sure you are using a new address space for the vNIC's to funciton."
             }  
         },
+    "adminUsername": {
+        "type": "string",
+        "defaultValue": "azureuser",
+        "metadata": {
+            "description": "The admin username for all your machines."
+        },
         "vmSize": {
             "type": "string",
             "defaultValue": "Standard_B1s",
             "metadata": {
                 "description": "Jumpbox size"
-            }
-        },
-        "adminUsername": {
-            "type": "string",
-            "defaultValue": "azureuser",
-            "metadata": {
-                "description": "The admin username for all your machines."
             }
         },
         "sshPublicKey": {
