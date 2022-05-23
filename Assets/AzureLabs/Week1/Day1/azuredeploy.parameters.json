@@ -21,7 +21,7 @@
             "value": "*"
         },
         "webVmSize": {
-            "value": "Standard_B2s"
+            "value": "Standard_B1ms"
         }
     }
 }

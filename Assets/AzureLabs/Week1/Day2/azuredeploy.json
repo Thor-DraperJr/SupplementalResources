@@ -10,7 +10,7 @@
     },
     "location": {
       "type": "string",
-      "defaultValue": "[resourceGroup().location]",
+      "defaultValue": "East US",
       "metadata": {
         "description": "Specifies the location for all resources."
       }
@@ -43,21 +43,20 @@
     },
     "webVmSize": {
       "type": "string",
-      "defaultValue": "Standard_B2s"
+      "defaultValue": "Standard_B1ms"
     }
   },
   "variables": {
     "availabilitySetName": "AvSet",
     "numberofInstances": 2,
     "webVmName": "Web",
-    "vNetName": "[concat(parameters('projectName'), '-vnet')]",
-    "vNetAddressPrefixes": "10.0.0.0/16",
-    "vNetSubnetName": "default",
-    "vNetSubnetAddressPrefix": "10.0.0.0/24",
-    "vmName": "Jumpbox",
-    "publicIPAddressName": "[concat(variables('vmName'), '-ip')]",
+    "vnetName": "[concat(parameters('projectName'), '-vnet')]",
+    "vnetAddressPrefix": "10.7.0.0/24",
+    "vnetSubnetName": "default",
+    "jumpboxName": "Jumpbox",
+    "jumpboxVip": "[concat(variables('jumpboxName'), '-ip')]",
     "networkInterfaceName": "[concat(parameters('projectName'), '-nic')]",
-    "networkSecurityGroupName": "[concat(parameters('projectName'), '-nsg')]"
+    "nsgName": "[concat(parameters('projectName'), '-nsg')]"
   },
   "resources": [
     {
@@ -76,7 +75,7 @@
     {
       "type": "Microsoft.Network/networkSecurityGroups",
       "apiVersion": "2020-05-01",
-      "name": "[variables('networkSecurityGroupName')]",
+      "name": "[variables('nsgName')]",
       "location": "[parameters('location')]",
       "properties": {
         "securityRules": [
@@ -100,7 +99,7 @@
     {
       "type": "Microsoft.Network/publicIPAddresses",
       "apiVersion": "2020-05-01",
-      "name": "[variables('publicIPAddressName')]",
+      "name": "[variables('jumpboxVip')]",
       "location": "[parameters('location')]",
       "properties": {
         "publicIPAllocationMethod": "Dynamic"
@@ -112,24 +111,24 @@
     {
       "type": "Microsoft.Network/virtualNetworks",
       "apiVersion": "2020-05-01",
-      "name": "[variables('vNetName')]",
+      "name": "[variables('vnetName')]",
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
+        "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
       ],
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
-            "[variables('vNetAddressPrefixes')]"
+            "[variables('vnetAddressPrefix')]"
           ]
         },
         "subnets": [
           {
-            "name": "[variables('vNetSubnetName')]",
+            "name": "[variables('vnetSubnetName')]",
             "properties": {
-              "addressPrefix": "[variables('vNetSubnetAddressPrefix')]",
+              "addressPrefix": "[variables('vnetAddressPrefix')]",
               "networkSecurityGroup": {
-                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
               }
             }
           }
@@ -139,15 +138,15 @@
     {
       "type": "Microsoft.Network/networkInterfaces",
       "apiVersion": "2020-11-01",
-      "name": "[concat(variables('webVmName'),copyindex())]",
+      "name": "[concat(variables('webVmName'),copyindex(1))]",
       "copy": {
           "name": "netIntLoop",
           "count": "[variables('numberOfInstances')]"
       },
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/virtualNetworks', variables('vNetName'))]",
-        "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
+        "[resourceId('Microsoft.Network/virtualNetworks', variables('vnetName'))]",
+        "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
       ],
       "properties": {
         "ipConfigurations": [
@@ -156,7 +155,7 @@
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
               "subnet": {
-                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vNetName'), variables('vNetSubnetName'))]"
+                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vnetName'), variables('vnetSubnetName'))]"
               }
             }
           }
@@ -167,12 +166,12 @@
     {
       "type": "Microsoft.Network/networkInterfaces",
       "apiVersion": "2020-05-01",
-      "name": "[variables('networkInterfaceName')]",
+      "name": "[concat(parameters('projectName'), variables('jumpboxName'), '-vm', '-nic')]",
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName'))]",
-        "[resourceId('Microsoft.Network/virtualNetworks', variables('vNetName'))]",
-        "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
+        "[resourceId('Microsoft.Network/publicIPAddresses', variables('jumpboxVip'))]",
+        "[resourceId('Microsoft.Network/virtualNetworks', variables('vnetName'))]",
+        "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
       ],
       "properties": {
         "ipConfigurations": [
@@ -181,10 +180,10 @@
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
               "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName'))]"
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('jumpboxVip'))]"
               },
               "subnet": {
-                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vNetName'), variables('vNetSubnetName'))]"
+                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vnetName'), variables('vnetSubnetName'))]"
               }
             }
           }
@@ -194,7 +193,7 @@
     {
       "type": "Microsoft.Compute/virtualMachines",
       "apiVersion": "2021-11-01",
-      "name": "[variables('vmName')]",
+      "name": "[variables('jumpboxName')]",
       "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Network/networkInterfaces', variables('networkInterfaceName'))]"
@@ -204,7 +203,7 @@
           "vmSize": "[parameters('vmSize')]"
         },
         "osProfile": {
-          "computerName": "[variables('vmName')]",
+          "computerName": "[variables('jumpboxName')]",
           "adminUsername": "[parameters('adminUsername')]",
           "linuxConfiguration": {
             "disablePasswordAuthentication": true,
@@ -232,7 +231,7 @@
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('networkInterfaceName'))]"
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('projectName'), '-vm', copyIndex(1), '-nic'))]"
             }
           ]
         }
@@ -249,7 +248,8 @@
       "location": "[parameters('location')]",
       "dependsOn": [
           "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('webVmName'),copyindex()))]",
-          "[resourceId('Microsoft.Compute/availabilitySets', variables('availabilitySetName'))]"
+          "[resourceId('Microsoft.Compute/availabilitySets', variables('availabilitySetName'))]",
+          "netIntLoop"
       ],
       "properties": {
         "availabilitySet": {
