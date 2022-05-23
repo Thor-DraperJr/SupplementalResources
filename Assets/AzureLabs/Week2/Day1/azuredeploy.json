@@ -1,0 +1,451 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "projectName": {
+            "type": "string",
+            "metadata": {
+                "description": "Specifies a name for generating resource names."
+            }
+        },
+        "location1": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "Specifies the location of the Jumpbox/Web environment."
+            }
+        },
+        "myIpAddress": {
+            "type": "string",
+            "metadata": {
+                "description": "My IP Address. Use `curl ipinfo` on your local machine to get your public IP."
+            }
+        },
+        "allowedIpAddresses": {
+            "type": "string",
+            "defaultValue": "*",
+            "metadata": {
+                "description": "Allowed IP address."
+            }
+        },
+        "location2": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "Specifies the location of the ELK environment."
+            }
+        },
+        "addressSpace1": {
+            "type": "string",
+            "defaultValue": "10.7.0.0/24",
+            "metadata": {
+                "description": "Make sure you are using a new address space for the vNIC's to funciton."
+            }
+        },
+        "addressSpace2": {
+           "type": "string",
+           "defaultValue": "10.8.0.0/24",
+           "metadata": {
+               "description": "Make sure you are using a new address space for the vNIC's to funciton."
+            }  
+        },
+        "vmSize": {
+            "type": "string",
+            "defaultValue": "Standard_B1s",
+            "metadata": {
+                "description": "Jumpbox size"
+            }
+        },
+        "adminUsername": {
+            "type": "string",
+            "metadata": {
+                "description": "The admin username for all your machines."
+            }
+        },
+        "sshPublicKey": {
+            "type": "string",
+            "metadata": {
+                "description": "Your Public Key from your machine (Use ssh-keygen and copy/paste your 'id_rsa.pub' here.)"
+            }
+        }
+    },
+    "functions": [],
+    "variables": {
+        "asName": "[concat(parameters('projectName'), '-As')]",
+        "webNsg": "[concat(parameters('projectName'), '-WebNsg')]",
+        "elkNsg": "[concat(parameters('projectName'), '-ElkNsg')]",
+        "jumpboxIp": "[concat(parameters('projectName'), '-JumpboxIp')]",
+        "lbIpName": "[concat(parameters('projectName'), '-LbIp')]",
+        "lbName": "[concat(parameters('projectName'), '-Lb')]",
+        "lbBackendPoolName": "[concat(parameters('projectName'), '-LbBep')]",
+        "elkIpName": "[concat(parameters('projectName'), '-ElkIp')]",
+        "vnet1Name": "[concat(parameters('projectName'), '-Vnet1')]",
+        "vnet1Subnet": "[concat(parameters('projectName'), '-Vnet1Subnet')]",
+        "vnet2Name": "[concat(parameters('projectName'), '-Vnet2')]",
+        "vnet2Subnet": "[concat(parameters('projectName'), '-Vnet2Subnet')]",
+        "jumpboxVmName": "[concat(parameters('projectName'), '-JumpboxVm')]",
+        "jumpboxNic": "[concat(parameters('projectName'), '-JbNic')]",
+        "jumpboxNicIpConfig": "[concat(parameters('projectName'), '-JbNicIpConfig')]",
+        "webVmName": "[concat(parameters('projectName'), '-WebVm')]",
+        "webNic": "[concat(parameters('projectName'), '-WebNic')]",
+        "webNicIpConfig": "[concat(parameters('projectName'), '-WebIpConfig')]",
+        "numberOfInstances": 2
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Compute/availabilitySets",
+            "apiVersion": "2021-11-01",
+            "location": "[parameters('location1')]",
+            "name": "[variables('asName')]",
+            "properties": {
+                "platformFaultDomainCount": 2,
+                "platformUpdateDomainCount": 2
+            }
+        },
+        {
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "apiVersion": "2020-11-01",
+            "location": "[parameters('location1')]",
+            "name": "[variables('webNsg')]", 
+            "properties": {
+                "securityRules": [
+                    {
+                        "name": "allow-ssh",
+                        "properties": {
+                            "access": "Allow",
+                            "description": "Allow ssh from my pc.",
+                            "direction": "Inbound",
+                            "priority": 1000,
+                            "protocol": "Tcp",
+                            "sourceAddressPrefix": "[parameters('myIpAddress')]",
+                            "destinationAddressPrefix": "VirtualNetwork"
+                        }
+                    },
+                    {
+                        "name": "allow-http",
+                        "properties": {
+                            "access": "Allow",
+                            "description": "Allow http traffic from the allowed IPs to my Web vNet.",
+                            "destinationAddressPrefix": "VirtualNetwork",
+                            "destinationPortRange": "80",
+                            "direction": "Inbound",
+                            "priority": 1100,
+                            "protocol": "Tcp",
+                            "sourceAddressPrefix": "[parameters('allowedIpAddresses')]",
+                            "sourcePortRange": "*"
+                        }
+                    },
+                    {
+                        "name": "allow-alb-healthprobes",
+                        "properties": {
+                            "access": "Allow",
+                            "description": "Allow 168.63.129.16 to send health probes to my vNet",
+                            "destinationAddressPrefix": "VirtualNetwork",
+                            "destinationPortRange": "*",
+                            "direction": "Inbound",
+                            "priority": 1200,
+                            "protocol": "Tcp",
+                            "sourceAddressPrefix": "AzureLoadBalancer",
+                            "sourcePortRange": "*"
+                        }
+                    },
+                    {
+                        "name": "deny-all",
+                        "properties": {
+                            "access": "Deny",
+                            "description": "Deny Azure default Allow rules.",
+                            "destinationAddressPrefix": "*",
+                            "destinationPortRange": "*",
+                            "direction": "Inbound",
+                            "priority": 4096,
+                            "protocol": "*",
+                            "sourceAddressPrefix": "*",
+                            "sourcePortRange": "*"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "apiVersion": "2020-11-01",
+            "location": "[parameters('location2')]",
+            "name": "[variables('elkNsg')]",
+            "properties": {
+                "securityRules": [
+                    {
+                        "name": "allow-kibana",
+                        "properties": {
+                            "access": "Allow",
+                            "description": "Allow all traffic to go to Kibana site",
+                            "destinationAddressPrefix": "VirtualNetwork",
+                            "destinationPortRange": "5601",
+                            "direction": "Inbound",
+                            "priority": 1000,
+                            "protocol": "Tcp",
+                            "sourceAddressPrefix": "[parameters('allowedIpAddresses')]",
+                            "sourcePortRange": "*"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/publicIPAddresses",
+            "apiVersion": "2020-11-01",
+            "location": "[parameters('location1')]",
+            "name": "[variables('jumpboxIp')]",
+            "properties": {
+                "publicIPAllocationMethod": "Dynamic"
+            },
+            "sku": {
+                "name": "Basic"
+            }
+        },
+        {
+            "type": "Microsoft.Network/publicIPAddresses",
+            "apiVersion": "2020-11-01",
+            "location": "[parameters('location1')]",
+            "name": "[variables('lbIpName')]",
+            "properties": {
+                "publicIPAllocationMethod": "Dynamic"
+            },
+            "sku": {
+                "name": "Basic",
+                "tier": "Regional"
+            }
+        },
+        {
+            "type": "Microsoft.Network/publicIPAddresses",
+            "apiVersion": "2020-11-01",
+            "location": "[parameters('location2')]",
+            "name": "[variables('elkIpName')]",
+            "properties": {
+                "publicIPAllocationMethod": "Dynamic"
+            },
+            "sku": {
+                "name": "Basic"
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2020-11-01",
+            "location": "[parameters('location1')]",
+            "name": "[variables('vNet1Name')]",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[parameters('addressSpace1')]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "[variables('vnet1Subnet')]",
+                        "properties": {
+                            "addressPrefix": "[parameters('addressSpace1')]"
+                        }
+                    }
+                ],
+                "virtualNetworkPeerings": [
+                    {
+                        "name": "link1a",
+                        "properties": {
+                            "allowForwardedTraffic": true,
+                            "allowGatewayTransit": false,
+                            "allowVirtualNetworkAccess": true,
+                            "remoteVirtualNetwork": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks', variables('vnet2Name'))]"
+                            },
+                            "remoteAddressSpace": {
+                                "addressPrefixes": [
+                                    "[parameters('addressSpace2')]"
+                                ]
+                            },
+                            "useRemoteGateways": false
+                        }
+                    }
+                ],
+                "enableDdosProtection": false
+            }
+        },
+        {
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2020-11-01",
+            "location": "[parameters('location1')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses', variables('jumpboxIp'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks', variables('vNet1Name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', variables('webNsg'))]"
+            ],
+            "name": "[variables('jumpboxNic')]",
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "[variables('jumpboxNicIpConfig')]",
+                        "properties": {
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('jumpboxIp'))]"
+                            },
+                            "subnet": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets',variables('vNet1Name'), variables('vnet1Subnet'))]"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2020-11-01",
+            "location": "[parameters('location1')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', variables('vNet1Name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', variables('webNsg'))]",
+                "[resourceId('Microsoft.Network/loadBalancers', variables('lbName'))]"
+            ],
+            "name": "[concat(variables('webVmName'),copyIndex())]",
+            "copy": {
+                "name": "netIntLoop",
+                "count": "[variables('numberOfInstances')]"
+            },
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "[variables('webNicIpConfig')]",
+                        "properties": {
+                            "privateIPAllocationMethod": "Dynamic",
+                            "subnet": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vnet1Name'), variables('vnet1Subnet'))]"
+                            },
+                            "loadBalancerBackendAddressPools": [
+                                {
+                                    "id": "[resourceId('Microsoft.Network/loadBalancers/backendAddressPools', variables('lbName'), variables('lbBackendPoolName'))]"
+                                }
+                            ]
+                            }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2021-11-01",
+            "location": "[parameters('location1')]",
+            "name": "[variables('jumpboxVmName')]",
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "[parameters('vmSize')]"
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('jumpboxNic'))]"
+                        }
+                    ]
+                },                
+                "osProfile": {
+                    "adminUsername": "[parameters('adminUsername')]",
+                    "computerName": "[variables('jumpboxVmName')]",
+                    "linuxConfiguration": {
+                        "ssh": {
+                            "publicKeys": [
+                                {
+                                    "keyData": "[parameters('adminUsername')]",
+                                    "path": "[parameters('sshPublicKey')]"
+                                }
+                            ]
+                        },
+                        "disablePasswordAuthentication": true
+                    }
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "Canonical",
+                        "offer": "UbuntuServer",
+                        "sku": "18_04-lts-gen2",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "createOption": "FromImage"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Network/loadBalancers",
+            "apiVersion": "2020-11-01",
+            "location": "[parameters('location1')]",
+            "dependsOn": [
+              "[resourceId('Microsoft.Network/virtualNetworks', variables('vNet1Name'))]"
+            ],
+            "name": "[variables('lbName')]",
+            "properties": {
+                "frontendIPConfigurations": [
+                    {
+                        "name": "[variables('lbIpName')]",
+                        "properties": {
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('lbIpName'))]"
+                            }
+                        }
+                    }
+                ],
+                "backendAddressPools": [
+                    {
+                        "name": "[variables('lbBackendPoolName')]"
+                    }
+                ],
+                "loadBalancingRules": [
+                    {
+                        "name": "lbRule1",
+                        "properties": {
+                            "backendAddressPool": {
+                                "id": "[resourceId('Microsoft.Network/loadBalancers/backendAddressPools', variables('lbName'), variables('lbBackendPoolName'))]"
+                            },
+                            "backendPort": 80,
+                            "frontendIPConfiguration": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('lbIpName'))]"
+                            },
+                            "frontendPort": 80,
+                            "protocol": "Tcp",
+                            "probe": {
+                                "id": "[resourceId('Microsoft.Network/loadBalancers/probes',variables('lbName'), 'lbprobe')]"
+                            }
+                        }
+                    }
+                ],
+                "probes": [
+                    {
+                        "name": "lbProbe",
+                        "properties": {
+                            "numberOfProbes": 2,
+                            "port": 80,
+                            "protocol": "Tcp"
+                        }
+                    }
+                ],
+                "outboundRules": [
+                    {
+                        "name": "outboundRule1",
+                        "properties": {
+                            "backendAddressPool": {
+                                "id": "[resourceId('Microsoft.Network/loadBalancers/backendAddressPools', variables('lbName'), variables('lbBackendPoolName'))]"
+                            },
+                            "frontendIPConfigurations": [
+                                {
+                                    "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('lbIpName'))]"
+                                }
+                            ],
+                            "protocol": "All"
+                        }
+                    }
+                ]
+            },
+            "sku": {
+                "name": "Basic",
+                "tier": "Regional"
+            }
+        }
+    ],
+    "outputs": {}
+}
