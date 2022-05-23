@@ -5,29 +5,8 @@
         "projectName": {
             "value": "" // TODO: Fill in parameter value
         },
-        "location1": {
-            "value": "" // TODO: Fill in parameter value
-        },
         "myIpAddress": {
             "value": "" // TODO: Fill in parameter value
-        },
-        "allowedIpAddresses": {
-            "value": "*"
-        },
-        "location2": {
-            "value": "" // TODO: Fill in parameter value
-        },
-        "addressSpace1": {
-            "value": "10.7.0.0/24"
-        },
-        "addressSpace2": {
-            "value": "10.8.0.0/24"
-        },
-        "vmSize": {
-            "value": "Standard_B1s"
-        },
-        "adminUsername": {
-            "value": "azureuser" // TODO: Fill in parameter value
         },
         "sshPublicKey": {
             "value": "" // TODO: Fill in parameter value
