@@ -17,6 +17,7 @@
     },
     "adminUsername": {
       "type": "string",
+      "defaultValue": "azureuser",
       "metadata": {
         "description": "Specifies a username for the Virtual Machine."
       }
@@ -54,14 +55,12 @@
     }
   },
   "variables": {
-    "availabilitySetName": "AvSet",
+    "availabilitySetName": "[concat(parameters('projectName'), '-avSet')]",
     "numberofInstances": 2,
-    "webVmName": "Web",
     "vnetName": "[concat(parameters('projectName'), '-vnet')]",
-    "vnetSubnetName": "default",
-    "jumpboxName": "Jumpbox",
+    "vnetSubnetName": "[concat(parameters('projectName'), '-subnet')]",
+    "jumpboxName": "[concat(parameters('projectName'), '-jumpboxVm')]",
     "jumpboxVip": "[concat(variables('jumpboxName'), '-ip')]",
-    "networkInterfaceName": "[concat(parameters('projectName'), '-nic')]",
     "nsgName": "[concat(parameters('projectName'), '-nsg')]"
   },
   "resources": [
@@ -186,7 +185,7 @@
     {
       "type": "Microsoft.Network/networkInterfaces",
       "apiVersion": "2020-11-01",
-      "name": "[concat(variables('webVmName'),copyindex(1))]",
+      "name": "[concat(parameters('projectName'), '-web',copyindex(1))]",
       "copy": {
           "name": "netIntLoop",
           "count": "[variables('numberOfInstances')]"
@@ -214,7 +213,7 @@
     {
       "type": "Microsoft.Network/networkInterfaces",
       "apiVersion": "2020-11-01",
-      "name": "[concat(parameters('projectName'), variables('jumpboxName'), '-vm', '-nic')]",
+      "name": "[concat(variables('jumpboxName'), '-vm', '-nic')]",
       "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Network/publicIPAddresses', variables('jumpboxVip'))]",
@@ -244,7 +243,7 @@
       "name": "[variables('jumpboxName')]",
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/networkInterfaces', variables('networkInterfaceName'))]"
+        "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('jumpboxName'), '-vm', '-nic'))]"
       ],
       "properties": {
         "hardwareProfile": {
@@ -288,14 +287,14 @@
     {
       "type": "Microsoft.Compute/virtualMachines",
       "apiVersion": "2021-11-01",
-            "name": "[concat(variables('webVmName'), copyIndex(1))]",
+            "name": "[concat(parameters('projectName'), '-web', copyIndex(1))]",
             "copy": {
                 "name": "virtualMachineLoop",
                 "count": "[variables('numberOfInstances')]"
             },
       "location": "[parameters('location')]",
       "dependsOn": [
-          "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('webVmName'),copyindex(1)))]",
+          "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('projectName'), '-web',copyindex(1)))]",
           "[resourceId('Microsoft.Compute/availabilitySets', variables('availabilitySetName'))]",
           "netIntLoop"
       ],
@@ -307,7 +306,7 @@
           "vmSize": "[parameters('webVmSize')]"
         },
         "osProfile": {
-          "computerName": "[concat(variables('webVmName'), copyindex(1))]",
+          "computerName": "[concat(parameters('projectName'), '-web', copyindex(1))]",
           "adminUsername": "[parameters('adminUsername')]",
           "linuxConfiguration": {
             "disablePasswordAuthentication": true,
@@ -335,7 +334,7 @@
         "networkProfile": {
           "networkInterfaces": [
             {
-                "id": "[resourceId('Microsoft.Network/networkInterfaces',concat(variables('webVmName'),copyindex(1)))]"
+                "id": "[resourceId('Microsoft.Network/networkInterfaces',concat(parameters('projectName'), '-web', copyindex(1)))]"
             }
           ]
         }
