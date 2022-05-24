@@ -90,7 +90,7 @@ Create an Azure environment with a management VM, two web servers, and an ELK se
    1.  If you see any errors you need to copy your jumpbox public ssh key to the VMs through the portal (step 4).
 10. Run `ansible-playbook dvwa-playbook.yml elk-playbook.yml`
 11. Verify your elk server is working by navigating to <ELK_Public_IP>:5601 in your web browser.
-12. Run `ansible-playbook dvwa.yml beats-playbook.yml`
+12. Run `ansible-playbook beats-playbook.yml`
 
 ## Terminology
 
