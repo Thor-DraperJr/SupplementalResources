@@ -261,7 +261,7 @@
           "imageReference": {
             "publisher": "Canonical",
             "offer": "UbuntuServer",
-            "sku": "20_04-lts-gen2",
+            "sku": "18_04-lts-gen2",
             "version": "latest"
           },
           "osDisk": {
@@ -317,7 +317,7 @@
           "imageReference": {
             "publisher": "Canonical",
             "offer": "UbuntuServer",
-            "sku": "20_04-lts-gen2",
+            "sku": "18_04-lts-gen2",
             "version": "latest"
           },
           "osDisk": {
