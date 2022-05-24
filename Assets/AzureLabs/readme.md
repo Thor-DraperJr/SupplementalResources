@@ -88,7 +88,7 @@ Create an Azure environment with a management VM, two web servers, and an ELK se
 8. Modify `/etc/ansible/ansible.cfg` add remote_user under the defaults section.
 9. Run `ansible all -m ping` type yes to make sure the ssh keys are added to your host.
    1.  If you see any errors you need to copy your jumpbox public ssh key to the VMs through the portal (step 4).
-10. Run `ansible-playbook dvwa.yml elk-playbook.yml`
+10. Run `ansible-playbook dvwa-playbook.yml elk-playbook.yml`
 11. Verify your elk server is working by navigating to <ELK_Public_IP>:5601 in your web browser.
 12. Run `ansible-playbook dvwa.yml beats-playbook.yml`
 
