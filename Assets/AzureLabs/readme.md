@@ -21,6 +21,8 @@ Create an Azure environment with a management VM, two web servers, and an ELK se
 | Vnet Address Prefix | Must be unique to avoid overlap |
 | Vnet Address Prefix2 | Must be unique to avoid overlap |
 
+**If you're using the free tier of Azure, you may have a hard time finding two good locations where you can spin up your resources. For fast reference on values you can put in the Location parameters navigate [here](https://docs.microsoft.com/en-us/azure/availability-zones/cross-region-replication-azure#azure-cross-region-replication-pairings-for-all-geographies)**
+
 ## Resources Created
 
 - 2 Virtual Networks
