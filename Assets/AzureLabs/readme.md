@@ -50,18 +50,30 @@ Create an Azure environment with a management VM, two web servers, and an ELK se
    4. [Beats Playbook](Week2/Day3/beats-playbook.yml)
 3. Run `bash completeSetup.sh` and press enter when prompted.
 4. Copy the ssh from the output and navigate to your WebVms/ElkVm in your Azure portal and select 'Reset password'. Set the username to azureuser and paste the jumpbox VMs public key.
-5. Modify `/etc/filebeat/filebeat.yml` to set the connection information:
+5. Run `vim BeatConfigs/filebeat.yml` to modify and set the connection information for filebeat:
 
   ```yml
+  setup.kibana:
+  host: "<kibana_url>"
+
   output.elasticsearch:
     hosts: ["<ELK_Private_Ip>"]
     username: "elastic"
     password: "changme"
-  setup.kibana:
-  host: "<kibana_url>"
   ```
 
-6. Modify `/etc/metricbeat/metricbeat.yml` to set the connection information:
+6. Run `vim BeatConfigs/metricbeat.yml` to modify and set the connection information to set the connection information for metricbeat:
+
+  ```yml
+  setup.kibana:
+  host: "<kibana_url>"
+
+  output.elasticsearch:
+    hosts: ["<ELK_Private_Ip>"]
+    username: "elastic"
+    password: "changme"
+  ```
+
 7. Modify `/etc/ansible/hosts` add the private IP address of your web server and your ELK server.
 
   ```text
@@ -76,11 +88,9 @@ Create an Azure environment with a management VM, two web servers, and an ELK se
 8. Modify `/etc/ansible/ansible.cfg` add remote_user under the defaults section.
 9. Run `ansible all -m ping` type yes to make sure the ssh keys are added to your host.
    1.  If you see any errors you need to copy your jumpbox public ssh key to the VMs through the portal (step 4).
-10. Run `ansible-playbook dvwa-playbook.yml`
-11. Run `ansible-playbook elk-playbook.yml`
-12. Run `ansible-playbook beats-playbook.yml`
-13. Verify your dvwa is working by navigating to <Web_Public_IP>/setup.php in your web browser.
-14. Verify your elk server is working by navigating to <ELK_Public_IP>:5601 in your web browser.
+10. Run `ansible-playbook dvwa.yml elk-playbook.yml beats-playbook.yml`
+11. Verify your dvwa is working by navigating to <Web_Public_IP>/setup.php in your web browser.
+12. Verify your elk server is working by navigating to <ELK_Public_IP>:5601 in your web browser.
 
 ## Terminology
 

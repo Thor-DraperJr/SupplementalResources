@@ -144,20 +144,6 @@
               "priority": 1200,
               "direction": "Inbound"
             }
-          },
-          {
-            "name": "deny-all",
-            "properties": {
-              "description": "Deny Azure default rules.",
-              "protocol": "Tcp",
-              "sourcePortRange": "*",
-              "destinationPortRange": "*",
-              "sourceAddressPrefix": "*",
-              "destinationAddressPrefix": "*",
-              "access": "Deny",
-              "priority": 4096,
-              "direction": "Inbound"
-            }
           }
         ]
       }
@@ -175,25 +161,11 @@
               "description": "Kibana.",
               "protocol": "Tcp",
               "sourceAddressPrefix": "[parameters('ipAddress')]",              
-              "sourcePortRange": "5601",
+              "sourcePortRange": "*",
               "destinationAddressPrefix": "VirtualNetwork",
-              "destinationPortRange": "*",
+              "destinationPortRange": "5601",
               "access": "Allow",
               "priority": 1200,
-              "direction": "Inbound"
-            }
-          },
-          {
-            "name": "deny-all",
-            "properties": {
-              "description": "Deny Azure default rules.",
-              "protocol": "Tcp",
-              "sourcePortRange": "*",
-              "destinationPortRange": "*",
-              "sourceAddressPrefix": "*",
-              "destinationAddressPrefix": "*",
-              "access": "Deny",
-              "priority": 4096,
               "direction": "Inbound"
             }
           }
