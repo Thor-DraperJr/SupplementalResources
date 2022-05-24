@@ -3,13 +3,10 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "projectName": {
-            "value": "" // TODO: Fill in parameter value
+            "value": "" 
         },
-        "myIpAddress": {
-            "value": "" // TODO: Fill in parameter value
-        },
-        "sshPublicKey": {
-            "value": "" // TODO: Fill in parameter value
+        "adminPublicKey": {
+            "value": "" 
         }
     }
 }

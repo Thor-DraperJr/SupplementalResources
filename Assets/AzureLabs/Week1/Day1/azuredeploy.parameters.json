@@ -3,25 +3,10 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "projectName": {
-            "value": "ProjectName"
-        },
-        "adminUsername": {
-            "value": "azureuser"
+            "value": ""
         },
         "adminPublicKey": {
-            "value": "SSH-PUB-KEY"
-        },
-        "location": {
-            "value": "East US"
-        },
-        "vmSize": {
-            "value": "Standard_B1s"
-        },
-        "ipAddress": {
-            "value": "*"
-        },
-        "webVmSize": {
-            "value": "Standard_B1ms"
+            "value": ""
         }
     }
 }

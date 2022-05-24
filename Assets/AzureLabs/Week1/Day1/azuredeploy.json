@@ -4,6 +4,7 @@
   "parameters": {
     "projectName": {
       "type": "string",
+      "defaultValue": "test",
       "metadata": {
         "description": "Specifies a name for generating resource names."
       }
@@ -24,27 +25,17 @@
     },
     "adminPublicKey": {
       "type": "string",
+      "defaultValue": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDHLlBBCFFE7iCHQ/aemf0EWOlm8boosSZ4lbgUra1CkiSsnSb89gERpMb+anEyCvE4CS/4Mc2LK1c2pcFCsSaDaBM9IByZ0x7YxGPqArKEyGL0D458x0t/en0WZ32cgBqfgdlIDZYjRMvOXVkaPv/7QSfOu/Zmb+vebHgka6WvK9BLrfZFj3Ftbv7hwq4U75MUgPzTMoK6Xw77pize8eHaM5iHPuS4VANkMHBnastQs8yvotw4EATJO3y6I4+8TSShjZeanaTG5+MdxGGsKOqCrJGE/3fnnW0ef+yntaBRg08lwfqItsiNAlz8FuFssqjNo+WUpjKPrSDnYQskSbw3lwnpwANutEmIywmpDDxY6GsmWutKtkXmYQWYV4J8bcp6bQDf+mRz7qt6poiBDriBcj6aEyRnM04gAIdmFs8ralSDxNRVpUURhRje17O5ALuXzkYVcUS9gtRx8Vei6rWR/HfPNWYRMv80VK0H+kIKO1jV3t5bJ2Hi3GgcKDVGiDE= northamerica\thordraper@DESKTOP-UMMKR56",
       "metadata": {
         "description": "Specifies the SSH rsa public key file as a string. Use \"ssh-keygen -t rsa -b 2048\" to generate your SSH key pairs."
       }
     },
-    "vmSize": {
-      "type": "string",
-      "defaultValue": "Standard_B1s",
-      "metadata": {
-        "description": "description"
-      }
-    },
     "ipAddress": {
       "type": "string",
-      "defaultValue": "*",
+      "defaultValue": "71.150.147.86",
       "metadata": {
         "description": "Your IP Address"
       }
-    },
-    "webVmSize": {
-      "type": "string",
-      "defaultValue": "Standard_B1ms"
     },
     "vnetAddressPrefix": {
       "type": "string",
@@ -56,6 +47,8 @@
   },
   "variables": {
     "availabilitySetName": "[concat(parameters('projectName'), '-avSet')]",
+    "vmSize": "Standard_B1s",
+    "webVmSize": "Standard_B1ms",
     "numberofInstances": 2,
     "vnetName": "[concat(parameters('projectName'), '-vnet')]",
     "vnetSubnetName": "[concat(parameters('projectName'), '-subnet')]",
@@ -247,7 +240,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "[parameters('vmSize')]"
+          "vmSize": "[variables('vmSize')]"
         },
         "osProfile": {
           "computerName": "[variables('jumpboxName')]",
@@ -268,7 +261,7 @@
           "imageReference": {
             "publisher": "Canonical",
             "offer": "UbuntuServer",
-            "sku": "18_04-lts-gen2",
+            "sku": "20_04-lts-gen2",
             "version": "latest"
           },
           "osDisk": {
@@ -278,7 +271,7 @@
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('projectName'), '-vm', copyIndex(1), '-nic'))]"
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('jumpboxName'), '-vm', '-nic'))]"
             }
           ]
         }
@@ -303,7 +296,7 @@
           "id": "[resourceId('Microsoft.Compute/availabilitySets', variables('availabilitySetName'))]"
         },
         "hardwareProfile": {
-          "vmSize": "[parameters('webVmSize')]"
+          "vmSize": "[variables('webVmSize')]"
         },
         "osProfile": {
           "computerName": "[concat(parameters('projectName'), '-web', copyindex(1))]",
@@ -324,7 +317,7 @@
           "imageReference": {
             "publisher": "Canonical",
             "offer": "UbuntuServer",
-            "sku": "18_04-lts-gen2",
+            "sku": "20_04-lts-gen2",
             "version": "latest"
           },
           "osDisk": {
