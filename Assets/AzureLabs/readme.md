@@ -53,30 +53,32 @@ Create an Azure environment with a management VM, two web servers, and an ELK se
 3. Run `bash completeSetup.sh` and press enter when prompted.
 4. Copy the ssh from the output and navigate to your WebVms/ElkVm in your Azure portal and select 'Reset password'. Set the username to azureuser and paste the jumpbox VMs public key.
 5. Run `vim BeatConfigs/filebeat.yml` to modify and set the connection information for filebeat:
+   1. The setup.kibana and output.elasticsearch are in two different sections in the config. You'll be uncommenting the host/s parameter and the username/password lines.
 
   ```yml
   setup.kibana:
-  host: "<kibana_url>"
+  host: "<ELK_Private_Ip>:9200"
 
   output.elasticsearch:
-    hosts: ["<ELK_Private_Ip>"]
+    hosts: ["<ELK_Private_Ip>:5601"]
     username: "elastic"
     password: "changme"
   ```
 
-6. Run `vim BeatConfigs/metricbeat.yml` to modify and set the connection information to set the connection information for metricbeat:
+6. Run `vim BeatConfigs/metricbeat.yml` to modify and set the connection information for metricbeat:
+   1. The setup.kibana and output.elasticsearch are in two different sections in the config. You'll be uncommenting the host/s parameter and the username/password lines.
 
   ```yml
   setup.kibana:
-  host: "<kibana_url>"
+  host: "<ELK_Private_Ip:9200>"
 
   output.elasticsearch:
-    hosts: ["<ELK_Private_Ip>"]
+    hosts: ["<ELK_Private_Ip>:5601"]
     username: "elastic"
     password: "changme"
   ```
 
-7. Modify `/etc/ansible/hosts` add the private IP address of your web server and your ELK server.
+7. Run `sudo vim /etc/ansible/hosts` add the private IP address of your web server and your ELK server at the top of the file.
 
   ```text
   [webservers]
@@ -87,7 +89,7 @@ Create an Azure environment with a management VM, two web servers, and an ELK se
   <Private_Ip_Elk>
   ```
 
-8. Modify `/etc/ansible/ansible.cfg` add remote_user under the defaults section.
+8. Run  `sudo vim /etc/ansible/ansible.cfg` add remote_user under the defaults section.
 9. Run `ansible all -m ping` type yes to make sure the ssh keys are added to your host.
    1.  If you see any errors you need to copy your jumpbox public ssh key to the VMs through the portal (step 4).
 10. Run `ansible-playbook dvwa-playbook.yml elk-playbook.yml`
