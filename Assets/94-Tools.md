@@ -1,9 +1,10 @@
-## Wireshark
+# Wireshark
+
 * [TCP Window Size](https://docs.microsoft.com/en-us/troubleshoot/windows-server/networking/description-tcp-features)
 
 ## Steganography
-steghide - a steganography program that is able to hide data in various kinds of image- and audio-files. The color-  respectivly  sample-frequencies are  not changed  thus  making  the  embedding  resistant against first-order statistical tests. Features include the compression of the embedded data, encryption of the  embed‐ded  data  and automatic integrity checking using a checksum. The JPEG, BMP, WAV
 
+steghide - a steganography program that is able to hide data in various kinds of image- and audio-files. The color-  respectivly  sample-frequencies are  not changed  thus  making  the  embedding  resistant against first-order statistical tests. Features include the compression of the embedded data, encryption of the  embed‐ded  data  and automatic integrity checking using a checksum. The JPEG, BMP, WAV
 
 DESCRIPTION
        Steghide  is  a steganography program that is able to hide data in various kinds
@@ -81,8 +82,8 @@ COMMANDS
        help, --help
               Display a help screen. No arguments required.
 
-
 ## Hashcat
+
 DESCRIPTION
        Hashcat is the world’s fastest CPU-based password recovery tool.
 
@@ -93,11 +94,11 @@ DESCRIPTION
        Hashcat is the self-proclaimed world’s fastest CPU-based password recovery tool,
        Examples of hashcat supported hashing algorithms are Microsoft LM  Hashes,  MD4,
        MD5, SHA-family, Unix Crypt formats, MySQL, Cisco PIX.
-       
+
 hashcat -m 0 -a 0 -o solved.txt hash.txt /usr/share/rockyou.txt --force
 
-
 ## GPG
+
 DESCRIPTION
        gpg  is  the OpenPGP part of the GNU Privacy Guard (GnuPG). It is a tool to pro‐
        vide digital encryption and signing services using  the  OpenPGP  standard.  gpg
@@ -120,6 +121,7 @@ gpg --gen-key
 gpg --delete-secret-and-public-key
 
 ## nmap
+
 Nmap (“Network Mapper”) is an open source tool for network exploration and security auditing.
 
 nmap -sV
@@ -143,13 +145,15 @@ search -f *secretfile*.txt
 ## msfconsole
 
 ## Github
-- Commands include:
-    - git clone
-    - git add
-    - git commit -m
-    - git push
+
+* Commands include:
+  * git clone
+  * git add
+  * git commit -m
+  * git push
 
 ## ufw
+
 * `sudo ufw reset` to reset all UFW rules back to factory defaults.
 * `sudo ufw status` to check the current status of the firewall.
 * `sudo ufw enable` to start the firewall and update rules.
@@ -162,6 +166,7 @@ search -f *secretfile*.txt
 * `sudo ufw disable` to shut down the firewall.
 
 ## firewalld
+
 * `sudo /etc/init.d/firewalld start` to start firewalld.
 * `sudo firewall-cmd --list-all-zones` to list all current zones.
 * `sudo firewall-cmd --zone=home --change-interface=eth0` to bind together interfaces.

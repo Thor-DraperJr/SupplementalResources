@@ -1,4 +1,5 @@
-### Asymmetric Encryption
+# Asymmetric Encryption
+
 While symmetric encryption has many advantages, its primary disadvantages are key exchange and key management.
 
 As an alternative, we can use asymmetric key encryption, also known as public-key encryption, in which each individual has a two-key pair.
@@ -12,7 +13,7 @@ The two-key pair consists of:
 * RSA is the most widely used asymmetric key algorithm used today.
 * GPG is a command-line tool that can apply asymmetric encryption.
 
-### Hashing
+## Hashing
 
 While encryption is used to protect confidentiality, hashing is a cryptographic method used to protect integrity.
 
@@ -34,4 +35,3 @@ Like encryption, digital signatures also use public key cryptography.
 
 However, a user uses their own private key to sign a document, and the public key is used by other users to validate the signature.
 There are several types of digital signatures available: detached, all at once, and clearsigned.
-

@@ -1,18 +1,23 @@
 # 02-Learning-Linux
+
 ## What are basic elements or components of Linux?
+
 * **Kernel:** It is considered a core or main part of Linux and is generally responsible for all major activities of OS such as process management, device management, etc.  
-* **System Library:** These are special functions or programs with the help of which application programs or system utilities can access features of the kernel without any requirement of code. It is simply used to implement the functionality of the OS. 
+* **System Library:** These are special functions or programs with the help of which application programs or system utilities can access features of the kernel without any requirement of code. It is simply used to implement the functionality of the OS.
 * **System Utility:** These are utility programs that are responsible to perform specialized and individual-level tasks. They are considered more liable and allow users to manage the computer.  
-* **Hardware:** It is physical hardware that includes items such as a mouse, keyboard, display, CPU, etc. 
-* **Shell:** It is an environment in which we can run our commands, shell scripts, and programs. It is an interface between user and kernel that hides all complexities of functions of the kernel from the user. It is used to execute commands. 
+* **Hardware:** It is physical hardware that includes items such as a mouse, keyboard, display, CPU, etc.
+* **Shell:** It is an environment in which we can run our commands, shell scripts, and programs. It is an interface between user and kernel that hides all complexities of functions of the kernel from the user. It is used to execute commands.
 
 ### What is BASH?
+
 BASH (Bourne Again Shell) is basically a command language interpreter.
 
 ### What is Kernel?
+
 A resource manager that acts as a bridge between hardware and software. Its main role is to manage hardware resources for users and is generally used to provide an interface for user-level interaction. A kernel is the first program that is loaded whenever a computer system starts. It is also referred to as low-level system software.
 
 Main functions include:
+
 * Memory Management
 * Process Management
 * Device Management
@@ -20,15 +25,19 @@ Main functions include:
 * Manage access, and use of various peripherals that are connected to the computer.
 
 ### What are two types of Linux User Mode?
+
 Command Line & GUI
 
 ### What is swap space?
+
 Swap space is space on the hard disk that is used when the amount of physical memory or RAM is full. It can be used as an extension of RAM by linux.
 
 ### What do you mean by a Process States in Linux?
-Linux Process is a type of process that can be in a number of different states. The process enters these states from start till end. 
+
+Linux Process is a type of process that can be in a number of different states. The process enters these states from start till end.
 
 Process states in Linux are as follows:
+
 * **New/Ready:** In this state, a new process is created and is ready to run.
 * **Running:** In this state, the process is being executed.
 * **Blocked/Wait:** In this state, the process is waiting for input from the user and if doesn't have resources to run such as memory, file locks, input, then it can remain in a waiting or blocked state.
@@ -36,9 +45,11 @@ Process states in Linux are as follows:
 * **Zombie:** Zombie Process, also referred to as a defunct or dead process in Linux, is a process that has finished the execution, but its entry remains in the process table. It usually happens due to a lack of correspondence between parent and child processes. This process occurs for the child process because the parent process needs to read the status of the child process.
 
 ### What is Linux Shell? What types of Shells are there in Linux?
-Linux shell is a user interface present between user and kernel. Linux shell is basically a program used by users for executing commands. It accepts human-readable commands as input and converts them into kernel understandable language. 
 
-Different types of shells are commonly used on typical Linux system as listed below: 
+Linux shell is a user interface present between user and kernel. Linux shell is basically a program used by users for executing commands. It accepts human-readable commands as input and converts them into kernel understandable language.
+
+Different types of shells are commonly used on typical Linux system as listed below:
+
 * BASH (Bourne Again Shell)
 * CSH (C Shell)
 * KSH (Korn Shell)
@@ -46,29 +57,35 @@ Different types of shells are commonly used on typical Linux system as listed be
 * ZSH
 * Bourne Shell
 
-### Name different types of modes used in VI editor.
-VI editor (Visual Editor) is basically a default text editor that usually comes with most of the Linux OS. There are basically three types of modes used in VI editor as given below: 
+### Name different types of modes used in VI editor
+
+VI editor (Visual Editor) is basically a default text editor that usually comes with most of the Linux OS. There are basically three types of modes used in VI editor as given below:
 
 * **Command Mode/Regular Mode:** It is the default mode for the vi editors. It is generally used to type commands that usually perform particular or specific vi functions. To enter this mode from another mode (Insert mode), one must press [esc]. In simple words, it lets you view the content.  
-* **Insertion Mode/Edit Mode:** This mode allows you to do text editing, or type text into a file. To enter this mode from another mode (command mode), one must press [esc]. In simple words, it lets you delete or insert text or content. 
+* **Insertion Mode/Edit Mode:** This mode allows you to do text editing, or type text into a file. To enter this mode from another mode (command mode), one must press [esc]. In simple words, it lets you delete or insert text or content.
 * **Ex Mode/Replacement Mode:** This mode is generally used to save the files and execution of the commands. It basically executes files with different parameters. To enter this mode, one must press [:]. In simple words, it lets you overwrite content or text.
 
-### Name the file that is used to automatically mount file systems.
+### Name the file that is used to automatically mount file systems
+
 File that is used to automatically mount file systems is a Fstab file.
 
 ### What is LVM and why is it required?
+
 LVM (Logical Volume Management) is basically a tool that provides logical volume management for the Linux kernel. It is being introduced simply to make physical storage device management easier. It also includes allocating disks, striping, mirroring, resizing logical volumes. Its main advantages are increased abstraction, flexibility, and control. It allows for flexible disk space management. It is especially required to resize the size of the file system online. In Linux, the size of the LVM partition can be extended using “lvextend” command and can be reduced using “lvreduce” commands, respectively.
 
 ### What is a “/proc” file system?
+
 Proc file system is a pseudo or virtual file system that provides an interface to the kernel data structure. It generally includes useful information about processes that are running currently. It can also be used to change some kernel parameters at runtime or during execution. It is also regarded as a control and information center for the kernel. All files under this directory are named virtual files.
 
 ### What do you mean by the daemons?
+
 Daemons also referred to as the background process, is a long-running Linux program that runs in the background. They do not have any controlling terminal, therefore, they run in the background. These are the processes that are generally started when the system is bootstrapped and terminate or end only when the system is shut down.
 
 ## What is the difference between cron and anacron?
-Cron: It is a program in Linux that is used to execute tasks at a scheduled time. It works effectively on machines that run continuously. 
 
-Anacron: It is a program in Linux that is used to execute tasks at certain intervals. It works effectively on machines that are powered off in a day or week. 
+Cron: It is a program in Linux that is used to execute tasks at a scheduled time. It works effectively on machines that run continuously.
+
+Anacron: It is a program in Linux that is used to execute tasks at certain intervals. It works effectively on machines that are powered off in a day or week.
 
 | Cron | Anacron |
 | :--- | ---: |
@@ -80,31 +97,39 @@ Anacron: It is a program in Linux that is used to execute tasks at certain inter
 |It is used to execute scheduled commands.|It is used to execute commands periodically.|
 
 ### What is load average in Linux?
+
 Load average, as the name suggests, is the average system load on Linux servers being calculated over a given period of time. The load average of Linux servers can be found using “top” and “uptime” commands. It is simply used to keep track of system resources. It is represented by a decimal number starting at 0.00.  It tells you the load that the system has been under.
 
 ### What is INODE and Process Id?
+
 **INODE:** It is a unique name given to each file by OS. Each inode has a unique inode number within a file system. It stores various information about files in Linux such as ownership, file size, file type, access mode, number of links, etc.  
 
 **Process Id (Identifier):** It is a unique Id given to each process. It is simply used to uniquely identify an active process throughout the system until the process terminates. The first process started by the kernel in Linux is “init” and its process id is 1.
 
 ### Why /etc/resolv.conf and /etc/hosts files are used?
-**/etc/resolv.conf:** It is used to configure DNS name servers as it contains the details of the nameserver i.e., details of your DNS server. The DNS server is then used to resolve the hostname of the IP address. 
+
+**/etc/resolv.conf:** It is used to configure DNS name servers as it contains the details of the nameserver i.e., details of your DNS server. The DNS server is then used to resolve the hostname of the IP address.
 
 **/etc/hosts:** It is used to map or translate any hostname or domain name to its relevant IP address.
 
 ### What are the advantages of using NIC teaming?
-Network Bonding, also known as NIC Teaming, is a type of bonding that is used to connect multiple network interfaces into a single interface. It usually improves performance and redundancy simply by increasing network throughput and bandwidth. NIC (Network Interface Card) teaming has several advantages as given below: 
+
+Network Bonding, also known as NIC Teaming, is a type of bonding that is used to connect multiple network interfaces into a single interface. It usually improves performance and redundancy simply by increasing network throughput and bandwidth. NIC (Network Interface Card) teaming has several advantages as given below:
+
 * Load Balancing  
 * Failover  
 * Increases uptime
 
-### Name three standard streams in Linux.
+### Name three standard streams in Linux
+
 Standard streams are basically I/O (Input and Output) communication channels between a program and its environment in Linux. Input and output in the Linux environment are distributed across three standard streams. Three standard streams in Linux are as follows:
+
 * Standard Input (stdin)
 * Standard Output (stdout)
 * Standard Error (stderr)
 
 ## Common Symbol Alias
+
 | Directory | Description |
 | :-------- | :---------: |
 | `/` | root |
@@ -112,7 +137,8 @@ Standard streams are basically I/O (Input and Output) communication channels bet
 | `.` | current directory |
 | `..` | previous directory |
 
-## Basic Commands 
+## Basic Commands
+
 | Command | Options |Definition |
 | :------ | :-------: | -----: |
 | awk |  | pattern scanning and processing language; awk -F(DELIMITER) '{print $(FIELD_NUMBER)}' (FILE) |
@@ -212,17 +238,20 @@ Standard streams are basically I/O (Input and Output) communication channels bet
 | zip | | package and compress (archive) files |
 
 ## Reading the Synopsis Section
+
 commands typically follow this format:
 
 `program -options arguments`
 
 The synopsis section usually gives some example use-cases. Sometimes sub-commands have different options, so several examples might be shown.
+
 * Brackets `[]` always denote optional switches, arguments, options, etc.
 * the pipe `|` means or, particularly when inside brackets or parenthesis.
 * Brackets in brackets just means that the second part is dependent on the first, and also itself optional. Some switches you can use on their own or add a value to them. Commas at the start of a bracket would indicate there can be multiple comma separated values.
 * They lean on Regex concepts, but are meant to be human readable so don't follow all the escaping rules etc.
 
 ### Regular Expressions (RegEx)
+
 | Symbol | Description |
 | :--- | --: |
 | . | It is called a wild card character, It matches any one character other than the new line. |
@@ -233,9 +262,11 @@ The synopsis section usually gives some example use-cases. Sometimes sub-command
 | ? | It matches exactly one character in the string or stream. |
 
 #### Bash Brace Expansion
+
 Bash brace expansion is used to generate stings at the command line or in a shell script. The syntax for brace expansion consists of either a sequence specification or a comma separated list of items inside curly braces "{}". A sequence consists of a starting and ending item separated by two periods "..".
 
 #### Escaping
+
 Escaping is a method of quoting single characters. The escape `\` preceding a character tells the shell to interpret that character literally.
 
 | Symbol | Description |
@@ -247,11 +278,12 @@ Escaping is a method of quoting single characters. The escape `\` preceding a ch
 | \b | backspace |
 | \a | "alert" (beep or flash) |
 | \0xx | translates to the octal ASCII equivalent of 0xx |
-| \" | gives the quote its literal meaning | 
-| \$ | gives the dollar sign its literal meaning (variable name following \$ will not be referenced) | 
+| \" | gives the quote its literal meaning |
+| \$ | gives the dollar sign its literal meaning (variable name following \$ will not be referenced) |
 | `\\` | gives the backslash its literal meaning |
 
 #### Unix Shell - Understanding Variables
+
 * `abc` - bare word\string that can be a variable name: abc=123
 * `$abc` - reference to a variable called abc
 * `${abc}` - string safe variable reference file_${abc}_name.txt
@@ -259,53 +291,58 @@ Escaping is a method of quoting single characters. The escape `\` preceding a ch
 * `($abc)` - run the command stored $abc in a subshell
 
 #### Expanding Expressions
+
 * Group commands in a sub-shell: ( )
-    * (list)
-        * Placing a list of commands between parentheses causes a subshell to be created, and each of the commands in list to be executed in that subshell, without removing non-exported variables.
-        * Since the list is executed in a subshell, variable assignments do not remain in effect after the subshell completes.
-        * Not to be confused with Command Substitution   $(command) Notice the dollar prefix, which tells the shell to substitute the output of the command into the main command.
+  * (list)
+    * Placing a list of commands between parentheses causes a subshell to be created, and each of the commands in list to be executed in that subshell, without removing non-exported variables.
+    * Since the list is executed in a subshell, variable assignments do not remain in effect after the subshell completes.
+    * Not to be confused with Command Substitution   $(command) Notice the dollar prefix, which tells the shell to substitute the output of the command into the main command.
 * Group commands in the current shell: { }
-    * { list; }
-        * Placing a list of commands between curly braces causes the list to be executed in the current shell context. No subshell is created. The semicolon (or newline) following list is required.
-        * In addition to the creation of a subshell, there is a subtle difference between these two constructs due to historical reasons. The braces are reserved words, so they must be separated from the list by blanks. The parentheses are operators, and are recognized as separate tokens by the shell even if they are not separated from the list by whitespace.
-        * The exit status of both of these constructs is the exit status of list.
+  * { list; }
+    * Placing a list of commands between curly braces causes the list to be executed in the current shell context. No subshell is created. The semicolon (or newline) following list is required.
+    * In addition to the creation of a subshell, there is a subtle difference between these two constructs due to historical reasons. The braces are reserved words, so they must be separated from the list by blanks. The parentheses are operators, and are recognized as separate tokens by the shell even if they are not separated from the list by whitespace.
+    * The exit status of both of these constructs is the exit status of list.
 * Group commands in the current shell: { }
-    * { list; }
-        * Placing a list of commands between curly braces causes the list to be executed in the current shell context. No subshell is created. The semicolon (or newline) following list is required.
-        * In addition to the creation of a subshell, there is a subtle difference between these two constructs due to historical reasons. The braces are reserved words, so they must be separated from the list by blanks. The parentheses are operators, and are recognized as separate tokens by the shell even if they are not separated from the list by whitespace.
-        * The exit status of both of these constructs is the exit status of list.
+  * { list; }
+    * Placing a list of commands between curly braces causes the list to be executed in the current shell context. No subshell is created. The semicolon (or newline) following list is required.
+    * In addition to the creation of a subshell, there is a subtle difference between these two constructs due to historical reasons. The braces are reserved words, so they must be separated from the list by blanks. The parentheses are operators, and are recognized as separate tokens by the shell even if they are not separated from the list by whitespace.
+    * The exit status of both of these constructs is the exit status of list.
 * Test - return the binary result of an expression: [[ ]]
-    * [[ expression ]]
-        * Return a status of 0 or 1 depending on the evaluation of the conditional expression. Word splitting and filename expansion are not performed on the words between the [[ and ]]; tilde expansion, parameter and variable expansion, arithmetic expansion, command substitution, process substitution, and quote removal are performed.
-        * When the == and != operators are used, pattern matching will be done on the string to the right of the operator.
-        * The return value is 0 if the string matches or does not match the pattern, respectively, and 1 otherwise.
-        * Any part of the pattern can be quoted to force it to be matched as a string.
+  * [[ expression ]]
+    * Return a status of 0 or 1 depending on the evaluation of the conditional expression. Word splitting and filename expansion are not performed on the words between the [[ and ]]; tilde expansion, parameter and variable expansion, arithmetic expansion, command substitution, process substitution, and quote removal are performed.
+    * When the == and != operators are used, pattern matching will be done on the string to the right of the operator.
+    * The return value is 0 if the string matches or does not match the pattern, respectively, and 1 otherwise.
+    * Any part of the pattern can be quoted to force it to be matched as a string.
 * Arithmetic expansion
-    * Arithmetic expansion allows the evaluation of an arithmetic expression and the substitution of the result.
-        * The format for arithmetic expansion is:
-            * $(( expression ))
-        * The format for a simple Arithmetic Evaluation is:
-            * (( expression ))
-    * The expression is treated as if it were within double quotes, but a double quote inside the parentheses is not treated specially. All tokens in the expression undergo parameter expansion, command substitution, and quote removal. Arithmetic substitutions can be nested.
-    * The exit status of arithmetic expressions are Success(0) / Fail (1) codes rather then the True (1) / False (0) which you might expect, so an expression like (( 2 > 4)) will return an exit code of 1
-    * However if you set a variable to the results of an arithmetic expression that will be set to the more logical True (1) / False (0)
-```
+  * Arithmetic expansion allows the evaluation of an arithmetic expression and the substitution of the result.
+    * The format for arithmetic expansion is:
+      * $(( expression ))
+    * The format for a simple Arithmetic Evaluation is:
+      * (( expression ))
+  * The expression is treated as if it were within double quotes, but a double quote inside the parentheses is not treated specially. All tokens in the expression undergo parameter expansion, command substitution, and quote removal. Arithmetic substitutions can be nested.
+  * The exit status of arithmetic expressions are Success(0) / Fail (1) codes rather then the True (1) / False (0) which you might expect, so an expression like (( 2 > 4)) will return an exit code of 1
+  * However if you set a variable to the results of an arithmetic expression that will be set to the more logical True (1) / False (0)
+
+```bash
 let "NUM = (( 2 > 4 ))"
 echo $?
 # 1
 echo $NUM
 # 0
 ```
+
 * Shell variables can be used as operands:
 
-```
+```bash
 TEST=STRING
 STRING=3
 echo $((TEST))
 # 3
 ```
+
 * Arithmetic operators e.g. (( DEMOVAR += 5 ))
-```
+
+```text
   = Set Equal to
  *= Multiply
  /= divide
@@ -318,8 +355,10 @@ echo $((TEST))
  ^= bitwise XOR
  |= bitwise NOT
  ```
+
 * Comparison operators e.g. (( DEMOVAR == 5 ))
-```
+
+```txt
 == Test Equality
 != Test Inequality
  < Less than
@@ -327,6 +366,7 @@ echo $((TEST))
 <= Less than or equal
 >= Greater than or equal
 ```
+
 * Combine multiple expressions
 Expressions can be combined using the following operators, listed in decreasing order of precedence:
 | operator | definition |
@@ -346,26 +386,27 @@ Logical operators operate on logical values, while bitwise operators operate on 
 `z = z & 0xFF # bitwise operation`
 
 ### Reading `ls -l`
+
 When using the list permission option you will see a printout like:
 
 `drwxrwxrwx 1 root root     512 May 24 11:32  Documents/`
 
 * Column 1 indicates information regarding file permission.
-    * The very first character represents the file type. It will be one of:
-        * –:  A regular file.
-        * b: A block special file.
-        * c: A character special file.
-        * d: A directory.
-        * l: A symbolic link.
-        * n: A network file.
-        * p: A named pipe.
-        * s: A socket.
-    * The next nine characters are three groups of three characters displayed contiguously. Each group of three represent the read, write, and execute permissions, in that order. If the permission is granted, there will be an r, w, or x present. If the permission is not granted, a hyphen - is shown.
-        * The first set of three characters are the permissions for the file owner. The second set of three permissions are for group members, and the last set of three permissions is for others.
-        * Sometimes the execution permission for the owner is represented by an s. This is the setuid bit. If it is present, it means that the file is executed with the privileges of the file owner, not the user executing the file.
-        * The execution permission for the group can also be an s.  This is the setgid bit. When this is applied to a file, it means the file will be executed with the privileges of the ower’s group. When used with a directory, any files created inside it will take their group permissions from the directory they’re being created in, not from the user who is creating the file.
-        * The execution permission for the others can sometimes be represented by a t. This is the sticky bit. It is usually applied to directories. If this is set, regardless of the write and executable privileges that are set on the files in the directory, only the file owner, the directory owner, or the root user can rename or delete files in the directory.
-            * A common use for the sticky bit is on folders such as “/tmp”. This is writable by all users on the computer. The sticky bit on the directory ensures that users—and processes launched by the users—can only rename or delete their own temporary files.
+  * The very first character represents the file type. It will be one of:
+    * –:  A regular file.
+    * b: A block special file.
+    * c: A character special file.
+    * d: A directory.
+    * l: A symbolic link.
+    * n: A network file.
+    * p: A named pipe.
+    * s: A socket.
+  * The next nine characters are three groups of three characters displayed contiguously. Each group of three represent the read, write, and execute permissions, in that order. If the permission is granted, there will be an r, w, or x present. If the permission is not granted, a hyphen - is shown.
+    * The first set of three characters are the permissions for the file owner. The second set of three permissions are for group members, and the last set of three permissions is for others.
+    * Sometimes the execution permission for the owner is represented by an s. This is the setuid bit. If it is present, it means that the file is executed with the privileges of the file owner, not the user executing the file.
+    * The execution permission for the group can also be an s.  This is the setgid bit. When this is applied to a file, it means the file will be executed with the privileges of the ower’s group. When used with a directory, any files created inside it will take their group permissions from the directory they’re being created in, not from the user who is creating the file.
+    * The execution permission for the others can sometimes be represented by a t. This is the sticky bit. It is usually applied to directories. If this is set, regardless of the write and executable privileges that are set on the files in the directory, only the file owner, the directory owner, or the root user can rename or delete files in the directory.
+      * A common use for the sticky bit is on folders such as “/tmp”. This is writable by all users on the computer. The sticky bit on the directory ensures that users—and processes launched by the users—can only rename or delete their own temporary files.
 * Column 2 indicates the number of links to the file.
 * Column 3 & 4 indicates the owner and group information.
 * Column 5 indicayes size of the file in bytes.
@@ -374,23 +415,23 @@ When using the list permission option you will see a printout like:
 
 #### File Permissions
 
-| Classes  | Definition | 
+| Classes  | Definition |
 | :-- | --: |
-| Owner | usually the creator of the file or folder. In Linux, any files or folders that you create in your Home directory are usually owned by you unless you specifically change the ownership | 
+| Owner | usually the creator of the file or folder. In Linux, any files or folders that you create in your Home directory are usually owned by you unless you specifically change the ownership |
 | Group | contains a group of users who share the same permissions and user privilege |
 | Others | the general public |
 
 ---
 
-| Permissions  | Definition | 
+| Permissions  | Definition |
 | :-- | --: |
 | Read | You cannot modify the contents of the file in any way. When applied to a Folder, you can only view the files within that folder; you cannot delete or modify the files in any way or add more files to the folder.|
-| Write | You can modify the file. If you have “write” access to a folder, then you can delete and add files to that folder. | 
+| Write | You can modify the file. If you have “write” access to a folder, then you can delete and add files to that folder. |
 | Execute | Execute is mainly used when you need to run the file and is most commonly used when you need to run a script. |
 
 ---
 
-| Permissions  | Permutation | 
+| Permissions  | Permutation |
 | :-- | --: |
 | Read, Write, and Execute | 7 |
 | Read and Write | 6 |
@@ -412,41 +453,45 @@ A complete set of file permissions assigns the first digit to the Owner, the sec
 * **655:** Only the owner can read and write and cannot execute the file. Everyone else can read and execute and cannot modify the file.
 
 ### Combining Commands
+
 * Pipe operator `|`:
-    * Pipe is used to combine two or more commands, and in this, the output of one command acts as input to another command, and this command’s output may act as input to the next command and so on.
+  * Pipe is used to combine two or more commands, and in this, the output of one command acts as input to another command, and this command’s output may act as input to the next command and so on.
 * Logical AND operator `&&`:
-    * The second command will only execute if the first command has executed successfully.
+  * The second command will only execute if the first command has executed successfully.
 * Semi-Colon Operator `;`:
-    * The execution of the second command is independent of the execution status of the first command.
+  * The execution of the second command is independent of the execution status of the first command.
 
 ## vim | Vi IMproved, a programmer's text editor
-__**Basics**__
+
+### Basics
+
 * Normal mode
-    * When vim starts up, you will be in Normal mode. Normal mode is not for inserting text into your file but allow you to preform many operations, like saving and exiting. Pressing <ESC> will always return you to Normal mode.
+  * When vim starts up, you will be in Normal mode. Normal mode is not for inserting text into your file but allow you to preform many operations, like saving and exiting. Pressing `ESC` will always return you to Normal mode.
 * Insert Mode
-    * To insert allow you to insert text. Type: `i` to enter insert mode. Press <ESC> to exit insert mode and enter Normal mode.
-    * To exit Vim press `ESC` and then type: 
-        * `:q!` + [ENTER] to trash all changes.
-        * `:wq` + [ENTER] to save the changes.
+  * To insert allow you to insert text. Type: `i` to enter insert mode. Press `ESC` to exit insert mode and enter Normal mode.
+  * To exit Vim press `ESC` and then type:
+    * `:q!` + [ENTER] to trash all changes.
+    * `:wq` + [ENTER] to save the changes.
 * Undo
-    * In Normal mode type: u
-    * Return line to its original state
-        * In Normal mode type: [SHIFT] + U
-    * Redo (undo the previous undo)
-        * In Normal mode type: [CTRL] + R
-* Delete 
-    * Delete line
-        * In Normal mode type: dd
-    * Delete word(under the cursor)
-        * In Normal mode type: dw
-    * Delete character(under the cursor)
-        * In Normal mode type: x
-    * Delete from the cursor to the end of the line
-        * In Normal mode type: d$
+  * In Normal mode type: u
+  * Return line to its original state
+    * In Normal mode type: [SHIFT] + U
+  * Redo (undo the previous undo)
+    * In Normal mode type: [CTRL] + R
+* Delete
+  * Delete line
+    * In Normal mode type: dd
+  * Delete word(under the cursor)
+    * In Normal mode type: dw
+  * Delete character(under the cursor)
+    * In Normal mode type: x
+  * Delete from the cursor to the end of the line
+    * In Normal mode type: d$
 * Find word(or string)
-    * In Normal mode type: `/`theWord + [ENTER]
+  * In Normal mode type: `/`theWord + [ENTER]
 
 ## file hierachy
+
 * **/** - The "root" directory. This is the entry point of all directories and is described as a forward slash, which is actually the home of the Operating System. Everything is in it. Not every user has read and write privileges to this directory; only the administrators or allowed users of the operating systems can have access to such privileges.
 * **/bin** - This is the directory that has all the binary files of some important programs on the operating system. This directory holds the data about the most used commands related to making(mkdir), moving(mv), copying(cp), listing(ls), and removing(rm) a directory or file. According to the Linux Filesystem Standards, this directory cannot have subdirectories.
 * **/boot** - This is the directory that handles the ignition of the Linux Operating System. First of all, you don’t need to modify anything in this directory, otherwise, you can’t alter anything in it unless you have administrator’s rights. You should stay away from doing anything in this directory, or else it will be a huge mess to set it up again.
@@ -469,9 +514,11 @@ __**Basics**__
 * **/var** - This is a variable directory that contains the files and folders whose size is expected to increase with the passage of time and the system’s usage.
 
 ### Important etc files
+
 * hosts: This file contains the mappings of IP addresses to host names
 
 ## What do the directory colors mean?
+
 The colours from ls are as follows:
 
 * **Blue:** Directory
@@ -482,13 +529,16 @@ The colours from ls are as follows:
 * **Red:** File Archive
 
 ## Sudoers
+
 All=ALL:ALL ALL
+
 * The first ALL is the users allowed
 * The second one is the hosts
 * The third one is the user as you are running the command
 * The last one is the commands allowed
 
 ## cron
+
 A system daemon that keeps track of when to run scheduled tasks. The general syntax for a crontab is: `minute hour day-of-month month day-of-week [user] command`
 
 The time and date fields are:
@@ -506,32 +556,38 @@ Ranges of numbers are allowed. Ranges  are  two  numbers separated  with  a  hyp
 
 Lists are allowed.  A list is a set of numbers (or ranges) separated by commas.  Examples: '1,2,5,9' '0-4,8-12'.
 
-Step values can be used in conjunction with ranges.  Following a range with '/<number>' specifies skips  of  the number's value through the range.  For example, ``0-23/2'' can be used in the hours field to specify  command  execution  every other hour (the alternative in the V7 standard is ``0,2,4,6,8,10,12,14,16,18,20,22'').   Steps  are  also permitted after an asterisk, so if you want to say ``every two hours'', just use ``*/2''.
+Step values can be used in conjunction with ranges.  Following a range with '/`number`' specifies skips  of  the number's value through the range.  For example, ``0-23/2'' can be used in the hours field to specify  command  execution  every other hour (the alternative in the V7 standard is``0,2,4,6,8,10,12,14,16,18,20,22'').   Steps  are  also permitted after an asterisk, so if you want to say ``every two hours'', just use``*/2''.
 
-Names can also be used for the ``month''  and  ``day  of week'' fields.  Use the first three letters of the particular day or month (case doesn't matter).  Ranges or  lists of names are not allowed. The  ``sixth''  field (the rest of the line) specifies the command to be run.  The  entire  command  portion  of  the line,  up to a newline or % character, will be executed by /bin/sh or by the shell specified in the SHELL variable of the  cronfile.   Percent-signs  (%) in the command, unless escaped with backslash (\), will be changed  into  newline characters, and all data after the first % will be sent to the command as standard input.
+Names can also be used for the ``month''  and``day  of week'' fields.  Use the first three letters of the particular day or month (case doesn't matter).  Ranges or  lists of names are not allowed. The  ``sixth''  field (the rest of the line) specifies the command to be run.  The  entire  command  portion  of  the line,  up to a newline or % character, will be executed by /bin/sh or by the shell specified in the SHELL variable of the  cronfile.   Percent-signs  (%) in the command, unless escaped with backslash (\), will be changed  into  newline characters, and all data after the first % will be sent to the command as standard input.
 
- > Note: The day of a command's execution can be specified by two  fields  --  day  of  month, and day of week.  If both fields are restricted (ie, aren't *), the command will be run when either field matches the current time.  For example, ``30 4 1,15 * 5'' would cause a command to be run at  4:30am on the 1st and 15th of each month, plus every Friday.
+ > Note: The day of a command's execution can be specified by two  fields  --  day  of  month, and day of week.  If both fields are restricted (ie, aren't *), the command will be run when either field matches the current time.  For example, ``30 4 1,15* 5'' would cause a command to be run at  4:30am on the 1st and 15th of each month, plus every Friday.
 
 ## Cyber Programs
+
 ### Lynis (Auditing)
+
 A security scanner used to scan a machine for vulnerabilities. It generates and saves a report of its findings for administrators to review.
 
 ## Other Helpful Tools
+
 ### Installs
+
 * iperf - `sudo apt install iptraf` : generates traffic to measure bandwidth
 
 ### How to Show Asterisks While Typing Sudo Password in Linux+
+
 * `sudo cp /etc/sudoers /etc/sudoers.bak`
-    * You can enable the password feedback feature in /etc/sudoers file, but first create a backup of the file
+  * You can enable the password feedback feature in /etc/sudoers file, but first create a backup of the file
 * `sudo visudo`
 * Search for the following line. `Defaults env_reset`
 * And append pwfeedback to it, so that it looks like this. `Defaults env_reset,pwfeedback`
 
 ### Auditd
+
 auditd is the userspace component to the Linux Auditing System. It's responsible for writing audit records to the disk. Viewing the logs is done with  the  ause‐arch  or  aureport  utilities.
 
 | command | options | definition |
-| :---- | :----: | ----: | 
+| :---- | :----: | ----: |
 | auditctl |  | a utility to assist controlling the kernel's audit system |
 |  | -l | list rules |
 |  | -w | write |
@@ -541,6 +597,7 @@ auditd is the userspace component to the Linux Auditing System. It's responsible
 | | -k | Report about audit rule keys |
 
 ### chkrootkit
+
 chkrootkit examines certain elements of the target system and determines whether they have been tampered with.
 
 | options | definition |
@@ -548,6 +605,7 @@ chkrootkit examines certain elements of the target system and determines whether
 | -x | Enter expert mode. |
 
 ### john
+
 john, better known as John the Ripper, is a tool to find weak passwords of users in a server
 
 john [options] password-files
@@ -555,6 +613,7 @@ john [options] password-files
 To see the cracked passwords, use john -show passwd
 
 ### fping
+
 fping differs from ping in that you can specify any number of targets on the command line, or specify a file containing the lists of targets to ping.
 
 | options | definitions |
@@ -562,6 +621,7 @@ fping differs from ping in that you can specify any number of targets on the com
 | -g | Generate a target list from a supplied IP netmask, or a starting and ending IP. |
 
 ### nmap
+
 Nmap (“Network Mapper”) is an open source tool for network exploration and security auditing.
 
 | options | definitions |
