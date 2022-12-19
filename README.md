@@ -2,7 +2,7 @@
 
 ## Supplemental Resources
 
-It wasn't long ago that I started my career changing journey. It can be pretty rough making a transition into the everchanging world that is technology. Here are some bits of information I've collected along the way. The resources are all over the place and they might look like the scatter brained notes of a mad man (well they kind of are).
+This is a repository dedicated to the bits of information I've collected along the way on my career journey. The resources are all over the place and they might look like the scatter brained notes of a mad man (well they kind of are). Since I've been an instructor of the U of R Cybersecurity cohort I realized putting together a location that was dedicated to resources that would help people transitioning into the IT field would be a pretty cool thing.
 
 I also write blog posts. Generally I'll put them on [LinkedIn](www.linkedin.com/in/thor-draperjr) but sometimes I only post them on my [website](www.thor-draperjr.github.io)
 
