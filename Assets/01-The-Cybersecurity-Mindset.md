@@ -17,49 +17,36 @@
 
 ## Fundamentals
 
-* The CIA triad highlights the three cornerstones of information security: confidentiality, integrity, and availability.
-  * **Confidentiality:** only the correct, authorized user/system/resource can view, access, change, or otherwise use data.
-    * strong passwords
-    * data encryption
-    * MFA
-  * **Integrity:** A system’s ability to ensure that the system and information is accurate and correct.
-    * file permissions and user access controls
-    * checksums
-    * nonrepudiation measures
-  * **Availability:** A system’s ability to ensure that systems, information, and services are available the vast majority of time.
-    * redundancy
-    * failover
-    * RAID
-    * data recovery and business continuity plan (BCP)
-* Gaining the full picture.
-  * To assess threats and mitigate risks, we need to check each component of an organization, and understand how malicious actors can exploit weaknesses within the organization and damage the stakeholders' finances, reputations, and well-being.
-* Troubleshooting methodology.
-  * While troubleshooting doesn’t sound quite as exciting as attacking and defending information systems, it is just as important a skill.
-  * Whether you are a penetration tester, system administrator, SOC analyst, network admin, or IT help desk associate, you will most likely have to troubleshoot technology on a regular basis.
-  * Remember that every time we have to research something it is an opportunity to expand our knowledge. Googling is a common task for IT professionals. It allows us to quickly reference, confirm, and discover information about tasks or issues that we are unfamiliar with.
-  * The more you work through the problems you encounter during your daily activities and setups, the more robust knowledge you will have for solving any issue you encounter in the professional world. Hiring managers consider this problem-solving mentality a valuable quality.
+Information security is a challenging and ever-evolving field that requires a combination of technical and analytical skills. As an information security professional, you will play a critical role in protecting organizations and their stakeholders against cyber threats.
+
+Here are some key points about the field:
+
+* CIA triad: One of the key concepts you will need to understand is the CIA triad. This framework highlights the three main aspects of information security: Confidentiality, Integrity, and Availability.
+
+* Confidentiality: Ensures that only authorized users can view, access, change, or otherwise use data by using strong passwords, data encryption, and MFA.
+Integrity: Ensures that a system and its information is accurate and correct through file permissions, user access controls, checksums, and nonrepudiation measures.
+Availability: Ensures that systems, information and services are available most of the time by implementing redundancy, failover, RAID, data recovery and business continuity plan (BCP)
+Assessing and mitigating risks: As an information security professional, you will be responsible for assessing and mitigating risks by understanding how malicious actors can exploit weaknesses in an organization and damage stakeholders' finances, reputations and well-being.
+
+* Troubleshooting: Troubleshooting is an important skill for an information security professional, and every opportunity to research and learn is valuable for expanding knowledge and problem-solving abilities.
+
+* Rewarding Career: As an information security professional, you will be part of a team of experts working to protect organizations against cyber threats and keep their sensitive data safe. If you're up for the challenge and have a passion for technology and security, the field of information security is an exciting and rewarding career choice.
 
 ## Intro to GRC
 
-* **Governance:** provides management frameworks used to implement security practices in the organization. It helps a business decide how to enforce its security practices by developing policies, standards, processes, and procedures.
-* **Risk Management:** identifies which assets are most important and determine how they are most likely to be compromised. The business then uses this information to decide how to protect its most important and at-risk assets. This decision then informs the business's security practices.
-* **Compliance:** ensures internal security policies are being followed and verifies that the business is following relevant security laws.
+The most important concepts of Governance, Risk Management, and Compliance (GRC) are:
 
-### Risk Management and Threat Modeling
+- **Governance**: provides management frameworks used to implement security practices in the organization. It helps a business decide how to enforce its security practices by developing policies, standards, processes, and procedures.
+- **Risk Management**: Identifies which assets are most important and determines how they are most likely to be compromised. The business then uses this information to decide how to protect its most important and at-risk assets. This decision then informs the business's security practices.
+- **Compliance**: Ensures internal security policies are being followed and verifies that the business is following relevant security laws.
+- **Vulnerability**: The aspect of a business that can be exploited to compromise a system.
+- **Threat**: An actor that might exploit a vulnerability. Threats can be intentional (a malicious hacker steals data), unintentional (an incompetent sysadmin destroys the network), or be due to a natural disaster.
+- **Risk**: The possibility of losing something valuable. Equivalently, a risk will cost money if it occurs.
+- **Risk Analysis**: The practice of understanding what risks an organization faces; which are most severe; and which are most likely.
+- **Risk Management**: The practice of using the results of such an analysis to determine how to deploy personnel and spend budget.
+- **Threat Modeling**: The practice of determining which attacks an organization is most likely to experience, who is most likely to launch them, and what can be done to stop them.
+- **Threat Modeling Methodologies**: PASTA, STRIDE, OWASP are three common methodologies used to threat modeling. Each of them has different focus and target.
 
-* **Vulnerability:** The aspect of a business that can be exploited to compromise a system.
-* **Threat:** An actor that might exploit a vulnerability. Threats can be intentional (a malicious hacker steals data), unintentional (an incompetent sysadmin destroys the network), or be due to a natural disaster.
-* **Risk:** The possibility of losing something valuable. Equivalently, a risk will cost money if it occurs.
-* **Risk Analysis:** The practice of understanding what risks an organization faces; which are most severe; and which are most likely.
-* **Risk Management:** The practice of using the results of such an analysis to determine how to deploy personnel and spend budget.
-  * Risk analysis is important because it quantifies how much a business needs to spend in the event of a given security break. Therefore, businesses can plan for setbacks before they occur.
-* **Threat Modeling:** The practice of determining which attacks an organization is most likely to experience, who is most likely to launch them, and what can be done to stop them.
-  * Threat modeling is an essential step to risk management because a risk is essential a price the business pays if the threat is realized. Therefore, they can prioritize the most expensive risks.
-  * **Threat Modeling Methodologies:**
-    * **PASTA:** Process for Attack Simulation and Threat Analysis. It aims to align consideration of business objectives with technical requirements.
-    * **STRIDE:** Spoofing, Tampering, Repudiation, Information disclosure, DoS (Denial of Service), Elevation of Privilege. It focuses on identifying what can fail in the system being modeled.
-    * **OWASP:** Open Web Application Security Project. It focuses on identifying possible threats, prioritizing risks, and planning mitigation strategies. It is mainly applied to the analysis of applications, such as web or desktop apps.
-        > A bank might opt for PASTA, which gives greater consideration to the business being modeled, while a pentesting firm would probably opt to use STRIDE or OWASP. Students should know that they are likely to run into more than one of these during their professional careers.
 
 #### OWASP In-Depth
 
