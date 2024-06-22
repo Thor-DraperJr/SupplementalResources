@@ -3,7 +3,6 @@
 ## Edu-tainment
 
 * YouTube
-  * 
   * [NetworkChuck](https://www.youtube.com/channel/UC9x0AN7BWHpCDHSm9NiJFJQ)
 * On-Demand Training
   * [ITProTV](https://www.itpro.tv/) - All of the entry level certs
@@ -26,7 +25,6 @@
 
 * CSNP - CyberSecurity Non-Profit
 * ISSA - Information Systems Security Association
-* 
 
 ## Collaboration Tools
 

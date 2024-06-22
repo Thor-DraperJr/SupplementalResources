@@ -4,11 +4,10 @@
 
 * [Fundamentals](#fundamentals)
 * [Intro to GRC](#intro-to-grc)
-  * [Risk Management and Threat Modeling](#risk-management-and-threat-modeling)
-    * [OWASP in Depth](#owasp-in-depth)
-    * [Qualitative vs Quantitative Risk Analysis](#qualitative-vs-quantitative-risk-analysis)
-    * [Mitigating Risk](#mitigating-risk)
-    * [Cybersecurity Frameworks](#cybersecurity-frameworks)
+  * [OWASP in Depth](#owasp-in-depth)
+  * [Qualitative vs Quantitative Risk Analysis](#qualitative-vs-quantitative-risk-analysis)
+  * [Mitigating Risk](#mitigating-risk)
+  * [Cybersecurity Frameworks](#cybersecurity-frameworks)
 * [Consumer vs Professional Environments](#consumer-vs-professional-environments)
 * [Intro to Cyber Attacks](#intro-to-cyber-attacks)
 * [Contingency Planning for Business Continuity and Disaster Recovery](#contingency-planning-for-business-continuity-and-disaster-recovery)
@@ -36,19 +35,18 @@ Assessing and mitigating risks: As an information security professional, you wil
 
 The most important concepts of Governance, Risk Management, and Compliance (GRC) are:
 
-- **Governance**: provides management frameworks used to implement security practices in the organization. It helps a business decide how to enforce its security practices by developing policies, standards, processes, and procedures.
-- **Risk Management**: Identifies which assets are most important and determines how they are most likely to be compromised. The business then uses this information to decide how to protect its most important and at-risk assets. This decision then informs the business's security practices.
-- **Compliance**: Ensures internal security policies are being followed and verifies that the business is following relevant security laws.
-- **Vulnerability**: The aspect of a business that can be exploited to compromise a system.
-- **Threat**: An actor that might exploit a vulnerability. Threats can be intentional (a malicious hacker steals data), unintentional (an incompetent sysadmin destroys the network), or be due to a natural disaster.
-- **Risk**: The possibility of losing something valuable. Equivalently, a risk will cost money if it occurs.
-- **Risk Analysis**: The practice of understanding what risks an organization faces; which are most severe; and which are most likely.
-- **Risk Management**: The practice of using the results of such an analysis to determine how to deploy personnel and spend budget.
-- **Threat Modeling**: The practice of determining which attacks an organization is most likely to experience, who is most likely to launch them, and what can be done to stop them.
-- **Threat Modeling Methodologies**: PASTA, STRIDE, OWASP are three common methodologies used to threat modeling. Each of them has different focus and target.
+* **Governance**: provides management frameworks used to implement security practices in the organization. It helps a business decide how to enforce its security practices by developing policies, standards, processes, and procedures.
+* **Risk Management**: Identifies which assets are most important and determines how they are most likely to be compromised. The business then uses this information to decide how to protect its most important and at-risk assets. This decision then informs the business's security practices.
+* **Compliance**: Ensures internal security policies are being followed and verifies that the business is following relevant security laws.
+* **Vulnerability**: The aspect of a business that can be exploited to compromise a system.
+* **Threat**: An actor that might exploit a vulnerability. Threats can be intentional (a malicious hacker steals data), unintentional (an incompetent sysadmin destroys the network), or be due to a natural disaster.
+* **Risk**: The possibility of losing something valuable. Equivalently, a risk will cost money if it occurs.
+* **Risk Analysis**: The practice of understanding what risks an organization faces; which are most severe; and which are most likely.
+* **Risk Management**: The practice of using the results of such an analysis to determine how to deploy personnel and spend budget.
+* **Threat Modeling**: The practice of determining which attacks an organization is most likely to experience, who is most likely to launch them, and what can be done to stop them.
+* **Threat Modeling Methodologies**: PASTA, STRIDE, OWASP are three common methodologies used to threat modeling. Each of them has different focus and target.
 
-
-#### OWASP In-Depth
+### OWASP In-Depth
 
 The OWASP process consists of six steps:
 
@@ -141,9 +139,9 @@ and Organizations
   * Maintain data for six years. Local and offsite backup
 * MITRE
 
-[^2]: https://www.iso.org/isoiec-27001-information-security.html
-[^3]: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171r2.pdf
-[^4]: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-37r2.pdf
+[^2]: <https://www.iso.org/isoiec-27001-information-security.html>
+[^3]: <https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171r2.pdf>
+[^4]: <https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-37r2.pdf>
 
 ## Consumer vs Professional Environments
 
@@ -171,10 +169,10 @@ Datacenters are primarily comprised servers. Commonly the servers will have spec
 | Social Engineering | Brute-Force Attacks | OS Exploits | Default Credentials |
 | Phishing Attacks   | Code Injection | Malicious Software | Unpatched Database |
 | Credential Reuse | Faulty Sessions| | Lack of Segregation |
-| Malware Attacks | | |
-| Man in the Middle | | |
-| Packet Sniffing | | |
-| Computer Theft | | |
+| Malware Attacks | | | |
+| Man in the Middle | | | |
+| Packet Sniffing | | | |
+| Computer Theft | | | |
 
 ## Contingency Planning for Business Continuity and Disaster Recovery
 
