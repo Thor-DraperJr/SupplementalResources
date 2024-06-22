@@ -2,9 +2,11 @@
 
 ## Supplemental Resources
 
-This is a repository dedicated to the bits of information I've collected along the way on my career journey. The resources are all over the place and they might look like the scatter brained notes of a mad man (well they kind of are). Since I've been an instructor of the U of R Cybersecurity cohort I realized putting together a location that was dedicated to resources that would help people transitioning into the IT field would be a pretty cool thing.
+Welcome to the "Supplemental Resources" repository, a treasure trove of wisdom, insights, and tools I've gathered throughout my career in IT and cybersecurity. This collection, which may at first glance seem like the eclectic notes of a passionate professional, serves a purpose far greater than its seemingly scatterbrained appearance suggests.
 
-I also write blog posts. Generally I'll put them on [LinkedIn](www.linkedin.com/in/thor-draperjr) but sometimes I only post them on my [website](www.thor-draperjr.github.io)
+I started putting this together while I was teaching a few cohorts for EdX. I've recognized the value in having a centralized hub of resources for those transitioning into or navigating the complex world of IT. This repository is my contribution to that need - a dedicated space where newcomers and seasoned professionals alike can find guidance, inspiration, and the tools necessary for their journey.
+
+In addition to the resources found here, I share my thoughts, experiences, and the occasional epiphany through blog posts on [LinkedIn](www.linkedin.com/in/thor-draperjr) and my [personal website](www.thor-draperjr.github.io). These writings complement the repository, offering deeper insights and reflections on the ever-evolving landscape of technology and cybersecurity.
 
 Good luck!
 
@@ -14,12 +16,13 @@ Good luck!
 * [01-The-Cybersecurity-Mindset.md](/Assets/01-The-Cybersecurity-Mindset.md)
 * [02-Learning-Linux.md](/Assets/02-Learning-Linux.md)
 * [Git](/Assets/Git/readme.md)
-* [Homework Tips](/Assets/HomeworkTips.md)
 * [Study-Guides](/Assets/Study-Guides)
 * [Vagrant](/Assets/Vagrant/readme.md)
 
 ## How to Contribute
 
-Feel free to message or email me directly!
+Your journey through IT and cybersecurity is unique, and your insights are invaluable. I encourage you to share your experiences, questions, and resources. Feel free to message or email me directly. Together, we can make this repository a richer, more comprehensive guide for all.
 
 * [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
+
+Good luck on your journey of continuous learning and discovery. Let's navigate the complexities of the IT world together, armed with the right tools and a community of support.
