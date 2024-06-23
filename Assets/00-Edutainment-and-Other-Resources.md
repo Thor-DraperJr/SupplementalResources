@@ -1,4 +1,4 @@
-# 00-Edutainment and Other Resources
+# Edutainment and Other Resources
 
 ## Edu-tainment
 

@@ -12,7 +12,7 @@ Good luck!
 
 ## Topics
 
-* [00-Why-Cyber-and-Recommendations.md](/Assets/00-Why-Cyber-and-Recommendations.md)
+* [Edu-tainment and Other Resources.md](/Assets/00-Edutainment-and-Other-Resources.md)
 * [01-The-Cybersecurity-Mindset.md](/Assets/01-The-Cybersecurity-Mindset.md)
 * [02-Learning-Linux.md](/Assets/02-Learning-Linux.md)
 * [Git](/Assets/Git/readme.md)
