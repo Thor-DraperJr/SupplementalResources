@@ -1,4 +1,4 @@
-# 02-Learning-Linux
+# Learning Linux
 
 ## What are basic elements or components of Linux?
 
@@ -174,7 +174,7 @@ Standard streams are basically I/O (Input and Output) communication channels bet
 | | -type f | search for files |
 | | -type d | search for directories |
 | free | | display amount of free and used memory in the system |
-| | -h | show all output fields automatically scaled to shortest three digit unit and display the units of print out (B=bytes, K=kibibyts, M=mebibyte, G=gibibyte, T=tebibyte, P=pebibyte)
+| | -h | show all output fields automatically scaled to shortest three digit unit and display the units of print out (B=bytes, K=kibibyts, M=mebibyte, G=gibibyte, T=tebibyte, P=pebibyte) |
 | grep  | | print lines matching a pattern |
 |  | -R | read all files under each directory, recursively.  Follow all symbolic links |
 | gzip |  | used to compress files |

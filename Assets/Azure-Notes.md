@@ -152,7 +152,7 @@ Availability Zone Unique physical locations within a region.
 VMs requre a resource group, storage account, vnet, NIC
 
 * <https://docs.microsoft.com/en-us/azure/virtual-machines/sizes>
-* (<https://www.youtube.com/watch?v=zOSvnJFd3ZM>
+* <https://www.youtube.com/watch?v=zOSvnJFd3ZM>
 
 <https://docs.microsoft.com/en-us/azure/storage/common/storage-introduction>
 <https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview#resource-groups>

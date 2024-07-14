@@ -10,15 +10,6 @@ In addition to the resources found here, I share my thoughts, experiences, and t
 
 Good luck!
 
-## Topics
-
-* [Edu-tainment and Other Resources.md](/Assets/00-Edutainment-and-Other-Resources.md)
-* [01-The-Cybersecurity-Mindset.md](/Assets/01-The-Cybersecurity-Mindset.md)
-* [02-Learning-Linux.md](/Assets/02-Learning-Linux.md)
-* [Git](/Assets/Git/readme.md)
-* [Study-Guides](/Assets/Study-Guides)
-* [Vagrant](/Assets/Vagrant/readme.md)
-
 ## How to Contribute
 
 Your journey through IT and cybersecurity is unique, and your insights are invaluable. I encourage you to share your experiences, questions, and resources. Feel free to message or email me directly. Together, we can make this repository a richer, more comprehensive guide for all.
