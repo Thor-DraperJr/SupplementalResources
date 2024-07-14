@@ -11,12 +11,16 @@
 * Podcasts
   * [Darknet Diaries](https://darknetdiaries.com/)
   * [Soft Skills Engineering](https://softskills.audio/)
+  * Risky Business
+  * Azure Security Podcast
+  * SANS StormCast
 * Blog
   * [Thor Draper Jr's Blog](www.thor-draperjr.github.io)
+  * [SANS NewsBites](https://www.sans.org/newsletters/newsbites/)
 * Vuln
-  * tryhackme
-  * hackthebox
-  * vulnhub
+  * [tryhackme](https://tryhackme.com/)
+  * [hackthebox](https://www.hackthebox.com/)
+  * [vulnhub](https://www.vulnhub.com/)
 * Coding
   * freecodecamp
   * codeacademy
@@ -60,19 +64,3 @@ Learn how to master your collaboration tools
   * Learn templating in the cloud with JSON
 * [Markdown Guide](https://www.markdownguide.org/)
   * a lightweight markup language that you can use to add formatting elements to plaintext text documents.
-
-## Setting up Git in you VS Code
-
-```git
-git config --global user.email "YOUR_EMAIL_ADDRESS"
-git config --global user.name "YOUR_NAME"
-```
-
-## Setting up your azure commands in PowerShell
-
-* `Install-Module -Name Az -AllowClobber` - To install the Az module
-
-## Inital commands
-
-* `az`
-* `login` : Log in to Azure.
