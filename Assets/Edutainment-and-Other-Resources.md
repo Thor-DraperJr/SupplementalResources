@@ -4,6 +4,7 @@
 
 * YouTube
   * [NetworkChuck](https://www.youtube.com/channel/UC9x0AN7BWHpCDHSm9NiJFJQ)
+  * [John Savill](https://www.youtube.com/c/NTFAQGuy)
 * On-Demand Training
   * [ITProTV](https://www.itpro.tv/) - All of the entry level certs
     * [30% off](http://ssqt.co/m5fB7Eg)
@@ -14,9 +15,19 @@
   * Risky Business
   * Azure Security Podcast
   * SANS StormCast
+  * Afternoon Cyber Tea with Ann Johnson
+  * Security Unlocked
+  * Security Now
+  * Uncovering Hidden Risks
+  * Trusting Your Hybrid Workforce
+  * Security Unlocked: CISO Series with Bret Arsenault
 * Blog
   * [Thor Draper Jr's Blog](www.thor-draperjr.github.io)
   * [SANS NewsBites](https://www.sans.org/newsletters/newsbites/)
+  * [The Hacker News](https://thehackernews.com/)
+  * [Krebs](https://krebsonsecurity.com/)
+  * [Threat Post](https://threatpost.com/)
+  * [Dark Reading](https://www.darkreading.com/)
 * Vuln
   * [tryhackme](https://tryhackme.com/)
   * [hackthebox](https://www.hackthebox.com/)
@@ -29,6 +40,17 @@
 
 * CSNP - CyberSecurity Non-Profit
 * ISSA - Information Systems Security Association
+
+## Books
+
+* The Promise and the Peril of the Digital Age
+* The Next Age of Uncertainty: How the World Can Adapt to a Riskier Future
+* The Checklist Manifesto: How to Get Things Right
+* AI Superpowers: China, Silicon Valley, and the New World Order
+* Assessing and Managing Security Risk in IT Systems: A Structured Methodology
+* AI 2041: Ten Visions for Our Future
+* Sandworm: A New Era Cyberwar and the Hunt for the Kremlin's Most Dangerous Hackers
+* Stuxnet and the Launch of the World's First Digital Weapon Countdown to Zero Day
 
 ## Collaboration Tools
 
